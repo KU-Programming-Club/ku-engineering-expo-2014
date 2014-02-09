@@ -48,7 +48,7 @@
         </activity>
         <activity android:name=".activities.TrackScheduleEventActivity" />
         <activity android:name=".activities.EventDetailsActivity" />
-        <activity android:name=".activities.PersonInfoActivity" />
+        <activity android:name=".activities.PresenterInfoActivity" />
         <activity
             android:name=".activities.SearchResultActivity"
             android:launchMode="singleTop" >

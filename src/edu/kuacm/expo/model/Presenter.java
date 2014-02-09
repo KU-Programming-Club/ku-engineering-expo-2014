@@ -6,19 +6,19 @@ import edu.kuacm.expo.utils.StringUtils;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Person implements Parcelable {
+public class Presenter implements Parcelable {
 
 	private long mId;
 	private String mName;
 
-	public Person() {}
+	public Presenter() {}
 
 	public long getId() {
 		return mId;
 	}
 
 	public void setId(long id) {
-		this.mId = id;
+		mId = id;
 	}
 
 	public String getName() {
@@ -30,7 +30,7 @@ public class Person implements Parcelable {
 	}
 
 	public String getUrl() {
-		return ExpoUrls.getPerson(StringUtils.toSlug(mName), DatabaseManager.getInstance().getYear());
+		return ExpoUrls.getPresenterUrl(StringUtils.toSlug(mName), DatabaseManager.getInstance().getYear());
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class Person implements Parcelable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Person other = (Person) obj;
+		Presenter other = (Presenter) obj;
 		return (mId == other.mId);
 	}
 
@@ -66,19 +66,19 @@ public class Person implements Parcelable {
 		out.writeString(mName);
 	}
 
-	public static final Parcelable.Creator<Person> CREATOR = new Parcelable.Creator<Person>() {
+	public static final Parcelable.Creator<Presenter> CREATOR = new Parcelable.Creator<Presenter>() {
 		@Override
-		public Person createFromParcel(Parcel in) {
-			return new Person(in);
+		public Presenter createFromParcel(Parcel in) {
+			return new Presenter(in);
 		}
 
 		@Override
-		public Person[] newArray(int size) {
-			return new Person[size];
+		public Presenter[] newArray(int size) {
+			return new Presenter[size];
 		}
 	};
 
-	private Person(Parcel in) {
+	private Presenter(Parcel in) {
 		mId = in.readLong();
 		mName = in.readString();
 	}

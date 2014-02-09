@@ -194,14 +194,14 @@ public class TrackScheduleListFragment extends ListFragment implements LoaderCal
 
 			SpannableString spannableString;
 			String eventTitle = event.getTitle();
-			String personsSummary = event.getPersonsSummary();
-			if (TextUtils.isEmpty(personsSummary)) {
+			String presentersSummary = event.getPresentersSummary();
+			if (TextUtils.isEmpty(presentersSummary)) {
 				spannableString = new SpannableString(String.format("%1$s\n%2$s", eventTitle, event.getRoomName()));
 			} else {
-				spannableString = new SpannableString(String.format("%1$s\n%2$s\n%3$s", eventTitle, personsSummary, event.getRoomName()));
+				spannableString = new SpannableString(String.format("%1$s\n%2$s\n%3$s", eventTitle, presentersSummary, event.getRoomName()));
 			}
 			spannableString.setSpan(holder.titleSizeSpan, 0, eventTitle.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-			spannableString.setSpan(holder.boldStyleSpan, 0, eventTitle.length() + personsSummary.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+			spannableString.setSpan(holder.boldStyleSpan, 0, eventTitle.length() + presentersSummary.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
 			holder.text.setText(spannableString);
 			int bookmarkDrawable = DatabaseManager.toBookmarkStatus(cursor) ? R.drawable.ic_small_starred : 0;

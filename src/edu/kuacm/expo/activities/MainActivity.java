@@ -47,7 +47,7 @@ import edu.kuacm.expo.db.DatabaseManager;
 import edu.kuacm.expo.fragments.BookmarksListFragment;
 import edu.kuacm.expo.fragments.LiveFragment;
 import edu.kuacm.expo.fragments.MapFragment;
-import edu.kuacm.expo.fragments.PersonsListFragment;
+import edu.kuacm.expo.fragments.PresentersListFragment;
 import edu.kuacm.expo.fragments.ScoresFragment;
 import edu.kuacm.expo.fragments.TracksFragment;
 
@@ -60,8 +60,8 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
 
 	private static enum Section {
 		TRACKS(TracksFragment.class, R.string.menu_tracks, R.drawable.ic_action_event, true), BOOKMARKS(BookmarksListFragment.class, R.string.menu_bookmarks,
-				R.drawable.ic_action_important, false), LIVE(LiveFragment.class, R.string.menu_live, R.drawable.ic_action_play_over_video, false), SPEAKERS(
-						PersonsListFragment.class, R.string.menu_speakers, R.drawable.ic_action_group, false), MAP(MapFragment.class, R.string.menu_map,
+				R.drawable.ic_action_important, false), LIVE(LiveFragment.class, R.string.menu_live, R.drawable.ic_action_play_over_video, false), PRESENTERS(
+						PresentersListFragment.class, R.string.menu_presenters, R.drawable.ic_action_group, false), MAP(MapFragment.class, R.string.menu_map,
 								R.drawable.ic_action_map, false), SCORES(ScoresFragment.class, R.string.menu_scores, R.drawable.ic_action_trophy, false);
 
 		private final String mmFragmentClassName;

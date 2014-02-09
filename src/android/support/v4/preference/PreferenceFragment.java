@@ -60,7 +60,7 @@ public abstract class PreferenceFragment extends Fragment {
 		try {
 			Constructor<PreferenceManager> c = PreferenceManager.class.getDeclaredConstructor(Activity.class, int.class);
 			c.setAccessible(true);
-			mPreferenceManager = c.newInstance(this.getActivity(), FIRST_REQUEST_CODE);
+			mPreferenceManager = c.newInstance(getActivity(), FIRST_REQUEST_CODE);
 		} catch (Exception e) {
 		}
 	}
@@ -207,7 +207,7 @@ public abstract class PreferenceFragment extends Fragment {
 	}
 
 	private void requirePreferenceManager() {
-		if (this.mPreferenceManager == null) {
+		if (mPreferenceManager == null) {
 			throw new RuntimeException("This should be called after super.onCreate.");
 		}
 	}

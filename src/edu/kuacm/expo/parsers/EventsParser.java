@@ -12,7 +12,7 @@ import org.xmlpull.v1.XmlPullParser;
 import edu.kuacm.expo.model.Day;
 import edu.kuacm.expo.model.Event;
 import edu.kuacm.expo.model.Link;
-import edu.kuacm.expo.model.Person;
+import edu.kuacm.expo.model.Presenter;
 import edu.kuacm.expo.model.Track;
 import edu.kuacm.expo.utils.DateUtils;
 import android.text.TextUtils;
@@ -84,8 +84,8 @@ public class EventsParser extends IterableAbstractPullParser<Event> {
 					event.setDay(mCurrentDay);
 					event.setRoomName(mCurrentRoom);
 					// Initialize empty lists
-					List<Person> persons = new ArrayList<Person>();
-					event.setPersons(persons);
+					List<Presenter> presenters = new ArrayList<Presenter>();
+					event.setPresenters(presenters);
 					List<Link> links = new ArrayList<Link>();
 					event.setLinks(links);
 
@@ -125,14 +125,14 @@ public class EventsParser extends IterableAbstractPullParser<Event> {
 								event.setAbstractText(parser.nextText());
 							} else if ("description".equals(name)) {
 								event.setDescription(parser.nextText());
-							} else if ("persons".equals(name)) {
-								while (!isNextEndTag("persons")) {
-									if (isStartTag("person")) {
-										Person person = new Person();
-										person.setId(Long.parseLong(parser.getAttributeValue(null, "id")));
-										person.setName(parser.nextText());
+							} else if ("presenters".equals(name)) {
+								while (!isNextEndTag("presenters")) {
+									if (isStartTag("presenter")) {
+										Presenter presenter = new Presenter();
+										presenter.setId(Long.parseLong(parser.getAttributeValue(null, "id")));
+										presenter.setName(parser.nextText());
 
-										persons.add(person);
+										presenters.add(presenter);
 									}
 								}
 							} else if ("links".equals(name)) {

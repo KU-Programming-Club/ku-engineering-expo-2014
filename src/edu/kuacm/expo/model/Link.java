@@ -15,7 +15,7 @@ public class Link implements Parcelable {
 	}
 
 	public void setUrl(String url) {
-		this.mUrl = url;
+		mUrl = url;
 	}
 
 	public String getDescription() {
@@ -23,7 +23,7 @@ public class Link implements Parcelable {
 	}
 
 	public void setDescription(String description) {
-		this.mDescription = description;
+		mDescription = description;
 	}
 
 	@Override

@@ -18,7 +18,7 @@ public abstract class IterableAbstractPullParser<T> extends AbstractPullParser<I
 		private T mNext = null;
 
 		public ParserIterator(XmlPullParser parser) {
-			this.mParser = parser;
+			mParser = parser;
 			try {
 				if (parseHeader(parser)) {
 					mNext = parseNext(parser);

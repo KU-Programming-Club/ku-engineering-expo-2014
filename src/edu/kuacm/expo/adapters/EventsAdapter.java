@@ -35,7 +35,7 @@ public class EventsAdapter extends CursorAdapter {
 		super(context, null, 0);
 		mInflater = LayoutInflater.from(context);
 		mTitleTextSize = context.getResources().getDimensionPixelSize(R.dimen.list_item_title_text_size);
-		this.mShowDay = showDay;
+		mShowDay = showDay;
 	}
 
 	@Override
@@ -65,11 +65,11 @@ public class EventsAdapter extends CursorAdapter {
 
 		String eventTitle = event.getTitle();
 		SpannableString spannableString;
-		String personsSummary = event.getPersonsSummary();
-		if (TextUtils.isEmpty(personsSummary)) {
+		String presentersSummary = event.getPresentersSummary();
+		if (TextUtils.isEmpty(presentersSummary)) {
 			spannableString = new SpannableString(eventTitle);
 		} else {
-			spannableString = new SpannableString(String.format("%1$s\n%2$s", eventTitle, event.getPersonsSummary()));
+			spannableString = new SpannableString(String.format("%1$s\n%2$s", eventTitle, event.getPresentersSummary()));
 		}
 		spannableString.setSpan(holder.titleSizeSpan, 0, eventTitle.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 		holder.title.setText(spannableString);

@@ -22,8 +22,8 @@ public class Event implements Parcelable {
 	private Track mTrack;
 	private String mAbstractText;
 	private String mDescription;
-	private String mPersonsSummary;
-	private List<Person> mPersons; // Optional
+	private String mPresentersSummary;
+	private List<Presenter> mPresenters; // Optional
 	private List<Link> mLinks; // Optional
 
 	public Event() {
@@ -89,7 +89,7 @@ public class Event implements Parcelable {
 	}
 
 	public String getUrl() {
-		return ExpoUrls.getEvent(mSlug, DatabaseManager.getInstance().getYear());
+		return ExpoUrls.getEventUrl(mSlug, DatabaseManager.getInstance().getYear());
 	}
 
 	public String getTitle() {
@@ -132,26 +132,26 @@ public class Event implements Parcelable {
 		mDescription = description;
 	}
 
-	public String getPersonsSummary() {
-		if (mPersonsSummary != null) {
-			return mPersonsSummary;
+	public String getPresentersSummary() {
+		if (mPresentersSummary != null) {
+			return mPresentersSummary;
 		}
-		if (mPersons != null) {
-			return TextUtils.join(", ", mPersons);
+		if (mPresenters != null) {
+			return TextUtils.join(", ", mPresenters);
 		}
 		return "";
 	}
 
-	public void setPersonsSummary(String personsSummary) {
-		mPersonsSummary = personsSummary;
+	public void setPresentersSummary(String presentersSummary) {
+		mPresentersSummary = presentersSummary;
 	}
 
-	public List<Person> getPersons() {
-		return mPersons;
+	public List<Presenter> getPresenters() {
+		return mPresenters;
 	}
 
-	public void setPersons(List<Person> persons) {
-		mPersons = persons;
+	public void setPresenters(List<Presenter> presenters) {
+		mPresenters = presenters;
 	}
 
 	public List<Link> getLinks() {
@@ -200,12 +200,12 @@ public class Event implements Parcelable {
 		mTrack.writeToParcel(out, flags);
 		out.writeString(mAbstractText);
 		out.writeString(mDescription);
-		out.writeString(mPersonsSummary);
-		if (mPersons == null) {
+		out.writeString(mPresentersSummary);
+		if (mPresenters == null) {
 			out.writeInt(0);
 		} else {
 			out.writeInt(1);
-			out.writeTypedList(mPersons);
+			out.writeTypedList(mPresenters);
 		}
 		if (mLinks == null) {
 			out.writeInt(0);
@@ -245,9 +245,9 @@ public class Event implements Parcelable {
 		mTrack = Track.CREATOR.createFromParcel(in);
 		mAbstractText = in.readString();
 		mDescription = in.readString();
-		mPersonsSummary = in.readString();
+		mPresentersSummary = in.readString();
 		if (in.readInt() == 1) {
-			mPersons = in.createTypedArrayList(Person.CREATOR);
+			mPresenters = in.createTypedArrayList(Presenter.CREATOR);
 		}
 		if (in.readInt() == 1) {
 			mLinks = in.createTypedArrayList(Link.CREATOR);

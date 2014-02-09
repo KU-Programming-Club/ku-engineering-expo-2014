@@ -145,20 +145,20 @@ public class AlarmIntentService extends IntentService {
 					defaultFlags |= Notification.DEFAULT_LIGHTS;
 				}
 
-				String personsSummary = event.getPersonsSummary();
+				String presentersSummary = event.getPresentersSummary();
 				String trackName = event.getTrack().getName();
 				CharSequence bigText;
 				String contentText;
-				if (TextUtils.isEmpty(personsSummary)) {
+				if (TextUtils.isEmpty(presentersSummary)) {
 					contentText = trackName;
 					bigText = event.getSubTitle();
 				} else {
-					contentText = String.format("%1$s - %2$s", trackName, personsSummary);
+					contentText = String.format("%1$s - %2$s", trackName, presentersSummary);
 					String subTitle = event.getSubTitle();
 					if (TextUtils.isEmpty(subTitle)) {
-						bigText = personsSummary;
+						bigText = presentersSummary;
 					} else {
-						SpannableString spannableBigText = new SpannableString(String.format("%1$s\n%2$s", subTitle, personsSummary));
+						SpannableString spannableBigText = new SpannableString(String.format("%1$s\n%2$s", subTitle, presentersSummary));
 						// Set the subtitle in white color
 						spannableBigText.setSpan(new ForegroundColorSpan(Color.WHITE), 0, subTitle.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 						bigText = spannableBigText;

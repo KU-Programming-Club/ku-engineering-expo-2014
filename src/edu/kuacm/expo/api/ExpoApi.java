@@ -43,7 +43,7 @@ public class ExpoApi {
 
 		int result = RESULT_ERROR;
 		try {
-			InputStream is = HttpUtils.get(context, ExpoUrls.getSchedule(), ACTION_DOWNLOAD_SCHEDULE_PROGRESS, EXTRA_PROGRESS);
+			InputStream is = HttpUtils.get(context, ExpoUrls.getScheduleUrl(), ACTION_DOWNLOAD_SCHEDULE_PROGRESS, EXTRA_PROGRESS);
 			try {
 				Iterable<Event> events = new EventsParser().parse(is);
 				result = DatabaseManager.getInstance().storeSchedule(events);

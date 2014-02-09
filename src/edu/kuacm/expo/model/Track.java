@@ -29,8 +29,8 @@ public class Track implements Parcelable {
 	}
 
 	public Track(String name, Type type) {
-		this.mName = name;
-		this.mType = type;
+		mName = name;
+		mType = type;
 	}
 
 	public String getName() {
@@ -38,7 +38,7 @@ public class Track implements Parcelable {
 	}
 
 	public void setName(String name) {
-		this.mName = name;
+		mName = name;
 	}
 
 	public Type getType() {
@@ -46,7 +46,7 @@ public class Track implements Parcelable {
 	}
 
 	public void setType(Type type) {
-		this.mType = type;
+		mType = type;
 	}
 
 	@Override

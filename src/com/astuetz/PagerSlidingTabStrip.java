@@ -171,7 +171,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	}
 
 	public void setViewPager(ViewPager pager) {
-		this.mPager = pager;
+		mPager = pager;
 
 		if (pager.getAdapter() == null) {
 			throw new IllegalStateException("ViewPager does not have adapter instance.");
@@ -183,7 +183,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	}
 
 	public void setOnPageChangeListener(OnPageChangeListener listener) {
-		this.mDelegatePageListener = listener;
+		mDelegatePageListener = listener;
 	}
 
 	public void notifyDataSetChanged() {
@@ -388,21 +388,21 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	}
 
 	public void setIndicatorColor(int indicatorColor) {
-		this.mIndicatorColor = indicatorColor;
+		mIndicatorColor = indicatorColor;
 		invalidate();
 	}
 
 	public void setIndicatorColorResource(int resId) {
-		this.mIndicatorColor = getResources().getColor(resId);
+		mIndicatorColor = getResources().getColor(resId);
 		invalidate();
 	}
 
 	public int getIndicatorColor() {
-		return this.mIndicatorColor;
+		return mIndicatorColor;
 	}
 
 	public void setIndicatorHeight(int indicatorLineHeightPx) {
-		this.mIndicatorHeight = indicatorLineHeightPx;
+		mIndicatorHeight = indicatorLineHeightPx;
 		invalidate();
 	}
 
@@ -411,12 +411,12 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	}
 
 	public void setUnderlineColor(int underlineColor) {
-		this.mUnderlineColor = underlineColor;
+		mUnderlineColor = underlineColor;
 		invalidate();
 	}
 
 	public void setUnderlineColorResource(int resId) {
-		this.mUnderlineColor = getResources().getColor(resId);
+		mUnderlineColor = getResources().getColor(resId);
 		invalidate();
 	}
 
@@ -425,12 +425,12 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	}
 
 	public void setDividerColor(int dividerColor) {
-		this.mDividerColor = dividerColor;
+		mDividerColor = dividerColor;
 		invalidate();
 	}
 
 	public void setDividerColorResource(int resId) {
-		this.mDividerColor = getResources().getColor(resId);
+		mDividerColor = getResources().getColor(resId);
 		invalidate();
 	}
 
@@ -439,7 +439,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	}
 
 	public void setUnderlineHeight(int underlineHeightPx) {
-		this.mUnderlineHeight = underlineHeightPx;
+		mUnderlineHeight = underlineHeightPx;
 		invalidate();
 	}
 
@@ -448,7 +448,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	}
 
 	public void setDividerPadding(int dividerPaddingPx) {
-		this.mDividerPadding = dividerPaddingPx;
+		mDividerPadding = dividerPaddingPx;
 		invalidate();
 	}
 
@@ -457,7 +457,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	}
 
 	public void setScrollOffset(int scrollOffsetPx) {
-		this.mScrollOffset = scrollOffsetPx;
+		mScrollOffset = scrollOffsetPx;
 		invalidate();
 	}
 
@@ -466,7 +466,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	}
 
 	public void setShouldExpand(boolean shouldExpand) {
-		this.mShouldExpand = shouldExpand;
+		mShouldExpand = shouldExpand;
 		requestLayout();
 	}
 
@@ -479,11 +479,11 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	}
 
 	public void setAllCaps(boolean textAllCaps) {
-		this.mTextAllCaps = textAllCaps;
+		mTextAllCaps = textAllCaps;
 	}
 
 	public void setTextSize(int textSizePx) {
-		this.mTabTextSize = textSizePx;
+		mTabTextSize = textSizePx;
 		updateTabStyles();
 	}
 
@@ -492,12 +492,12 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	}
 
 	public void setTextColor(int textColor) {
-		this.mTabTextColor = textColor;
+		mTabTextColor = textColor;
 		updateTabStyles();
 	}
 
 	public void setTextColorResource(int resId) {
-		this.mTabTextColor = getResources().getColor(resId);
+		mTabTextColor = getResources().getColor(resId);
 		updateTabStyles();
 	}
 
@@ -506,13 +506,13 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	}
 
 	public void setTypeface(Typeface typeface, int style) {
-		this.mTabTypeface = typeface;
-		this.mTabTypefaceStyle = style;
+		mTabTypeface = typeface;
+		mTabTypefaceStyle = style;
 		updateTabStyles();
 	}
 
 	public void setTabBackground(int resId) {
-		this.mTabBackgroundResId = resId;
+		mTabBackgroundResId = resId;
 	}
 
 	public int getTabBackground() {
@@ -520,7 +520,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	}
 
 	public void setTabPaddingLeftRight(int paddingPx) {
-		this.mTabPadding = paddingPx;
+		mTabPadding = paddingPx;
 		updateTabStyles();
 	}
 

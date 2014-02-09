@@ -1,31 +1,31 @@
 package edu.kuacm.expo.activities;
 
 import edu.kuacm.expo.R;
-import edu.kuacm.expo.fragments.PersonInfoListFragment;
-import edu.kuacm.expo.model.Person;
+import edu.kuacm.expo.fragments.PresenterInfoListFragment;
+import edu.kuacm.expo.model.Presenter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 
-public class PersonInfoActivity extends ActionBarActivity {
+public class PresenterInfoActivity extends ActionBarActivity {
 
-	public static final String EXTRA_PERSON = "person";
+	public static final String EXTRA_PRESENTER = "presenter";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.content);
 
-		Person person = getIntent().getParcelableExtra(EXTRA_PERSON);
+		Presenter presenter = getIntent().getParcelableExtra(EXTRA_PRESENTER);
 
 		ActionBar bar = getSupportActionBar();
 		bar.setDisplayHomeAsUpEnabled(true);
-		bar.setTitle(R.string.person_info);
+		bar.setTitle(R.string.presenter_info);
 
 		if (savedInstanceState == null) {
-			Fragment f = PersonInfoListFragment.newInstance(person);
+			Fragment f = PresenterInfoListFragment.newInstance(presenter);
 			getSupportFragmentManager().beginTransaction().add(R.id.content, f).commit();
 		}
 	}

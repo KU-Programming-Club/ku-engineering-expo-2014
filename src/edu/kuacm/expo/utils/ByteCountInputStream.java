@@ -32,8 +32,8 @@ public class ByteCountInputStream extends FilterInputStream {
 		if (interval <= 0) {
 			throw new IllegalArgumentException("interval must be at least 1 byte");
 		}
-		this.mListener = listener;
-		this.mInterval = interval;
+		mListener = listener;
+		mInterval = interval;
 		mNextStepBytes = interval;
 		listener.onNewCount(0);
 	}

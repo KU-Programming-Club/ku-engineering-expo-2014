@@ -13,7 +13,7 @@ import java.util.Set;
 import edu.kuacm.expo.model.Day;
 import edu.kuacm.expo.model.Event;
 import edu.kuacm.expo.model.Link;
-import edu.kuacm.expo.model.Person;
+import edu.kuacm.expo.model.Presenter;
 import edu.kuacm.expo.model.Track;
 import edu.kuacm.expo.utils.DateUtils;
 import android.app.SearchManager;
@@ -91,10 +91,10 @@ public class DatabaseManager {
 			+ " (id, day_index, start_time, end_time, room_name, slug, track_id, abstract, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 	private static final String EVENT_TITLES_INSERT_STATEMENT = "INSERT INTO " + DatabaseHelper.EVENTS_TITLES_TABLE_NAME
 			+ " (rowid, title, subtitle) VALUES (?, ?, ?);";
-	private static final String EVENT_PERSON_INSERT_STATEMENT = "INSERT INTO " + DatabaseHelper.EVENTS_PERSONS_TABLE_NAME
-			+ " (event_id, person_id) VALUES (?, ?);";
-	// Ignore conflicts in case of existing person
-	private static final String PERSON_INSERT_STATEMENT = "INSERT OR IGNORE INTO " + DatabaseHelper.PERSONS_TABLE_NAME + " (rowid, name) VALUES (?, ?);";
+	private static final String EVENT_PRESENTER_INSERT_STATEMENT = "INSERT INTO " + DatabaseHelper.EVENTS_PRESENTERS_TABLE_NAME
+			+ " (event_id, presenter_id) VALUES (?, ?);";
+	// Ignore conflicts in case of existing presenter
+	private static final String PRESENTER_INSERT_STATEMENT = "INSERT OR IGNORE INTO " + DatabaseHelper.PRESENTERS_TABLE_NAME + " (rowid, name) VALUES (?, ?);";
 	private static final String LINK_INSERT_STATEMENT = "INSERT INTO " + DatabaseHelper.LINKS_TABLE_NAME + " (event_id, url, description) VALUES (?, ?, ?);";
 
 	private static void bindString(SQLiteStatement statement, int index, String value) {
@@ -136,8 +136,8 @@ public class DatabaseManager {
 			final SQLiteStatement trackInsertStatement = db.compileStatement(TRACK_INSERT_STATEMENT);
 			final SQLiteStatement eventInsertStatement = db.compileStatement(EVENT_INSERT_STATEMENT);
 			final SQLiteStatement eventTitlesInsertStatement = db.compileStatement(EVENT_TITLES_INSERT_STATEMENT);
-			final SQLiteStatement eventPersonInsertStatement = db.compileStatement(EVENT_PERSON_INSERT_STATEMENT);
-			final SQLiteStatement personInsertStatement = db.compileStatement(PERSON_INSERT_STATEMENT);
+			final SQLiteStatement eventPresenterInsertStatement = db.compileStatement(EVENT_PRESENTER_INSERT_STATEMENT);
+			final SQLiteStatement presenterInsertStatement = db.compileStatement(PRESENTER_INSERT_STATEMENT);
 			final SQLiteStatement linkInsertStatement = db.compileStatement(LINK_INSERT_STATEMENT);
 
 			// 2: Insert the events
@@ -196,21 +196,21 @@ public class DatabaseManager {
 					bindString(eventTitlesInsertStatement, 3, event.getSubTitle());
 					eventTitlesInsertStatement.executeInsert();
 
-					// 2d: Insert persons
-					for (Person person : event.getPersons()) {
-						eventPersonInsertStatement.clearBindings();
-						eventPersonInsertStatement.bindLong(1, eventId);
-						long personId = person.getId();
-						eventPersonInsertStatement.bindLong(2, personId);
-						eventPersonInsertStatement.executeInsert();
+					// 2d: Insert presenters
+					for (Presenter presenter : event.getPresenters()) {
+						eventPresenterInsertStatement.clearBindings();
+						eventPresenterInsertStatement.bindLong(1, eventId);
+						long presenterId = presenter.getId();
+						eventPresenterInsertStatement.bindLong(2, presenterId);
+						eventPresenterInsertStatement.executeInsert();
 
-						personInsertStatement.clearBindings();
-						personInsertStatement.bindLong(1, personId);
-						bindString(personInsertStatement, 2, person.getName());
+						presenterInsertStatement.clearBindings();
+						presenterInsertStatement.bindLong(1, presenterId);
+						bindString(presenterInsertStatement, 2, presenter.getName());
 						try {
-							personInsertStatement.executeInsert();
+							presenterInsertStatement.executeInsert();
 						} catch (SQLiteConstraintException e) {
-							// Older Android versions may not ignore an existing person
+							// Older Android versions may not ignore an existing presenter
 						}
 					}
 
@@ -243,8 +243,8 @@ public class DatabaseManager {
 			trackInsertStatement.close();
 			eventInsertStatement.close();
 			eventTitlesInsertStatement.close();
-			eventPersonInsertStatement.close();
-			personInsertStatement.close();
+			eventPresenterInsertStatement.close();
+			presenterInsertStatement.close();
 			linkInsertStatement.close();
 			isComplete = true;
 
@@ -291,8 +291,8 @@ public class DatabaseManager {
 	private static void clearSchedule(SQLiteDatabase db) {
 		db.delete(DatabaseHelper.EVENTS_TABLE_NAME, null, null);
 		db.delete(DatabaseHelper.EVENTS_TITLES_TABLE_NAME, null, null);
-		db.delete(DatabaseHelper.PERSONS_TABLE_NAME, null, null);
-		db.delete(DatabaseHelper.EVENTS_PERSONS_TABLE_NAME, null, null);
+		db.delete(DatabaseHelper.PRESENTERS_TABLE_NAME, null, null);
+		db.delete(DatabaseHelper.EVENTS_PRESENTERS_TABLE_NAME, null, null);
 		db.delete(DatabaseHelper.LINKS_TABLE_NAME, null, null);
 		db.delete(DatabaseHelper.TRACKS_TABLE_NAME, null, null);
 		db.delete(DatabaseHelper.DAYS_TABLE_NAME, null, null);
@@ -409,11 +409,11 @@ public class DatabaseManager {
 								+ DatabaseHelper.TRACKS_TABLE_NAME
 								+ " t ON e.track_id = t.id"
 								+ " LEFT JOIN "
-								+ DatabaseHelper.EVENTS_PERSONS_TABLE_NAME
+								+ DatabaseHelper.EVENTS_PRESENTERS_TABLE_NAME
 								+ " ep ON e.id = ep.event_id"
 								+ " LEFT JOIN "
-								+ DatabaseHelper.PERSONS_TABLE_NAME
-								+ " p ON ep.person_id = p.rowid"
+								+ DatabaseHelper.PRESENTERS_TABLE_NAME
+								+ " p ON ep.presenter_id = p.rowid"
 								+ " WHERE e.id = ?" + " GROUP BY e.id", selectionArgs);
 		try {
 			if (cursor.moveToFirst()) {
@@ -452,11 +452,11 @@ public class DatabaseManager {
 								+ DatabaseHelper.TRACKS_TABLE_NAME
 								+ " t ON e.track_id = t.id"
 								+ " LEFT JOIN "
-								+ DatabaseHelper.EVENTS_PERSONS_TABLE_NAME
+								+ DatabaseHelper.EVENTS_PRESENTERS_TABLE_NAME
 								+ " ep ON e.id = ep.event_id"
 								+ " LEFT JOIN "
-								+ DatabaseHelper.PERSONS_TABLE_NAME
-								+ " p ON ep.person_id = p.rowid"
+								+ DatabaseHelper.PRESENTERS_TABLE_NAME
+								+ " p ON ep.presenter_id = p.rowid"
 								+ " LEFT JOIN "
 								+ DatabaseHelper.BOOKMARKS_TABLE_NAME
 								+ " b ON e.id = b.event_id"
@@ -523,11 +523,11 @@ public class DatabaseManager {
 								+ DatabaseHelper.TRACKS_TABLE_NAME
 								+ " t ON e.track_id = t.id"
 								+ " LEFT JOIN "
-								+ DatabaseHelper.EVENTS_PERSONS_TABLE_NAME
+								+ DatabaseHelper.EVENTS_PRESENTERS_TABLE_NAME
 								+ " ep ON e.id = ep.event_id"
 								+ " LEFT JOIN "
-								+ DatabaseHelper.PERSONS_TABLE_NAME
-								+ " p ON ep.person_id = p.rowid"
+								+ DatabaseHelper.PRESENTERS_TABLE_NAME
+								+ " p ON ep.presenter_id = p.rowid"
 								+ " LEFT JOIN "
 								+ DatabaseHelper.BOOKMARKS_TABLE_NAME
 								+ " b ON e.id = b.event_id"
@@ -540,13 +540,13 @@ public class DatabaseManager {
 	}
 
 	/**
-	 * Returns the events presented by the specified person.
+	 * Returns the events presented by the specified presenter.
 	 * 
-	 * @param person
+	 * @param presenter
 	 * @return A cursor to Events
 	 */
-	public Cursor getEvents(Person person) {
-		String[] selectionArgs = new String[] { String.valueOf(person.getId()) };
+	public Cursor getEvents(Presenter presenter) {
+		String[] selectionArgs = new String[] { String.valueOf(presenter.getId()) };
 		Cursor cursor = mHelper
 				.getReadableDatabase()
 				.rawQuery(
@@ -564,17 +564,17 @@ public class DatabaseManager {
 								+ DatabaseHelper.TRACKS_TABLE_NAME
 								+ " t ON e.track_id = t.id"
 								+ " LEFT JOIN "
-								+ DatabaseHelper.EVENTS_PERSONS_TABLE_NAME
+								+ DatabaseHelper.EVENTS_PRESENTERS_TABLE_NAME
 								+ " ep ON e.id = ep.event_id"
 								+ " LEFT JOIN "
-								+ DatabaseHelper.PERSONS_TABLE_NAME
-								+ " p ON ep.person_id = p.rowid"
+								+ DatabaseHelper.PRESENTERS_TABLE_NAME
+								+ " p ON ep.presenter_id = p.rowid"
 								+ " LEFT JOIN "
 								+ DatabaseHelper.BOOKMARKS_TABLE_NAME
 								+ " b ON e.id = b.event_id"
 								+ " JOIN "
-								+ DatabaseHelper.EVENTS_PERSONS_TABLE_NAME
-								+ " ep2 ON e.id = ep2.event_id" + " WHERE ep2.person_id = ?" + " GROUP BY e.id" + " ORDER BY e.start_time ASC", selectionArgs);
+								+ DatabaseHelper.EVENTS_PRESENTERS_TABLE_NAME
+								+ " ep2 ON e.id = ep2.event_id" + " WHERE ep2.presenter_id = ?" + " GROUP BY e.id" + " ORDER BY e.start_time ASC", selectionArgs);
 		cursor.setNotificationUri(mContext.getContentResolver(), URI_EVENTS);
 		return cursor;
 	}
@@ -617,17 +617,17 @@ public class DatabaseManager {
 								+ DatabaseHelper.TRACKS_TABLE_NAME
 								+ " t ON e.track_id = t.id"
 								+ " LEFT JOIN "
-								+ DatabaseHelper.EVENTS_PERSONS_TABLE_NAME
+								+ DatabaseHelper.EVENTS_PRESENTERS_TABLE_NAME
 								+ " ep ON e.id = ep.event_id"
 								+ " LEFT JOIN "
-								+ DatabaseHelper.PERSONS_TABLE_NAME
-								+ " p ON ep.person_id = p.rowid" + whereCondition + " GROUP BY e.id" + " ORDER BY e.start_time ASC", selectionArgs);
+								+ DatabaseHelper.PRESENTERS_TABLE_NAME
+								+ " p ON ep.presenter_id = p.rowid" + whereCondition + " GROUP BY e.id" + " ORDER BY e.start_time ASC", selectionArgs);
 		cursor.setNotificationUri(mContext.getContentResolver(), URI_EVENTS);
 		return cursor;
 	}
 
 	/**
-	 * Search through matching titles, subtitles, track names, person names. We need to use an union of 3 sub-queries because a "match" condition can not be
+	 * Search through matching titles, subtitles, track names, presenter names. We need to use an union of 3 sub-queries because a "match" condition can not be
 	 * accompanied by other conditions in a "where" statement.
 	 * 
 	 * @param query
@@ -653,11 +653,11 @@ public class DatabaseManager {
 								+ DatabaseHelper.TRACKS_TABLE_NAME
 								+ " t ON e.track_id = t.id"
 								+ " LEFT JOIN "
-								+ DatabaseHelper.EVENTS_PERSONS_TABLE_NAME
+								+ DatabaseHelper.EVENTS_PRESENTERS_TABLE_NAME
 								+ " ep ON e.id = ep.event_id"
 								+ " LEFT JOIN "
-								+ DatabaseHelper.PERSONS_TABLE_NAME
-								+ " p ON ep.person_id = p.rowid"
+								+ DatabaseHelper.PRESENTERS_TABLE_NAME
+								+ " p ON ep.presenter_id = p.rowid"
 								+ " LEFT JOIN "
 								+ DatabaseHelper.BOOKMARKS_TABLE_NAME
 								+ " b ON e.id = b.event_id"
@@ -680,11 +680,11 @@ public class DatabaseManager {
 								+ " UNION "
 								+ "SELECT ep.event_id"
 								+ " FROM "
-								+ DatabaseHelper.EVENTS_PERSONS_TABLE_NAME
+								+ DatabaseHelper.EVENTS_PRESENTERS_TABLE_NAME
 								+ " ep"
 								+ " JOIN "
-								+ DatabaseHelper.PERSONS_TABLE_NAME
-								+ " p ON ep.person_id = p.rowid" + " WHERE p.name MATCH ?" + " )" + " GROUP BY e.id" + " ORDER BY e.start_time ASC",
+								+ DatabaseHelper.PRESENTERS_TABLE_NAME
+								+ " p ON ep.presenter_id = p.rowid" + " WHERE p.name MATCH ?" + " )" + " GROUP BY e.id" + " ORDER BY e.start_time ASC",
 								selectionArgs);
 		cursor.setNotificationUri(mContext.getContentResolver(), URI_EVENTS);
 		return cursor;
@@ -703,12 +703,12 @@ public class DatabaseManager {
 				+ ", IFNULL(GROUP_CONCAT(p.name, ', '), '') || ' - ' || t.name AS " + SearchManager.SUGGEST_COLUMN_TEXT_2 + ", e.id AS "
 				+ SearchManager.SUGGEST_COLUMN_INTENT_DATA + " FROM " + DatabaseHelper.EVENTS_TABLE_NAME + " e" + " JOIN "
 				+ DatabaseHelper.EVENTS_TITLES_TABLE_NAME + " et ON e.id = et.rowid" + " JOIN " + DatabaseHelper.TRACKS_TABLE_NAME
-				+ " t ON e.track_id = t.id" + " LEFT JOIN " + DatabaseHelper.EVENTS_PERSONS_TABLE_NAME + " ep ON e.id = ep.event_id" + " LEFT JOIN "
-				+ DatabaseHelper.PERSONS_TABLE_NAME + " p ON ep.person_id = p.rowid" + " WHERE e.id IN ( " + "SELECT rowid" + " FROM "
+				+ " t ON e.track_id = t.id" + " LEFT JOIN " + DatabaseHelper.EVENTS_PRESENTERS_TABLE_NAME + " ep ON e.id = ep.event_id" + " LEFT JOIN "
+				+ DatabaseHelper.PRESENTERS_TABLE_NAME + " p ON ep.presenter_id = p.rowid" + " WHERE e.id IN ( " + "SELECT rowid" + " FROM "
 				+ DatabaseHelper.EVENTS_TITLES_TABLE_NAME + " WHERE " + DatabaseHelper.EVENTS_TITLES_TABLE_NAME + " MATCH ?" + " UNION "
 				+ "SELECT e.id" + " FROM " + DatabaseHelper.EVENTS_TABLE_NAME + " e" + " JOIN " + DatabaseHelper.TRACKS_TABLE_NAME
 				+ " t ON e.track_id = t.id" + " WHERE t.name LIKE ?" + " UNION " + "SELECT ep.event_id" + " FROM "
-				+ DatabaseHelper.EVENTS_PERSONS_TABLE_NAME + " ep" + " JOIN " + DatabaseHelper.PERSONS_TABLE_NAME + " p ON ep.person_id = p.rowid"
+				+ DatabaseHelper.EVENTS_PRESENTERS_TABLE_NAME + " ep" + " JOIN " + DatabaseHelper.PRESENTERS_TABLE_NAME + " p ON ep.presenter_id = p.rowid"
 				+ " WHERE p.name MATCH ?" + " )" + " GROUP BY e.id" + " ORDER BY e.start_time ASC LIMIT ?", selectionArgs);
 		return cursor;
 	}
@@ -764,7 +764,7 @@ public class DatabaseManager {
 		event.setSubTitle(cursor.getString(6));
 		event.setAbstractText(cursor.getString(7));
 		event.setDescription(cursor.getString(8));
-		event.setPersonsSummary(cursor.getString(9));
+		event.setPresentersSummary(cursor.getString(9));
 
 		day.setIndex(cursor.getInt(10));
 
@@ -791,29 +791,29 @@ public class DatabaseManager {
 	}
 
 	/**
-	 * Returns all persons in alphabetical order.
+	 * Returns all presenters in alphabetical order.
 	 */
-	public Cursor getPersons() {
+	public Cursor getPresenters() {
 		Cursor cursor = mHelper.getReadableDatabase().rawQuery(
-				"SELECT rowid AS _id, name" + " FROM " + DatabaseHelper.PERSONS_TABLE_NAME + " ORDER BY name COLLATE NOCASE", null);
+				"SELECT rowid AS _id, name" + " FROM " + DatabaseHelper.PRESENTERS_TABLE_NAME + " ORDER BY name COLLATE NOCASE", null);
 		cursor.setNotificationUri(mContext.getContentResolver(), URI_EVENTS);
 		return cursor;
 	}
 
-	public static final int PERSON_NAME_COLUMN_INDEX = 1;
+	public static final int PRESENTER_NAME_COLUMN_INDEX = 1;
 
 	/**
-	 * Returns persons presenting the specified event.
+	 * Returns presenters presenting the specified event.
 	 */
-	public List<Person> getPersons(Event event) {
+	public List<Presenter> getPresenters(Event event) {
 		String[] selectionArgs = new String[] { String.valueOf(event.getId()) };
 		Cursor cursor = mHelper.getReadableDatabase().rawQuery(
-				"SELECT p.rowid AS _id, p.name" + " FROM " + DatabaseHelper.PERSONS_TABLE_NAME + " p" + " JOIN " + DatabaseHelper.EVENTS_PERSONS_TABLE_NAME
-				+ " ep ON p.rowid = ep.person_id" + " WHERE ep.event_id = ?", selectionArgs);
+				"SELECT p.rowid AS _id, p.name" + " FROM " + DatabaseHelper.PRESENTERS_TABLE_NAME + " p" + " JOIN " + DatabaseHelper.EVENTS_PRESENTERS_TABLE_NAME
+				+ " ep ON p.rowid = ep.presenter_id" + " WHERE ep.event_id = ?", selectionArgs);
 		try {
-			List<Person> result = new ArrayList<Person>(cursor.getCount());
+			List<Presenter> result = new ArrayList<Presenter>(cursor.getCount());
 			while (cursor.moveToNext()) {
-				result.add(toPerson(cursor));
+				result.add(toPresenter(cursor));
 			}
 			return result;
 		} finally {
@@ -821,18 +821,18 @@ public class DatabaseManager {
 		}
 	}
 
-	public static Person toPerson(Cursor cursor, Person person) {
-		if (person == null) {
-			person = new Person();
+	public static Presenter toPresenter(Cursor cursor, Presenter presenter) {
+		if (presenter == null) {
+			presenter = new Presenter();
 		}
-		person.setId(cursor.getLong(0));
-		person.setName(cursor.getString(1));
+		presenter.setId(cursor.getLong(0));
+		presenter.setName(cursor.getString(1));
 
-		return person;
+		return presenter;
 	}
 
-	public static Person toPerson(Cursor cursor) {
-		return toPerson(cursor, null);
+	public static Presenter toPresenter(Cursor cursor) {
+		return toPresenter(cursor, null);
 	}
 
 	public List<Link> getLinks(Event event) {

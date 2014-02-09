@@ -1,10 +1,10 @@
 package edu.kuacm.expo.fragments;
 
 import edu.kuacm.expo.R;
-import edu.kuacm.expo.activities.PersonInfoActivity;
+import edu.kuacm.expo.activities.PresenterInfoActivity;
 import edu.kuacm.expo.db.DatabaseManager;
 import edu.kuacm.expo.loaders.SimpleCursorLoader;
-import edu.kuacm.expo.model.Person;
+import edu.kuacm.expo.model.Presenter;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -21,16 +21,16 @@ import android.widget.ListView;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
-public class PersonsListFragment extends ListFragment implements LoaderCallbacks<Cursor> {
+public class PresentersListFragment extends ListFragment implements LoaderCallbacks<Cursor> {
 
-	private static final int PERSONS_LOADER_ID = 1;
+	private static final int PRESENTERS_LOADER_ID = 1;
 
-	private PersonsAdapter mAdapter;
+	private PresentersAdapter mAdapter;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mAdapter = new PersonsAdapter(getActivity());
+		mAdapter = new PresentersAdapter(getActivity());
 		setListAdapter(mAdapter);
 	}
 
@@ -42,24 +42,24 @@ public class PersonsListFragment extends ListFragment implements LoaderCallbacks
 		setEmptyText(getString(R.string.no_data));
 		setListShown(false);
 
-		getLoaderManager().initLoader(PERSONS_LOADER_ID, null, this);
+		getLoaderManager().initLoader(PRESENTERS_LOADER_ID, null, this);
 	}
 
-	private static class PersonsLoader extends SimpleCursorLoader {
+	private static class PresentersLoader extends SimpleCursorLoader {
 
-		public PersonsLoader(Context context) {
+		public PresentersLoader(Context context) {
 			super(context);
 		}
 
 		@Override
 		protected Cursor getCursor() {
-			return DatabaseManager.getInstance().getPersons();
+			return DatabaseManager.getInstance().getPresenters();
 		}
 	}
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-		return new PersonsLoader(getActivity());
+		return new PresentersLoader(getActivity());
 	}
 
 	@Override
@@ -83,27 +83,27 @@ public class PersonsListFragment extends ListFragment implements LoaderCallbacks
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		Person person = mAdapter.getItem(position);
-		Intent intent = new Intent(getActivity(), PersonInfoActivity.class).putExtra(PersonInfoActivity.EXTRA_PERSON, person);
+		Presenter presenter = mAdapter.getItem(position);
+		Intent intent = new Intent(getActivity(), PresenterInfoActivity.class).putExtra(PresenterInfoActivity.EXTRA_PRESENTER, presenter);
 		startActivity(intent);
 	}
 
-	private static class PersonsAdapter extends CursorAdapter implements SectionIndexer {
+	private static class PresentersAdapter extends CursorAdapter implements SectionIndexer {
 
 		private static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 		private final LayoutInflater mmInflater;
 		private final AlphabetIndexer mmIndexer;
 
-		public PersonsAdapter(Context context) {
+		public PresentersAdapter(Context context) {
 			super(context, null, 0);
 			mmInflater = LayoutInflater.from(context);
-			mmIndexer = new AlphabetIndexer(null, DatabaseManager.PERSON_NAME_COLUMN_INDEX, ALPHABET);
+			mmIndexer = new AlphabetIndexer(null, DatabaseManager.PRESENTER_NAME_COLUMN_INDEX, ALPHABET);
 		}
 
 		@Override
-		public Person getItem(int position) {
-			return DatabaseManager.toPerson((Cursor) super.getItem(position));
+		public Presenter getItem(int position) {
+			return DatabaseManager.toPresenter((Cursor) super.getItem(position));
 		}
 
 		@Override
@@ -120,8 +120,8 @@ public class PersonsListFragment extends ListFragment implements LoaderCallbacks
 		@Override
 		public void bindView(View view, Context context, Cursor cursor) {
 			ViewHolder holder = (ViewHolder) view.getTag();
-			holder.person = DatabaseManager.toPerson(cursor, holder.person);
-			holder.textView.setText(holder.person.getName());
+			holder.presenter = DatabaseManager.toPresenter(cursor, holder.presenter);
+			holder.textView.setText(holder.presenter.getName());
 		}
 
 		@Override
@@ -147,7 +147,7 @@ public class PersonsListFragment extends ListFragment implements LoaderCallbacks
 
 		private static class ViewHolder {
 			public TextView textView;
-			public Person person;
+			public Presenter presenter;
 		}
 	}
 }

@@ -24,7 +24,7 @@
             android:textSize="@dimen/subtitle_text_size" />
 
         <TextView
-            android:id="@+id/persons"
+            android:id="@+id/presenters"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

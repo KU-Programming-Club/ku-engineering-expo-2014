@@ -11,8 +11,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	public static final String EVENTS_TABLE_NAME = "events";
 	public static final String EVENTS_TITLES_TABLE_NAME = "events_titles";
-	public static final String PERSONS_TABLE_NAME = "persons";
-	public static final String EVENTS_PERSONS_TABLE_NAME = "events_persons";
+	public static final String PRESENTERS_TABLE_NAME = "presenters";
+	public static final String EVENTS_PRESENTERS_TABLE_NAME = "events_presenters";
 	public static final String LINKS_TABLE_NAME = "links";
 	public static final String TRACKS_TABLE_NAME = "tracks";
 	public static final String DAYS_TABLE_NAME = "days";
@@ -35,13 +35,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		// Secondary table with fulltext index on the titles
 		database.execSQL("CREATE VIRTUAL TABLE " + EVENTS_TITLES_TABLE_NAME + " USING fts3(title TEXT, subtitle TEXT);");
 
-		// Persons
-		database.execSQL("CREATE VIRTUAL TABLE " + PERSONS_TABLE_NAME + " USING fts3(name TEXT);");
+		// Presenters
+		database.execSQL("CREATE VIRTUAL TABLE " + PRESENTERS_TABLE_NAME + " USING fts3(name TEXT);");
 
-		// Events-to-Persons
-		database.execSQL("CREATE TABLE " + EVENTS_PERSONS_TABLE_NAME
-				+ " (event_id INTEGER NOT NULL, person_id INTEGER NOT NULL, PRIMARY KEY(event_id, person_id));");
-		database.execSQL("CREATE INDEX event_person_person_id_idx ON " + EVENTS_PERSONS_TABLE_NAME + " (person_id)");
+		// Events-to-Presenters
+		database.execSQL("CREATE TABLE " + EVENTS_PRESENTERS_TABLE_NAME
+				+ " (event_id INTEGER NOT NULL, presenter_id INTEGER NOT NULL, PRIMARY KEY(event_id, presenter_id));");
+		database.execSQL("CREATE INDEX event_presenter_presenter_id_idx ON " + EVENTS_PRESENTERS_TABLE_NAME + " (presenter_id)");
 
 		// Links
 		database.execSQL("CREATE TABLE " + LINKS_TABLE_NAME + " (event_id INTEGER NOT NULL, url TEXT NOT NULL, description TEXT);");

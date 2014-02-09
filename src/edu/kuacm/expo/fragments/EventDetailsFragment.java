@@ -5,14 +5,14 @@ import java.util.Date;
 import java.util.List;
 
 import edu.kuacm.expo.R;
-import edu.kuacm.expo.activities.PersonInfoActivity;
+import edu.kuacm.expo.activities.PresenterInfoActivity;
 import edu.kuacm.expo.db.DatabaseManager;
 import edu.kuacm.expo.loaders.BookmarkStatusLoader;
 import edu.kuacm.expo.loaders.LocalCacheLoader;
 import edu.kuacm.expo.model.Building;
 import edu.kuacm.expo.model.Event;
 import edu.kuacm.expo.model.Link;
-import edu.kuacm.expo.model.Person;
+import edu.kuacm.expo.model.Presenter;
 import edu.kuacm.expo.utils.DateUtils;
 import edu.kuacm.expo.utils.StringUtils;
 import android.annotation.SuppressLint;
@@ -48,13 +48,13 @@ import android.widget.TextView;
 public class EventDetailsFragment extends Fragment {
 
 	private static class EventDetails {
-		List<Person> persons;
+		List<Presenter> presenters;
 		List<Link> links;
 	}
 
 	private static class ViewHolder {
 		LayoutInflater inflater;
-		TextView personsTextView;
+		TextView presentersTextView;
 		ViewGroup linksContainer;
 	}
 
@@ -66,7 +66,7 @@ public class EventDetailsFragment extends Fragment {
 	private static final DateFormat TIME_DATE_FORMAT = DateUtils.getTimeDateFormat();
 
 	private Event mEvent;
-	private int mPersonsCount = 1;
+	private int mPresentersCount = 1;
 	private Boolean mIsBookmarked;
 	private ViewHolder mHolder;
 
@@ -109,15 +109,15 @@ public class EventDetailsFragment extends Fragment {
 
 		MovementMethod linkMovementMethod = LinkMovementMethod.getInstance();
 
-		// Set the persons summary text first; replace it with the clickable text when the loader completes
-		mHolder.personsTextView = (TextView) view.findViewById(R.id.persons);
-		String personsSummary = mEvent.getPersonsSummary();
-		if (TextUtils.isEmpty(personsSummary)) {
-			mHolder.personsTextView.setVisibility(View.GONE);
+		// Set the presenters summary text first; replace it with the clickable text when the loader completes
+		mHolder.presentersTextView = (TextView) view.findViewById(R.id.presenters);
+		String presentersSummary = mEvent.getPresentersSummary();
+		if (TextUtils.isEmpty(presentersSummary)) {
+			mHolder.presentersTextView.setVisibility(View.GONE);
 		} else {
-			mHolder.personsTextView.setText(personsSummary);
-			mHolder.personsTextView.setMovementMethod(linkMovementMethod);
-			mHolder.personsTextView.setVisibility(View.VISIBLE);
+			mHolder.presentersTextView.setText(presentersSummary);
+			mHolder.presentersTextView.setMovementMethod(linkMovementMethod);
+			mHolder.presentersTextView.setVisibility(View.VISIBLE);
 		}
 
 		((TextView) view.findViewById(R.id.track)).setText(mEvent.getTrack().getName());
@@ -263,9 +263,9 @@ public class EventDetailsFragment extends Fragment {
 		}
 		// Strip HTML
 		description = StringUtils.trimEnd(Html.fromHtml(description)).toString();
-		// Add speaker info if available
-		if (mPersonsCount > 0) {
-			description = String.format("%1$s: %2$s\n\n%3$s", getResources().getQuantityString(R.plurals.speakers, mPersonsCount), mEvent.getPersonsSummary(),
+		// Add presenter info if available
+		if (mPresentersCount > 0) {
+			description = String.format("%1$s: %2$s\n\n%3$s", getResources().getQuantityString(R.plurals.presenters, mPresentersCount), mEvent.getPresentersSummary(),
 					description);
 		}
 		intent.putExtra(CalendarContract.Events.DESCRIPTION, description);
@@ -311,7 +311,7 @@ public class EventDetailsFragment extends Fragment {
 		public EventDetails loadInBackground() {
 			EventDetails result = new EventDetails();
 			DatabaseManager dbm = DatabaseManager.getInstance();
-			result.persons = dbm.getPersons(mmEvent);
+			result.presenters = dbm.getPresenters(mmEvent);
 			result.links = dbm.getLinks(mmEvent);
 			return result;
 		}
@@ -326,24 +326,24 @@ public class EventDetailsFragment extends Fragment {
 
 		@Override
 		public void onLoadFinished(Loader<EventDetails> loader, EventDetails data) {
-			// 1. Persons
-			if (data.persons != null) {
-				mPersonsCount = data.persons.size();
-				if (mPersonsCount > 0) {
-					// Build a list of clickable persons
+			// 1. Presenters
+			if (data.presenters != null) {
+				mPresentersCount = data.presenters.size();
+				if (mPresentersCount > 0) {
+					// Build a list of clickable presenters
 					SpannableStringBuilder sb = new SpannableStringBuilder();
 					int length = 0;
-					for (Person person : data.persons) {
+					for (Presenter presenter : data.presenters) {
 						if (length != 0) {
 							sb.append(", ");
 						}
-						String name = person.getName();
+						String name = presenter.getName();
 						sb.append(name);
 						length = sb.length();
-						sb.setSpan(new PersonClickableSpan(person), length - name.length(), length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+						sb.setSpan(new PresenterClickableSpan(presenter), length - name.length(), length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 					}
-					mHolder.personsTextView.setText(sb);
-					mHolder.personsTextView.setVisibility(View.VISIBLE);
+					mHolder.presentersTextView.setText(sb);
+					mHolder.presentersTextView.setVisibility(View.VISIBLE);
 				}
 			}
 
@@ -374,18 +374,18 @@ public class EventDetailsFragment extends Fragment {
 		}
 	};
 
-	private static class PersonClickableSpan extends ClickableSpan {
+	private static class PresenterClickableSpan extends ClickableSpan {
 
-		private final Person mmPerson;
+		private final Presenter mmPresenter;
 
-		public PersonClickableSpan(Person person) {
-			mmPerson = person;
+		public PresenterClickableSpan(Presenter presenter) {
+			mmPresenter = presenter;
 		}
 
 		@Override
 		public void onClick(View v) {
 			Context context = v.getContext();
-			Intent intent = new Intent(context, PersonInfoActivity.class).putExtra(PersonInfoActivity.EXTRA_PERSON, mmPerson);
+			Intent intent = new Intent(context, PresenterInfoActivity.class).putExtra(PresenterInfoActivity.EXTRA_PRESENTER, mmPresenter);
 			context.startActivity(intent);
 		}
 	}

@@ -23,7 +23,7 @@ public class Day implements Parcelable {
 	}
 
 	public void setIndex(int index) {
-		this.mIndex = index;
+		mIndex = index;
 	}
 
 	public Date getDate() {
@@ -31,7 +31,7 @@ public class Day implements Parcelable {
 	}
 
 	public void setDate(Date date) {
-		this.mDate = date;
+		mDate = date;
 	}
 
 	public String getName() {
