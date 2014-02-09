@@ -19,9 +19,9 @@ import android.view.ViewGroup;
 
 public class MapFragment extends Fragment {
 
-	private static final double DESTINATION_LATITUDE = 50.812375;
-	private static final double DESTINATION_LONGITUDE = 4.380734;
-	private static final String DESTINATION_NAME = "ULB";
+	private static final double DESTINATION_LATITUDE = 38.955953;
+	private static final double DESTINATION_LONGITUDE = -95.253061;
+	private static final String DESTINATION_NAME = "1466-1506 Irving Hill Rd";
 	private static final String GOOGLE_MAPS_PACKAGE_NAME = "com.google.android.apps.maps";
 
 	@Override

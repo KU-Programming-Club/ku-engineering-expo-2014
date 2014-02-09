@@ -4,14 +4,6 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import edu.kuacm.expo.R;
-import edu.kuacm.expo.api.ExpoApi;
-import edu.kuacm.expo.db.DatabaseManager;
-import edu.kuacm.expo.fragments.BookmarksListFragment;
-import edu.kuacm.expo.fragments.LiveFragment;
-import edu.kuacm.expo.fragments.MapFragment;
-import edu.kuacm.expo.fragments.PersonsListFragment;
-import edu.kuacm.expo.fragments.TracksFragment;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -22,7 +14,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -50,6 +41,15 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import edu.kuacm.expo.R;
+import edu.kuacm.expo.api.ExpoApi;
+import edu.kuacm.expo.db.DatabaseManager;
+import edu.kuacm.expo.fragments.BookmarksListFragment;
+import edu.kuacm.expo.fragments.LiveFragment;
+import edu.kuacm.expo.fragments.MapFragment;
+import edu.kuacm.expo.fragments.PersonsListFragment;
+import edu.kuacm.expo.fragments.ScoresFragment;
+import edu.kuacm.expo.fragments.TracksFragment;
 
 /**
  * Main entry point of the application. Allows to switch between section fragments and update the database.
@@ -62,7 +62,7 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
 		TRACKS(TracksFragment.class, R.string.menu_tracks, R.drawable.ic_action_event, true), BOOKMARKS(BookmarksListFragment.class, R.string.menu_bookmarks,
 				R.drawable.ic_action_important, false), LIVE(LiveFragment.class, R.string.menu_live, R.drawable.ic_action_play_over_video, false), SPEAKERS(
 						PersonsListFragment.class, R.string.menu_speakers, R.drawable.ic_action_group, false), MAP(MapFragment.class, R.string.menu_map,
-								R.drawable.ic_action_map, false);
+								R.drawable.ic_action_map, false), SCORES(ScoresFragment.class, R.string.menu_scores, R.drawable.ic_action_trophy, false);
 
 		private final String mmFragmentClassName;
 		private final int mmTitleResId;
@@ -502,13 +502,7 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
 		@Override
 		public Dialog onCreateDialog(Bundle savedInstanceState) {
 			Context context = getActivity();
-			String title;
-			try {
-				String versionName = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
-				title = String.format("%1$s %2$s", getString(R.string.app_name), versionName);
-			} catch (NameNotFoundException e) {
-				title = getString(R.string.app_name);
-			}
+			String title = getString(R.string.app_name);
 
 			return new AlertDialog.Builder(context).setTitle(title).setIcon(R.drawable.ic_launcher).setMessage(getResources().getText(R.string.about_text))
 					.setPositiveButton(android.R.string.ok, null).create();

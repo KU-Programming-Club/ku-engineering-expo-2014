@@ -18,6 +18,7 @@
     <string name="menu_live">Live</string>
     <string name="menu_speakers">Speakers</string>
     <string name="menu_map">Map</string>
+    <string name="menu_scores">Scores</string>
 
     <!-- Bookmarks -->
     <string name="filter">Filter</string>
@@ -100,16 +101,24 @@
     <string name="talks_header">TALKS</string>
     <string name="more_info">More info</string>
 
+    <!-- Scores -->
+    <string name="scores_middleschool">Middle school</string>
+    <string name="scores_elementary">Elementary</string>
+    <string name="scores_highschool">High school</string>
+    <string name="scores_notice">Please enter your team ID to view your scores.</string>
+    <string name="scores_hint">Enter ID here…</string>
+    <string name="scores_submit">Submit</string>
+
     <!-- Others -->
     <string name="room_map">Room map</string>
     <string name="directions">Directions to ULB</string>
     <string name="no_data">No data available.</string>
     <string name="about">About</string>
-    <string name="about_text">Programmed by <a href="http://www.digitalia.be/">Christophe Beyls</a>.
+    <string name="about_text">Developed by members of <a href="http://people.eecs.ku.edu/~acm/">KU ACM</a>, including (but not limited to) Ryan Scott, Aleksander Eskilson, and Howard Grimberg. Special thanks goes to Nitin Kanukolanu for developing the app launcher art.
 \n
-\nLicensed under the Apache License, version 2.0. Source available on <a href="https://github.com/RyanGlScott/fosdem-companion-android">GitHub</a>.
+\nLicensed under the Apache License, version 2.0. Source available on <a href="https://github.com/RyanGlScott/ku-engineering-expo-base">GitHub</a>.
 \n
 \n<small>This application makes use of the following libraries:
-\n- <a href="http://developer.android.com/tools/support-library/">Android Support Library</a><i> by The Android Open Source Project</i>\n- <a href="https://github.com/astuetz/PagerSlidingTabStrip">PagerSlidingTabStrip</a><i> by Andreas Stuetz</i>\n- <a href="http://viewpagerindicator.com/">ViewPagerIndicator</a><i> by Jake Wharton</i>\n- <a href="https://github.com/chrisbanes/PhotoView">PhotoView</a><i> by Chris Banes</i></small></string>
+\n- <a href="https://github.com/cbeyls/fosdem-companion-android">FOSDEM Companion</a><i> by Christophe Beyls</i>\n- <a href="http://developer.android.com/tools/support-library/">Android Support Library</a><i> by The Android Open Source Project</i>\n- <a href="https://github.com/astuetz/PagerSlidingTabStrip">PagerSlidingTabStrip</a><i> by Andreas Stuetz</i>\n- <a href="http://viewpagerindicator.com/">ViewPagerIndicator</a><i> by Jake Wharton</i>\n- <a href="https://github.com/chrisbanes/PhotoView">PhotoView</a><i> by Chris Banes</i></small></string>
 
 </resources>
