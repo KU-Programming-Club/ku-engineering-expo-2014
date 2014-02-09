@@ -16,13 +16,13 @@ public abstract class BaseLiveListFragment extends ListFragment implements Loade
 
 	private static final int EVENTS_LOADER_ID = 1;
 
-	private EventsAdapter adapter;
+	private EventsAdapter mAdapter;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		adapter = new EventsAdapter(getActivity(), false);
-		setListAdapter(adapter);
+		mAdapter = new EventsAdapter(getActivity(), false);
+		setListAdapter(mAdapter);
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public abstract class BaseLiveListFragment extends ListFragment implements Loade
 	@Override
 	public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 		if (data != null) {
-			adapter.swapCursor(data);
+			mAdapter.swapCursor(data);
 		}
 
 		// The list should now be shown.
@@ -53,12 +53,12 @@ public abstract class BaseLiveListFragment extends ListFragment implements Loade
 
 	@Override
 	public void onLoaderReset(Loader<Cursor> loader) {
-		adapter.swapCursor(null);
+		mAdapter.swapCursor(null);
 	}
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		Event event = adapter.getItem(position);
+		Event event = mAdapter.getItem(position);
 		Intent intent = new Intent(getActivity(), EventDetailsActivity.class).putExtra(EventDetailsActivity.EXTRA_EVENT, event);
 		startActivity(intent);
 	}

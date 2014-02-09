@@ -25,13 +25,13 @@ public class PersonsListFragment extends ListFragment implements LoaderCallbacks
 
 	private static final int PERSONS_LOADER_ID = 1;
 
-	private PersonsAdapter adapter;
+	private PersonsAdapter mAdapter;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		adapter = new PersonsAdapter(getActivity());
-		setListAdapter(adapter);
+		mAdapter = new PersonsAdapter(getActivity());
+		setListAdapter(mAdapter);
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class PersonsListFragment extends ListFragment implements LoaderCallbacks
 	@Override
 	public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 		if (data != null) {
-			adapter.swapCursor(data);
+			mAdapter.swapCursor(data);
 		}
 
 		// The list should now be shown.
@@ -78,12 +78,12 @@ public class PersonsListFragment extends ListFragment implements LoaderCallbacks
 
 	@Override
 	public void onLoaderReset(Loader<Cursor> loader) {
-		adapter.swapCursor(null);
+		mAdapter.swapCursor(null);
 	}
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		Person person = adapter.getItem(position);
+		Person person = mAdapter.getItem(position);
 		Intent intent = new Intent(getActivity(), PersonInfoActivity.class).putExtra(PersonInfoActivity.EXTRA_PERSON, person);
 		startActivity(intent);
 	}

@@ -13,8 +13,8 @@ public abstract class BaseLiveLoader extends SimpleCursorLoader {
 
 	private static final long REFRESH_INTERVAL = 60L * 1000L; // 1 minute
 
-	private final Handler handler;
-	private final Runnable timeoutRunnable = new Runnable() {
+	private final Handler mHandler;
+	private final Runnable mTimeoutRunnable = new Runnable() {
 
 		@Override
 		public void run() {
@@ -24,19 +24,19 @@ public abstract class BaseLiveLoader extends SimpleCursorLoader {
 
 	public BaseLiveLoader(Context context) {
 		super(context);
-		this.handler = new Handler();
+		mHandler = new Handler();
 	}
 
 	@Override
 	protected void onForceLoad() {
 		super.onForceLoad();
-		handler.removeCallbacks(timeoutRunnable);
-		handler.postDelayed(timeoutRunnable, REFRESH_INTERVAL);
+		mHandler.removeCallbacks(mTimeoutRunnable);
+		mHandler.postDelayed(mTimeoutRunnable, REFRESH_INTERVAL);
 	}
 
 	@Override
 	protected void onReset() {
 		super.onReset();
-		handler.removeCallbacks(timeoutRunnable);
+		mHandler.removeCallbacks(mTimeoutRunnable);
 	}
 }

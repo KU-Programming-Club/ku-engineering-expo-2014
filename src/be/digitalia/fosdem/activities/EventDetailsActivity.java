@@ -29,7 +29,7 @@ public class EventDetailsActivity extends ActionBarActivity implements LoaderCal
 
 	private static final int EVENT_LOADER_ID = 1;
 
-	private Event event;
+	private Event mEvent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +38,13 @@ public class EventDetailsActivity extends ActionBarActivity implements LoaderCal
 
 		getSupportActionBar().setTitle(R.string.event_details);
 
-		event = getIntent().getParcelableExtra(EXTRA_EVENT);
+		mEvent = getIntent().getParcelableExtra(EXTRA_EVENT);
 
-		if (event != null) {
+		if (mEvent != null) {
 			// The event has been passed as parameter, it can be displayed immediately
 			initActionBar();
 			if (savedInstanceState == null) {
-				Fragment f = EventDetailsFragment.newInstance(event);
+				Fragment f = EventDetailsFragment.newInstance(mEvent);
 				getSupportFragmentManager().beginTransaction().add(R.id.content, f).commit();
 			}
 		} else {
@@ -67,8 +67,8 @@ public class EventDetailsActivity extends ActionBarActivity implements LoaderCal
 		case android.R.id.home:
 			// Navigate up to the track associated to this event
 			Intent upIntent = new Intent(this, TrackScheduleActivity.class);
-			upIntent.putExtra(TrackScheduleActivity.EXTRA_DAY, event.getDay());
-			upIntent.putExtra(TrackScheduleActivity.EXTRA_TRACK, event.getTrack());
+			upIntent.putExtra(TrackScheduleActivity.EXTRA_DAY, mEvent.getDay());
+			upIntent.putExtra(TrackScheduleActivity.EXTRA_TRACK, mEvent.getTrack());
 			upIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
 			finish();
@@ -110,12 +110,12 @@ public class EventDetailsActivity extends ActionBarActivity implements LoaderCal
 			return;
 		}
 
-		event = data;
+		mEvent = data;
 		initActionBar();
 
 		FragmentManager fm = getSupportFragmentManager();
 		if (fm.findFragmentById(R.id.content) == null) {
-			Fragment f = EventDetailsFragment.newInstance(event);
+			Fragment f = EventDetailsFragment.newInstance(mEvent);
 			fm.beginTransaction().add(R.id.content, f).commitAllowingStateLoss();
 		}
 	}

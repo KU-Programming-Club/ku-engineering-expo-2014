@@ -20,10 +20,10 @@ import be.digitalia.fosdem.services.AlarmIntentService;
  */
 public class FosdemAlarmManager implements OnSharedPreferenceChangeListener {
 
-	private static FosdemAlarmManager instance;
+	private static FosdemAlarmManager sInstance;
 
-	private Context context;
-	private boolean isEnabled;
+	private Context mContext;
+	private boolean mIsEnabled;
 
 	private final BroadcastReceiver scheduleRefreshedReceiver = new BroadcastReceiver() {
 
@@ -47,34 +47,34 @@ public class FosdemAlarmManager implements OnSharedPreferenceChangeListener {
 	};
 
 	public static void init(Context context) {
-		if (instance == null) {
-			instance = new FosdemAlarmManager(context);
+		if (sInstance == null) {
+			sInstance = new FosdemAlarmManager(context);
 		}
 	}
 
 	public static FosdemAlarmManager getInstance() {
-		return instance;
+		return sInstance;
 	}
 
 	private FosdemAlarmManager(Context context) {
-		this.context = context;
+		this.mContext = context;
 		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-		isEnabled = sharedPreferences.getBoolean(SettingsFragment.KEY_PREF_NOTIFICATIONS_ENABLED, false);
-		if (isEnabled) {
+		mIsEnabled = sharedPreferences.getBoolean(SettingsFragment.KEY_PREF_NOTIFICATIONS_ENABLED, false);
+		if (mIsEnabled) {
 			registerReceivers();
 		}
 		sharedPreferences.registerOnSharedPreferenceChangeListener(this);
 	}
 
 	public boolean isEnabled() {
-		return isEnabled;
+		return mIsEnabled;
 	}
 
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 		if (SettingsFragment.KEY_PREF_NOTIFICATIONS_ENABLED.equals(key)) {
-			isEnabled = sharedPreferences.getBoolean(SettingsFragment.KEY_PREF_NOTIFICATIONS_ENABLED, false);
-			if (isEnabled) {
+			mIsEnabled = sharedPreferences.getBoolean(SettingsFragment.KEY_PREF_NOTIFICATIONS_ENABLED, false);
+			if (mIsEnabled) {
 				registerReceivers();
 				startUpdateAlarms();
 			} else {
@@ -87,7 +87,7 @@ public class FosdemAlarmManager implements OnSharedPreferenceChangeListener {
 	}
 
 	private void registerReceivers() {
-		LocalBroadcastManager lbm = LocalBroadcastManager.getInstance(context);
+		LocalBroadcastManager lbm = LocalBroadcastManager.getInstance(mContext);
 		lbm.registerReceiver(scheduleRefreshedReceiver, new IntentFilter(DatabaseManager.ACTION_SCHEDULE_REFRESHED));
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(DatabaseManager.ACTION_ADD_BOOKMARK);
@@ -96,20 +96,20 @@ public class FosdemAlarmManager implements OnSharedPreferenceChangeListener {
 	}
 
 	private void unregisterReceivers() {
-		LocalBroadcastManager lbm = LocalBroadcastManager.getInstance(context);
+		LocalBroadcastManager lbm = LocalBroadcastManager.getInstance(mContext);
 		lbm.unregisterReceiver(scheduleRefreshedReceiver);
 		lbm.unregisterReceiver(bookmarksReceiver);
 	}
 
 	private void startUpdateAlarms() {
-		Intent serviceIntent = new Intent(context, AlarmIntentService.class);
+		Intent serviceIntent = new Intent(mContext, AlarmIntentService.class);
 		serviceIntent.setAction(AlarmIntentService.ACTION_UPDATE_ALARMS);
-		context.startService(serviceIntent);
+		mContext.startService(serviceIntent);
 	}
 
 	private void startDisableAlarms() {
-		Intent serviceIntent = new Intent(context, AlarmIntentService.class);
+		Intent serviceIntent = new Intent(mContext, AlarmIntentService.class);
 		serviceIntent.setAction(AlarmIntentService.ACTION_DISABLE_ALARMS);
-		context.startService(serviceIntent);
+		mContext.startService(serviceIntent);
 	}
 }

@@ -6,8 +6,8 @@ import java.util.Date;
 import android.content.Context;
 import android.database.Cursor;
 import android.support.v4.widget.CursorAdapter;
-import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.AbsoluteSizeSpan;
 import android.view.LayoutInflater;
@@ -23,9 +23,9 @@ public class EventsAdapter extends CursorAdapter {
 
 	private static final DateFormat TIME_DATE_FORMAT = DateUtils.getTimeDateFormat();
 
-	private final LayoutInflater inflater;
-	private final int titleTextSize;
-	private final boolean showDay;
+	private final LayoutInflater mInflater;
+	private final int mTitleTextSize;
+	private final boolean mShowDay;
 
 	public EventsAdapter(Context context) {
 		this(context, true);
@@ -33,9 +33,9 @@ public class EventsAdapter extends CursorAdapter {
 
 	public EventsAdapter(Context context, boolean showDay) {
 		super(context, null, 0);
-		inflater = LayoutInflater.from(context);
-		titleTextSize = context.getResources().getDimensionPixelSize(R.dimen.list_item_title_text_size);
-		this.showDay = showDay;
+		mInflater = LayoutInflater.from(context);
+		mTitleTextSize = context.getResources().getDimensionPixelSize(R.dimen.list_item_title_text_size);
+		this.mShowDay = showDay;
 	}
 
 	@Override
@@ -45,11 +45,11 @@ public class EventsAdapter extends CursorAdapter {
 
 	@Override
 	public View newView(Context context, Cursor cursor, ViewGroup parent) {
-		View view = inflater.inflate(R.layout.item_event, parent, false);
+		View view = mInflater.inflate(R.layout.item_event, parent, false);
 
 		ViewHolder holder = new ViewHolder();
 		holder.title = (TextView) view.findViewById(R.id.title);
-		holder.titleSizeSpan = new AbsoluteSizeSpan(titleTextSize);
+		holder.titleSizeSpan = new AbsoluteSizeSpan(mTitleTextSize);
 		holder.trackName = (TextView) view.findViewById(R.id.track_name);
 		holder.details = (TextView) view.findViewById(R.id.details);
 		view.setTag(holder);
@@ -71,7 +71,7 @@ public class EventsAdapter extends CursorAdapter {
 		} else {
 			spannableString = new SpannableString(String.format("%1$s\n%2$s", eventTitle, event.getPersonsSummary()));
 		}
-		spannableString.setSpan(holder.titleSizeSpan, 0, eventTitle.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		spannableString.setSpan(holder.titleSizeSpan, 0, eventTitle.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 		holder.title.setText(spannableString);
 		int bookmarkDrawable = DatabaseManager.toBookmarkStatus(cursor) ? R.drawable.ic_small_starred : 0;
 		holder.title.setCompoundDrawablesWithIntrinsicBounds(0, 0, bookmarkDrawable, 0);
@@ -83,7 +83,7 @@ public class EventsAdapter extends CursorAdapter {
 		String startTimeString = (startTime != null) ? TIME_DATE_FORMAT.format(startTime) : "?";
 		String endTimeString = (endTime != null) ? TIME_DATE_FORMAT.format(endTime) : "?";
 		String details;
-		if (showDay) {
+		if (mShowDay) {
 			details = String.format("%1$s, %2$s ― %3$s  |  %4$s", event.getDay().getShortName(), startTimeString, endTimeString, event.getRoomName());
 		} else {
 			details = String.format("%1$s ― %2$s  |  %3$s", startTimeString, endTimeString, event.getRoomName());

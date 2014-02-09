@@ -33,20 +33,20 @@ public class BookmarksListFragment extends ListFragment implements LoaderCallbac
 	private static final int BOOKMARKS_LOADER_ID = 1;
 	private static final String PREF_UPCOMING_ONLY = "bookmarks_upcoming_only";
 
-	private EventsAdapter adapter;
-	private boolean upcomingOnly;
+	private EventsAdapter mAdapter;
+	private boolean mUpcomingOnly;
 
-	private MenuItem filterMenuItem;
-	private MenuItem upcomingOnlyMenuItem;
+	private MenuItem mFilterMenuItem;
+	private MenuItem mUpcomingOnlyMenuItem;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		adapter = new EventsAdapter(getActivity());
-		setListAdapter(adapter);
+		mAdapter = new EventsAdapter(getActivity());
+		setListAdapter(mAdapter);
 
-		upcomingOnly = getActivity().getPreferences(Context.MODE_PRIVATE).getBoolean(PREF_UPCOMING_ONLY, false);
+		mUpcomingOnly = getActivity().getPreferences(Context.MODE_PRIVATE).getBoolean(PREF_UPCOMING_ONLY, false);
 
 		setHasOptionsMenu(true);
 	}
@@ -68,32 +68,32 @@ public class BookmarksListFragment extends ListFragment implements LoaderCallbac
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		inflater.inflate(R.menu.bookmarks, menu);
-		filterMenuItem = menu.findItem(R.id.filter);
-		upcomingOnlyMenuItem = menu.findItem(R.id.upcoming_only);
+		mFilterMenuItem = menu.findItem(R.id.filter);
+		mUpcomingOnlyMenuItem = menu.findItem(R.id.upcoming_only);
 		updateOptionsMenu();
 	}
 
 	private void updateOptionsMenu() {
-		if (filterMenuItem != null) {
-			filterMenuItem.setIcon(upcomingOnly ? R.drawable.ic_action_filter_selected : R.drawable.ic_action_filter);
-			upcomingOnlyMenuItem.setChecked(upcomingOnly);
+		if (mFilterMenuItem != null) {
+			mFilterMenuItem.setIcon(mUpcomingOnly ? R.drawable.ic_action_filter_selected : R.drawable.ic_action_filter);
+			mUpcomingOnlyMenuItem.setChecked(mUpcomingOnly);
 		}
 	}
 
 	@Override
 	public void onDestroyOptionsMenu() {
 		super.onDestroyOptionsMenu();
-		filterMenuItem = null;
-		upcomingOnlyMenuItem = null;
+		mFilterMenuItem = null;
+		mUpcomingOnlyMenuItem = null;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.upcoming_only:
-			upcomingOnly = !upcomingOnly;
+			mUpcomingOnly = !mUpcomingOnly;
 			updateOptionsMenu();
-			getActivity().getPreferences(Context.MODE_PRIVATE).edit().putBoolean(PREF_UPCOMING_ONLY, upcomingOnly).commit();
+			getActivity().getPreferences(Context.MODE_PRIVATE).edit().putBoolean(PREF_UPCOMING_ONLY, mUpcomingOnly).commit();
 			getLoaderManager().restartLoader(BOOKMARKS_LOADER_ID, null, this);
 			return true;
 		}
@@ -157,13 +157,13 @@ public class BookmarksListFragment extends ListFragment implements LoaderCallbac
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-		return new BookmarksLoader(getActivity(), upcomingOnly);
+		return new BookmarksLoader(getActivity(), mUpcomingOnly);
 	}
 
 	@Override
 	public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 		if (data != null) {
-			adapter.swapCursor(data);
+			mAdapter.swapCursor(data);
 		}
 
 		// The list should now be shown.
@@ -176,12 +176,12 @@ public class BookmarksListFragment extends ListFragment implements LoaderCallbac
 
 	@Override
 	public void onLoaderReset(Loader<Cursor> loader) {
-		adapter.swapCursor(null);
+		mAdapter.swapCursor(null);
 	}
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		Event event = adapter.getItem(position);
+		Event event = mAdapter.getItem(position);
 		Intent intent = new Intent(getActivity(), EventDetailsActivity.class).putExtra(EventDetailsActivity.EXTRA_EVENT, event);
 		startActivity(intent);
 	}

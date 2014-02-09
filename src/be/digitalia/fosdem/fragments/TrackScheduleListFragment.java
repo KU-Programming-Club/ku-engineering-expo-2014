@@ -11,14 +11,16 @@ import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.CursorAdapter;
-import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import be.digitalia.fosdem.R;
@@ -42,9 +44,9 @@ public class TrackScheduleListFragment extends ListFragment implements LoaderCal
 	private static final String ARG_DAY = "day";
 	private static final String ARG_TRACK = "track";
 
-	private TrackScheduleAdapter adapter;
-	private Callbacks listener;
-	private boolean selectionEnabled = false;
+	private TrackScheduleAdapter mAdapter;
+	private Callbacks mListener;
+	private boolean mSelectionEnabled = false;
 
 	public static TrackScheduleListFragment newInstance(Day day, Track track) {
 		TrackScheduleListFragment f = new TrackScheduleListFragment();
@@ -59,39 +61,39 @@ public class TrackScheduleListFragment extends ListFragment implements LoaderCal
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		adapter = new TrackScheduleAdapter(getActivity());
-		setListAdapter(adapter);
+		mAdapter = new TrackScheduleAdapter(getActivity());
+		setListAdapter(mAdapter);
 	}
 
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		if (activity instanceof Callbacks) {
-			listener = (Callbacks) activity;
+			mListener = (Callbacks) activity;
 		}
 	}
 
 	@Override
 	public void onDetach() {
 		super.onDetach();
-		listener = null;
+		mListener = null;
 	}
 
 	private void notifyEventSelected(int position) {
-		if (listener != null) {
-			listener.onEventSelected(position, (position == -1) ? null : adapter.getItem(position));
+		if (mListener != null) {
+			mListener.onEventSelected(position, (position == -1) ? null : mAdapter.getItem(position));
 		}
 	}
 
 	public void setSelectionEnabled(boolean selectionEnabled) {
-		this.selectionEnabled = selectionEnabled;
+		mSelectionEnabled = selectionEnabled;
 	}
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
-		getListView().setChoiceMode(selectionEnabled ? ListView.CHOICE_MODE_SINGLE : ListView.CHOICE_MODE_NONE);
+		getListView().setChoiceMode(mSelectionEnabled ? AbsListView.CHOICE_MODE_SINGLE : AbsListView.CHOICE_MODE_NONE);
 		setEmptyText(getString(R.string.no_data));
 		setListShown(false);
 
@@ -108,12 +110,12 @@ public class TrackScheduleListFragment extends ListFragment implements LoaderCal
 	@Override
 	public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 		if (data != null) {
-			adapter.swapCursor(data);
+			mAdapter.swapCursor(data);
 
-			if (selectionEnabled) {
-				final int count = adapter.getCount();
+			if (mSelectionEnabled) {
+				final int count = mAdapter.getCount();
 				int checkedPosition = getListView().getCheckedItemPosition();
-				if ((checkedPosition == ListView.INVALID_POSITION) || (checkedPosition >= count)) {
+				if ((checkedPosition == AdapterView.INVALID_POSITION) || (checkedPosition >= count)) {
 					if (count > 0) {
 						// Select the first item if any
 						getListView().setItemChecked(0, true);
@@ -143,7 +145,7 @@ public class TrackScheduleListFragment extends ListFragment implements LoaderCal
 
 	@Override
 	public void onLoaderReset(Loader<Cursor> loader) {
-		adapter.swapCursor(null);
+		mAdapter.swapCursor(null);
 	}
 
 	@Override
@@ -155,13 +157,13 @@ public class TrackScheduleListFragment extends ListFragment implements LoaderCal
 
 		private static final DateFormat TIME_DATE_FORMAT = DateUtils.getTimeDateFormat();
 
-		private final LayoutInflater inflater;
-		private final int titleTextSize;
+		private final LayoutInflater mmInflater;
+		private final int mmTitleTextSize;
 
 		public TrackScheduleAdapter(Context context) {
 			super(context, null, 0);
-			inflater = LayoutInflater.from(context);
-			titleTextSize = context.getResources().getDimensionPixelSize(R.dimen.list_item_title_text_size);
+			mmInflater = LayoutInflater.from(context);
+			mmTitleTextSize = context.getResources().getDimensionPixelSize(R.dimen.list_item_title_text_size);
 		}
 
 		@Override
@@ -171,12 +173,12 @@ public class TrackScheduleListFragment extends ListFragment implements LoaderCal
 
 		@Override
 		public View newView(Context context, Cursor cursor, ViewGroup parent) {
-			View view = inflater.inflate(R.layout.item_schedule_event, parent, false);
+			View view = mmInflater.inflate(R.layout.item_schedule_event, parent, false);
 
 			ViewHolder holder = new ViewHolder();
 			holder.time = (TextView) view.findViewById(R.id.time);
 			holder.text = (TextView) view.findViewById(R.id.text);
-			holder.titleSizeSpan = new AbsoluteSizeSpan(titleTextSize);
+			holder.titleSizeSpan = new AbsoluteSizeSpan(mmTitleTextSize);
 			holder.boldStyleSpan = new StyleSpan(Typeface.BOLD);
 			view.setTag(holder);
 
@@ -198,8 +200,8 @@ public class TrackScheduleListFragment extends ListFragment implements LoaderCal
 			} else {
 				spannableString = new SpannableString(String.format("%1$s\n%2$s\n%3$s", eventTitle, personsSummary, event.getRoomName()));
 			}
-			spannableString.setSpan(holder.titleSizeSpan, 0, eventTitle.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-			spannableString.setSpan(holder.boldStyleSpan, 0, eventTitle.length() + personsSummary.length() + 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+			spannableString.setSpan(holder.titleSizeSpan, 0, eventTitle.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+			spannableString.setSpan(holder.boldStyleSpan, 0, eventTitle.length() + personsSummary.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
 			holder.text.setText(spannableString);
 			int bookmarkDrawable = DatabaseManager.toBookmarkStatus(cursor) ? R.drawable.ic_small_starred : 0;

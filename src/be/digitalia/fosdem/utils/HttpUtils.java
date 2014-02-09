@@ -25,7 +25,9 @@ import android.support.v4.content.LocalBroadcastManager;
  * 
  * @author Christophe Beyls
  */
-public class HttpUtils {
+public final class HttpUtils {
+	
+	private HttpUtils() {}
 
 	private static final int DEFAULT_TIMEOUT = 10000;
 
@@ -37,6 +39,7 @@ public class HttpUtils {
 
 		// Bypass hostname verification
 		HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {
+			@Override
 			public boolean verify(String hostname, SSLSession session) {
 				return true;
 			}
@@ -44,13 +47,16 @@ public class HttpUtils {
 
 		// Trust all HTTPS certificates
 		TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
-			public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-				return new java.security.cert.X509Certificate[] {};
+			@Override
+			public X509Certificate[] getAcceptedIssuers() {
+				return new X509Certificate[] {};
 			}
 
+			@Override
 			public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
 			}
 
+			@Override
 			public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
 			}
 		} };

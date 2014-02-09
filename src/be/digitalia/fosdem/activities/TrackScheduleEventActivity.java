@@ -35,13 +35,13 @@ public class TrackScheduleEventActivity extends ActionBarActivity implements Loa
 
 	private static final int EVENTS_LOADER_ID = 1;
 
-	private Day day;
-	private Track track;
-	private int initialPosition = -1;
-	private View progress;
-	private ViewPager pager;
-	private PageIndicator pageIndicator;
-	private TrackScheduleEventAdapter adapter;
+	private Day mDay;
+	private Track mTrack;
+	private int mInitialPosition = -1;
+	private View mProgress;
+	private ViewPager mPager;
+	private PageIndicator mPageIndicator;
+	private TrackScheduleEventAdapter mAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,31 +50,31 @@ public class TrackScheduleEventActivity extends ActionBarActivity implements Loa
 		setContentView(R.layout.track_schedule_event);
 
 		Bundle extras = getIntent().getExtras();
-		day = extras.getParcelable(EXTRA_DAY);
-		track = extras.getParcelable(EXTRA_TRACK);
+		mDay = extras.getParcelable(EXTRA_DAY);
+		mTrack = extras.getParcelable(EXTRA_TRACK);
 
-		progress = findViewById(R.id.progress);
-		pager = (ViewPager) findViewById(R.id.pager);
-		adapter = new TrackScheduleEventAdapter(getSupportFragmentManager());
-		pageIndicator = (PageIndicator) findViewById(R.id.indicator);
+		mProgress = findViewById(R.id.progress);
+		mPager = (ViewPager) findViewById(R.id.pager);
+		mAdapter = new TrackScheduleEventAdapter(getSupportFragmentManager());
+		mPageIndicator = (PageIndicator) findViewById(R.id.indicator);
 
 		if (savedInstanceState == null) {
-			initialPosition = extras.getInt(EXTRA_POSITION, -1);
-			pager.setAdapter(adapter);
-			pageIndicator.setViewPager(pager);
+			mInitialPosition = extras.getInt(EXTRA_POSITION, -1);
+			mPager.setAdapter(mAdapter);
+			mPageIndicator.setViewPager(mPager);
 		}
 
 		ActionBar bar = getSupportActionBar();
 		bar.setDisplayHomeAsUpEnabled(true);
 		bar.setTitle(R.string.event_details);
-		bar.setSubtitle(track.getName());
+		bar.setSubtitle(mTrack.getName());
 
 		setCustomProgressVisibility(true);
 		getSupportLoaderManager().initLoader(EVENTS_LOADER_ID, null, this);
 	}
 
 	private void setCustomProgressVisibility(boolean isVisible) {
-		progress.setVisibility(isVisible ? View.VISIBLE : View.GONE);
+		mProgress.setVisibility(isVisible ? View.VISIBLE : View.GONE);
 	}
 
 	@Override
@@ -89,7 +89,7 @@ public class TrackScheduleEventActivity extends ActionBarActivity implements Loa
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-		return new TrackScheduleLoader(this, day, track);
+		return new TrackScheduleLoader(this, mDay, mTrack);
 	}
 
 	@Override
@@ -97,25 +97,25 @@ public class TrackScheduleEventActivity extends ActionBarActivity implements Loa
 		setCustomProgressVisibility(false);
 
 		if (data != null) {
-			adapter.setCursor(data);
+			mAdapter.setCursor(data);
 
 			// Delay setting the adapter when the instance state is restored
 			// to ensure the current position is restored properly
-			if (pager.getAdapter() == null) {
-				pager.setAdapter(adapter);
-				pageIndicator.setViewPager(pager);
+			if (mPager.getAdapter() == null) {
+				mPager.setAdapter(mAdapter);
+				mPageIndicator.setViewPager(mPager);
 			}
 
-			if (initialPosition != -1) {
-				pager.setCurrentItem(initialPosition, false);
-				initialPosition = -1;
+			if (mInitialPosition != -1) {
+				mPager.setCurrentItem(mInitialPosition, false);
+				mInitialPosition = -1;
 			}
 		}
 	}
 
 	@Override
 	public void onLoaderReset(Loader<Cursor> loader) {
-		adapter.setCursor(null);
+		mAdapter.setCursor(null);
 	}
 
 	public static class TrackScheduleEventAdapter extends FragmentStatePagerAdapter {

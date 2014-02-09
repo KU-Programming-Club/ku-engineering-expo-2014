@@ -21,7 +21,7 @@ public class SearchResultListFragment extends ListFragment implements LoaderCall
 	private static final int EVENTS_LOADER_ID = 1;
 	private static final String ARG_QUERY = "query";
 
-	private EventsAdapter adapter;
+	private EventsAdapter mAdapter;
 
 	public static SearchResultListFragment newInstance(String query) {
 		SearchResultListFragment f = new SearchResultListFragment();
@@ -34,8 +34,8 @@ public class SearchResultListFragment extends ListFragment implements LoaderCall
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		adapter = new EventsAdapter(getActivity());
-		setListAdapter(adapter);
+		mAdapter = new EventsAdapter(getActivity());
+		setListAdapter(mAdapter);
 	}
 
 	@Override
@@ -50,16 +50,16 @@ public class SearchResultListFragment extends ListFragment implements LoaderCall
 
 	private static class TextSearchLoader extends SimpleCursorLoader {
 
-		private final String query;
+		private final String mmQuery;
 
 		public TextSearchLoader(Context context, String query) {
 			super(context);
-			this.query = query;
+			mmQuery = query;
 		}
 
 		@Override
 		protected Cursor getCursor() {
-			return DatabaseManager.getInstance().getSearchResults(query);
+			return DatabaseManager.getInstance().getSearchResults(mmQuery);
 		}
 	}
 
@@ -72,7 +72,7 @@ public class SearchResultListFragment extends ListFragment implements LoaderCall
 	@Override
 	public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 		if (data != null) {
-			adapter.swapCursor(data);
+			mAdapter.swapCursor(data);
 		}
 
 		// The list should now be shown.
@@ -85,12 +85,12 @@ public class SearchResultListFragment extends ListFragment implements LoaderCall
 
 	@Override
 	public void onLoaderReset(Loader<Cursor> loader) {
-		adapter.swapCursor(null);
+		mAdapter.swapCursor(null);
 	}
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		Event event = adapter.getItem(position);
+		Event event = mAdapter.getItem(position);
 		Intent intent = new Intent(getActivity(), EventDetailsActivity.class).putExtra(EventDetailsActivity.EXTRA_EVENT, event);
 		startActivity(intent);
 	}

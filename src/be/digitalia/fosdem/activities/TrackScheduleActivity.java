@@ -28,9 +28,9 @@ public class TrackScheduleActivity extends ActionBarActivity implements TrackSch
 	public static final String EXTRA_DAY = "day";
 	public static final String EXTRA_TRACK = "track";
 
-	private Day day;
-	private Track track;
-	private boolean isTabletLandscape;
+	private Day mDay;
+	private Track mTrack;
+	private boolean mIsTabletLandscape;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,33 +38,33 @@ public class TrackScheduleActivity extends ActionBarActivity implements TrackSch
 		setContentView(R.layout.track_schedule);
 
 		Bundle extras = getIntent().getExtras();
-		day = extras.getParcelable(EXTRA_DAY);
-		track = extras.getParcelable(EXTRA_TRACK);
+		mDay = extras.getParcelable(EXTRA_DAY);
+		mTrack = extras.getParcelable(EXTRA_TRACK);
 
 		ActionBar bar = getSupportActionBar();
 		bar.setDisplayHomeAsUpEnabled(true);
-		bar.setTitle(track.toString());
-		bar.setSubtitle(day.toString());
+		bar.setTitle(mTrack.toString());
+		bar.setSubtitle(mDay.toString());
 
-		isTabletLandscape = getResources().getBoolean(R.bool.tablet_landscape);
+		mIsTabletLandscape = getResources().getBoolean(R.bool.tablet_landscape);
 
 		TrackScheduleListFragment trackScheduleListFragment;
 		FragmentManager fm = getSupportFragmentManager();
 		if (savedInstanceState == null) {
-			trackScheduleListFragment = TrackScheduleListFragment.newInstance(day, track);
+			trackScheduleListFragment = TrackScheduleListFragment.newInstance(mDay, mTrack);
 			fm.beginTransaction().add(R.id.schedule, trackScheduleListFragment).commit();
 		} else {
 			trackScheduleListFragment = (TrackScheduleListFragment) fm.findFragmentById(R.id.schedule);
 
 			// Remove the room image DialogFragment when switching from dual pane to single pane mode
-			if (!isTabletLandscape) {
+			if (!mIsTabletLandscape) {
 				Fragment roomImageDialogFragment = fm.findFragmentByTag(RoomImageDialogFragment.TAG);
 				if (roomImageDialogFragment != null) {
 					fm.beginTransaction().remove(roomImageDialogFragment).commit();
 				}
 			}
 		}
-		trackScheduleListFragment.setSelectionEnabled(isTabletLandscape);
+		trackScheduleListFragment.setSelectionEnabled(mIsTabletLandscape);
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class TrackScheduleActivity extends ActionBarActivity implements TrackSch
 
 	@Override
 	public void onEventSelected(int position, Event event) {
-		if (isTabletLandscape) {
+		if (mIsTabletLandscape) {
 			// Tablet mode: Show event details in the right pane fragment
 			FragmentManager fm = getSupportFragmentManager();
 			EventDetailsFragment currentFragment = (EventDetailsFragment) fm.findFragmentById(R.id.event);
@@ -99,8 +99,8 @@ public class TrackScheduleActivity extends ActionBarActivity implements TrackSch
 		} else {
 			// Classic mode: Show event details in a new activity
 			Intent intent = new Intent(this, TrackScheduleEventActivity.class);
-			intent.putExtra(TrackScheduleEventActivity.EXTRA_DAY, day);
-			intent.putExtra(TrackScheduleEventActivity.EXTRA_TRACK, track);
+			intent.putExtra(TrackScheduleEventActivity.EXTRA_DAY, mDay);
+			intent.putExtra(TrackScheduleEventActivity.EXTRA_TRACK, mTrack);
 			intent.putExtra(TrackScheduleEventActivity.EXTRA_POSITION, position);
 			startActivity(intent);
 		}

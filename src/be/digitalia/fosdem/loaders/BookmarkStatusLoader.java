@@ -18,14 +18,14 @@ import android.support.v4.content.LocalBroadcastManager;
  */
 public class BookmarkStatusLoader extends AsyncTaskLoader<Boolean> {
 
-	private final Event event;
-	private Boolean isBookmarked;
+	private final Event mEvent;
+	private Boolean mIsBookmarked;
 
 	private final BroadcastReceiver addBookmarkReceiver = new BroadcastReceiver() {
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			if (event.getId() == intent.getLongExtra(DatabaseManager.EXTRA_EVENT_ID, -1L)) {
+			if (mEvent.getId() == intent.getLongExtra(DatabaseManager.EXTRA_EVENT_ID, -1L)) {
 				updateBookmark(true);
 			}
 		}
@@ -36,7 +36,7 @@ public class BookmarkStatusLoader extends AsyncTaskLoader<Boolean> {
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			long[] eventIds = intent.getLongArrayExtra(DatabaseManager.EXTRA_EVENT_IDS);
-			if (ArrayUtils.indexOf(eventIds, event.getId()) != -1) {
+			if (ArrayUtils.indexOf(eventIds, mEvent.getId()) != -1) {
 				updateBookmark(false);
 			}
 		}
@@ -44,7 +44,7 @@ public class BookmarkStatusLoader extends AsyncTaskLoader<Boolean> {
 
 	public BookmarkStatusLoader(Context context, Event event) {
 		super(context);
-		this.event = event;
+		mEvent = event;
 
 		LocalBroadcastManager lbm = LocalBroadcastManager.getInstance(getContext());
 		lbm.registerReceiver(addBookmarkReceiver, new IntentFilter(DatabaseManager.ACTION_ADD_BOOKMARK));
@@ -60,10 +60,10 @@ public class BookmarkStatusLoader extends AsyncTaskLoader<Boolean> {
 
 	@Override
 	protected void onStartLoading() {
-		if (isBookmarked != null) {
+		if (mIsBookmarked != null) {
 			// If we currently have a result available, deliver it
 			// immediately.
-			super.deliverResult(isBookmarked);
+			super.deliverResult(mIsBookmarked);
 		} else {
 			forceLoad();
 		}
@@ -80,7 +80,7 @@ public class BookmarkStatusLoader extends AsyncTaskLoader<Boolean> {
 		super.onReset();
 
 		onStopLoading();
-		isBookmarked = null;
+		mIsBookmarked = null;
 
 		LocalBroadcastManager lbm = LocalBroadcastManager.getInstance(getContext());
 		lbm.unregisterReceiver(addBookmarkReceiver);
@@ -89,7 +89,7 @@ public class BookmarkStatusLoader extends AsyncTaskLoader<Boolean> {
 
 	@Override
 	public void deliverResult(Boolean data) {
-		isBookmarked = data;
+		mIsBookmarked = data;
 
 		if (isStarted()) {
 			// If the Loader is currently started, we can immediately
@@ -100,6 +100,6 @@ public class BookmarkStatusLoader extends AsyncTaskLoader<Boolean> {
 
 	@Override
 	public Boolean loadInBackground() {
-		return DatabaseManager.getInstance().isBookmarked(event);
+		return DatabaseManager.getInstance().isBookmarked(mEvent);
 	}
 }

@@ -13,34 +13,33 @@ public class Day implements Parcelable {
 
 	private static DateFormat DAY_DATE_FORMAT = DateUtils.withBelgiumTimeZone(new SimpleDateFormat("EEEE", Locale.US));
 
-	private int index;
-	private Date date;
+	private int mIndex;
+	private Date mDate;
 
-	public Day() {
-	}
+	public Day() {}
 
 	public int getIndex() {
-		return index;
+		return mIndex;
 	}
 
 	public void setIndex(int index) {
-		this.index = index;
+		this.mIndex = index;
 	}
 
 	public Date getDate() {
-		return date;
+		return mDate;
 	}
 
 	public void setDate(Date date) {
-		this.date = date;
+		this.mDate = date;
 	}
 
 	public String getName() {
-		return String.format(Locale.US, "Day %1$d (%2$s)", index, DAY_DATE_FORMAT.format(date));
+		return String.format(Locale.US, "Day %1$d (%2$s)", mIndex, DAY_DATE_FORMAT.format(mDate));
 	}
 
 	public String getShortName() {
-		return DAY_DATE_FORMAT.format(date);
+		return DAY_DATE_FORMAT.format(mDate);
 	}
 
 	@Override
@@ -50,7 +49,7 @@ public class Day implements Parcelable {
 
 	@Override
 	public int hashCode() {
-		return index;
+		return mIndex;
 	}
 
 	@Override
@@ -60,7 +59,7 @@ public class Day implements Parcelable {
 		if (obj == null)
 			return false;
 		Day other = (Day) obj;
-		return (index == other.index);
+		return (mIndex == other.mIndex);
 	}
 
 	@Override
@@ -70,25 +69,27 @@ public class Day implements Parcelable {
 
 	@Override
 	public void writeToParcel(Parcel out, int flags) {
-		out.writeInt(index);
-		out.writeLong((date == null) ? 0L : date.getTime());
+		out.writeInt(mIndex);
+		out.writeLong((mDate == null) ? 0L : mDate.getTime());
 	}
 
 	public static final Parcelable.Creator<Day> CREATOR = new Parcelable.Creator<Day>() {
+		@Override
 		public Day createFromParcel(Parcel in) {
 			return new Day(in);
 		}
 
+		@Override
 		public Day[] newArray(int size) {
 			return new Day[size];
 		}
 	};
 
 	private Day(Parcel in) {
-		index = in.readInt();
+		mIndex = in.readInt();
 		long time = in.readLong();
 		if (time != 0L) {
-			date = new Date(time);
+			mDate = new Date(time);
 		}
 	}
 }

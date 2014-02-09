@@ -16,10 +16,10 @@ public class ByteCountInputStream extends FilterInputStream {
 		void onNewCount(int byteCount);
 	}
 
-	private final ByteCountListener listener;
-	private final int interval;
-	private int currentBytes = 0;
-	private int nextStepBytes;
+	private final ByteCountListener mListener;
+	private final int mInterval;
+	private int mCurrentBytes = 0;
+	private int mNextStepBytes;
 
 	public ByteCountInputStream(InputStream input, ByteCountListener listener, int interval) {
 		super(input);
@@ -32,9 +32,9 @@ public class ByteCountInputStream extends FilterInputStream {
 		if (interval <= 0) {
 			throw new IllegalArgumentException("interval must be at least 1 byte");
 		}
-		this.listener = listener;
-		this.interval = interval;
-		nextStepBytes = interval;
+		this.mListener = listener;
+		this.mInterval = interval;
+		mNextStepBytes = interval;
 		listener.onNewCount(0);
 	}
 
@@ -76,12 +76,12 @@ public class ByteCountInputStream extends FilterInputStream {
 
 	private void addBytes(int count) {
 		if (count != -1) {
-			currentBytes += count;
-			if (currentBytes < nextStepBytes) {
+			mCurrentBytes += count;
+			if (mCurrentBytes < mNextStepBytes) {
 				return;
 			}
-			nextStepBytes = currentBytes + interval;
+			mNextStepBytes = mCurrentBytes + mInterval;
 		}
-		listener.onNewCount(currentBytes);
+		mListener.onNewCount(mCurrentBytes);
 	}
 }

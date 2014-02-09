@@ -7,7 +7,10 @@ import java.util.Locale;
  * 
  * @author Christophe Beyls
  */
-public class StringUtils {
+public final class StringUtils {
+	
+	private StringUtils() {}
+	
 	/**
 	 * Mirror of the unicode table from 00c0 to 017f without diacritics.
 	 */
@@ -31,7 +34,7 @@ public class StringUtils {
 		for (int i = 0; i < length; i++) {
 			c = source.charAt(i);
 			if (c >= '\u00c0' && c <= '\u017f') {
-				c = tab00c0.charAt((int) c - '\u00c0');
+				c = tab00c0.charAt(c - '\u00c0');
 			}
 			result[i] = c;
 		}

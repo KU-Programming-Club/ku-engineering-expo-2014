@@ -25,14 +25,14 @@ import be.digitalia.fosdem.utils.DateUtils;
  */
 public class EventsParser extends IterableAbstractPullParser<Event> {
 
-	private final DateFormat DATE_FORMAT = DateUtils.withBelgiumTimeZone(new SimpleDateFormat("yyyy-MM-dd", Locale.US));
+	private static final DateFormat DATE_FORMAT = DateUtils.withBelgiumTimeZone(new SimpleDateFormat("yyyy-MM-dd", Locale.US));
 
 	// Calendar used to compute the events time, according to Belgium timezone
-	private final Calendar calendar = Calendar.getInstance(DateUtils.getBelgiumTimeZone(), Locale.US);
+	private final Calendar mCalendar = Calendar.getInstance(DateUtils.getBelgiumTimeZone(), Locale.US);
 
-	private Day currentDay;
-	private String currentRoom;
-	private Track currentTrack;
+	private Day mCurrentDay;
+	private String mCurrentRoom;
+	private Track mCurrentTrack;
 
 	/**
 	 * Returns the hours portion of a time string in the "hh:mm" format, without allocating objects.
@@ -73,16 +73,16 @@ public class EventsParser extends IterableAbstractPullParser<Event> {
 				String name = parser.getName();
 
 				if ("day".equals(name)) {
-					currentDay = new Day();
-					currentDay.setIndex(Integer.parseInt(parser.getAttributeValue(null, "index")));
-					currentDay.setDate(DATE_FORMAT.parse(parser.getAttributeValue(null, "date")));
+					mCurrentDay = new Day();
+					mCurrentDay.setIndex(Integer.parseInt(parser.getAttributeValue(null, "index")));
+					mCurrentDay.setDate(DATE_FORMAT.parse(parser.getAttributeValue(null, "date")));
 				} else if ("room".equals(name)) {
-					currentRoom = parser.getAttributeValue(null, "name");
+					mCurrentRoom = parser.getAttributeValue(null, "name");
 				} else if ("event".equals(name)) {
 					Event event = new Event();
 					event.setId(Long.parseLong(parser.getAttributeValue(null, "id")));
-					event.setDay(currentDay);
-					event.setRoomName(currentRoom);
+					event.setDay(mCurrentDay);
+					event.setRoomName(mCurrentRoom);
 					// Initialize empty lists
 					List<Person> persons = new ArrayList<Person>();
 					event.setPersons(persons);
@@ -100,10 +100,10 @@ public class EventsParser extends IterableAbstractPullParser<Event> {
 							if ("start".equals(name)) {
 								String time = parser.nextText();
 								if (!TextUtils.isEmpty(time)) {
-									calendar.setTime(currentDay.getDate());
-									calendar.set(Calendar.HOUR_OF_DAY, getHours(time));
-									calendar.set(Calendar.MINUTE, getMinutes(time));
-									event.setStartTime(calendar.getTime());
+									mCalendar.setTime(mCurrentDay.getDate());
+									mCalendar.set(Calendar.HOUR_OF_DAY, getHours(time));
+									mCalendar.set(Calendar.MINUTE, getMinutes(time));
+									event.setStartTime(mCalendar.getTime());
 								}
 							} else if ("duration".equals(name)) {
 								duration = parser.nextText();
@@ -152,15 +152,15 @@ public class EventsParser extends IterableAbstractPullParser<Event> {
 					}
 
 					if ((event.getStartTime() != null) && !TextUtils.isEmpty(duration)) {
-						calendar.add(Calendar.HOUR_OF_DAY, getHours(duration));
-						calendar.add(Calendar.MINUTE, getMinutes(duration));
-						event.setEndTime(calendar.getTime());
+						mCalendar.add(Calendar.HOUR_OF_DAY, getHours(duration));
+						mCalendar.add(Calendar.MINUTE, getMinutes(duration));
+						event.setEndTime(mCalendar.getTime());
 					}
 
-					if ((currentTrack == null) || !trackName.equals(currentTrack.getName()) || (trackType != currentTrack.getType())) {
-						currentTrack = new Track(trackName, trackType);
+					if ((mCurrentTrack == null) || !trackName.equals(mCurrentTrack.getName()) || (trackType != mCurrentTrack.getType())) {
+						mCurrentTrack = new Track(trackName, trackType);
 					}
-					event.setTrack(currentTrack);
+					event.setTrack(mCurrentTrack);
 
 					return event;
 				} else {

@@ -20,7 +20,7 @@ import be.digitalia.fosdem.db.DatabaseManager;
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class BookmarksMultiChoiceModeListener implements MultiChoiceModeListener {
 
-	private AbsListView listView;
+	private AbsListView mListView;
 
 	public static void register(AbsListView listView) {
 		listView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE_MODAL);
@@ -29,7 +29,7 @@ public class BookmarksMultiChoiceModeListener implements MultiChoiceModeListener
 	}
 
 	private BookmarksMultiChoiceModeListener(AbsListView listView) {
-		this.listView = listView;
+		mListView = listView;
 	}
 
 	@Override
@@ -39,8 +39,8 @@ public class BookmarksMultiChoiceModeListener implements MultiChoiceModeListener
 	}
 
 	private void updateSelectedCountDisplay(ActionMode mode) {
-		int count = listView.getCheckedItemCount();
-		mode.setTitle(listView.getContext().getResources().getQuantityString(R.plurals.selected, count, count));
+		int count = mListView.getCheckedItemCount();
+		mode.setTitle(mListView.getContext().getResources().getQuantityString(R.plurals.selected, count, count));
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class BookmarksMultiChoiceModeListener implements MultiChoiceModeListener
 		switch (item.getItemId()) {
 		case R.id.delete:
 			// Remove multiple bookmarks at once
-			new RemoveBookmarksAsyncTask().execute(listView.getCheckedItemIds());
+			new RemoveBookmarksAsyncTask().execute(mListView.getCheckedItemIds());
 			mode.finish();
 			return true;
 		}

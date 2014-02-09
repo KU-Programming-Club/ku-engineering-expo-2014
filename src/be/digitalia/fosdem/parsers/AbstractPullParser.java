@@ -13,44 +13,44 @@ import org.xmlpull.v1.XmlPullParserFactory;
  * @author Christophe Beyls
  */
 public abstract class AbstractPullParser<T> implements Parser<T> {
-	private static XmlPullParserFactory factory;
+	private static XmlPullParserFactory sFactory;
 
 	private static XmlPullParserFactory getFactory() throws XmlPullParserException {
-		if (factory == null) {
-			factory = XmlPullParserFactory.newInstance();
+		if (sFactory == null) {
+			sFactory = XmlPullParserFactory.newInstance();
 		}
 
-		return factory;
+		return sFactory;
 	}
 
-	private XmlPullParser m_parser;
+	private XmlPullParser mParser;
 
 	/*
 	 * Checks if the current event is the end of the document
 	 */
 	protected boolean isEndDocument() throws XmlPullParserException {
-		return (m_parser.getEventType() == XmlPullParser.END_DOCUMENT);
+		return (mParser.getEventType() == XmlPullParser.END_DOCUMENT);
 	}
 
 	/*
 	 * Checks if the current event is a start tag
 	 */
 	protected boolean isStartTag() throws XmlPullParserException {
-		return (m_parser.getEventType() == XmlPullParser.START_TAG);
+		return (mParser.getEventType() == XmlPullParser.START_TAG);
 	}
 
 	/*
 	 * Checks if the current event is a start tag with the specified local name
 	 */
 	protected boolean isStartTag(String name) throws XmlPullParserException {
-		return (m_parser.getEventType() == XmlPullParser.START_TAG) && name.equals(m_parser.getName());
+		return (mParser.getEventType() == XmlPullParser.START_TAG) && name.equals(mParser.getName());
 	}
 
 	/*
 	 * Go to the next event and check if the current event is an end tag with the specified local name
 	 */
 	protected boolean isNextEndTag(String name) throws XmlPullParserException, IOException {
-		return (m_parser.next() == XmlPullParser.END_TAG) && name.equals(m_parser.getName());
+		return (mParser.next() == XmlPullParser.END_TAG) && name.equals(mParser.getName());
 	}
 
 	/*
@@ -58,17 +58,18 @@ public abstract class AbstractPullParser<T> implements Parser<T> {
 	 */
 	protected void skipToEndTag() throws XmlPullParserException, IOException {
 		int type;
-		while ((type = m_parser.next()) != XmlPullParser.END_TAG) {
+		while ((type = mParser.next()) != XmlPullParser.END_TAG) {
 			if (type == XmlPullParser.START_TAG)
 				skipToEndTag();
 		}
 	}
 
+	@Override
 	public T parse(InputStream is) throws Exception {
-		m_parser = getFactory().newPullParser();
-		m_parser.setInput(is, null);
+		mParser = getFactory().newPullParser();
+		mParser.setInput(is, null);
 
-		return parse(m_parser);
+		return parse(mParser);
 	}
 
 	protected abstract T parse(XmlPullParser parser) throws Exception;

@@ -28,8 +28,8 @@ public class PersonInfoListFragment extends ListFragment implements LoaderCallba
 	private static final int PERSON_EVENTS_LOADER_ID = 1;
 	private static final String ARG_PERSON = "person";
 
-	private Person person;
-	private EventsAdapter adapter;
+	private Person mPerson;
+	private EventsAdapter mAdapter;
 
 	public static PersonInfoListFragment newInstance(Person person) {
 		PersonInfoListFragment f = new PersonInfoListFragment();
@@ -43,8 +43,8 @@ public class PersonInfoListFragment extends ListFragment implements LoaderCallba
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		adapter = new EventsAdapter(getActivity());
-		person = getArguments().getParcelable(ARG_PERSON);
+		mAdapter = new EventsAdapter(getActivity());
+		mPerson = getArguments().getParcelable(ARG_PERSON);
 		setHasOptionsMenu(true);
 	}
 
@@ -57,7 +57,7 @@ public class PersonInfoListFragment extends ListFragment implements LoaderCallba
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.more_info:
-			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(person.getUrl()));
+			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mPerson.getUrl()));
 			startActivity(intent);
 			return true;
 		}
@@ -74,10 +74,10 @@ public class PersonInfoListFragment extends ListFragment implements LoaderCallba
 		getListView().setPadding(contentMargin, contentMargin, contentMargin, contentMargin);
 
 		View headerView = LayoutInflater.from(getActivity()).inflate(R.layout.header_person_info, null);
-		((TextView) headerView.findViewById(R.id.title)).setText(person.getName());
+		((TextView) headerView.findViewById(R.id.title)).setText(mPerson.getName());
 		getListView().addHeaderView(headerView, null, false);
 
-		setListAdapter(adapter);
+		setListAdapter(mAdapter);
 		setListShown(false);
 
 		getLoaderManager().initLoader(PERSON_EVENTS_LOADER_ID, null, this);
@@ -100,13 +100,13 @@ public class PersonInfoListFragment extends ListFragment implements LoaderCallba
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-		return new PersonEventsLoader(getActivity(), person);
+		return new PersonEventsLoader(getActivity(), mPerson);
 	}
 
 	@Override
 	public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 		if (data != null) {
-			adapter.swapCursor(data);
+			mAdapter.swapCursor(data);
 		}
 
 		// The list should now be shown.
@@ -119,12 +119,12 @@ public class PersonInfoListFragment extends ListFragment implements LoaderCallba
 
 	@Override
 	public void onLoaderReset(Loader<Cursor> loader) {
-		adapter.swapCursor(null);
+		mAdapter.swapCursor(null);
 	}
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		Event event = adapter.getItem(position - 1);
+		Event event = mAdapter.getItem(position - 1);
 		Intent intent = new Intent(getActivity(), EventDetailsActivity.class).putExtra(EventDetailsActivity.EXTRA_EVENT, event);
 		startActivity(intent);
 	}

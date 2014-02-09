@@ -54,6 +54,6 @@ public abstract class GlobalCacheLoader<T> extends AsyncTaskLoader<T> {
 			super.deliverResult(data);
 		}
 	}
-	
+
 	protected abstract T getCachedResult();
 }

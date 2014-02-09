@@ -28,7 +28,7 @@ public class FosdemApi {
 
 	public static final int RESULT_ERROR = -1;
 
-	private static final Lock scheduleLock = new ReentrantLock();
+	private static final Lock sScheduleLock = new ReentrantLock();
 
 	/**
 	 * Download & store the schedule to the database. Only one thread at a time will perform the actual action, the other ones will return immediately. The
@@ -36,7 +36,7 @@ public class FosdemApi {
 	 * 
 	 */
 	public static void downloadSchedule(Context context) {
-		if (!scheduleLock.tryLock()) {
+		if (!sScheduleLock.tryLock()) {
 			// If a download is already in progress, return immediately
 			return;
 		}
@@ -57,7 +57,7 @@ public class FosdemApi {
 			e.printStackTrace();
 		} finally {
 			LocalBroadcastManager.getInstance(context).sendBroadcast(new Intent(ACTION_DOWNLOAD_SCHEDULE_RESULT).putExtra(EXTRA_RESULT, result));
-			scheduleLock.unlock();
+			sScheduleLock.unlock();
 		}
 	}
 }

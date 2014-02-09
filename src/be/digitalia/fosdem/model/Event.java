@@ -11,54 +11,54 @@ import be.digitalia.fosdem.db.DatabaseManager;
 
 public class Event implements Parcelable {
 
-	private long id;
-	private Day day;
-	private Date startTime;
-	private Date endTime;
-	private String roomName;
-	private String slug;
-	private String title;
-	private String subTitle;
-	private Track track;
-	private String abstractText;
-	private String description;
-	private String personsSummary;
-	private List<Person> persons; // Optional
-	private List<Link> links; // Optional
+	private long mId;
+	private Day mDay;
+	private Date mStartTime;
+	private Date mEndTime;
+	private String mRoomName;
+	private String mSlug;
+	private String mTitle;
+	private String mSubTitle;
+	private Track mTrack;
+	private String mAbstractText;
+	private String mDescription;
+	private String mPersonsSummary;
+	private List<Person> mPersons; // Optional
+	private List<Link> mLinks; // Optional
 
 	public Event() {
 	}
 
 	public long getId() {
-		return id;
+		return mId;
 	}
 
 	public void setId(long id) {
-		this.id = id;
+		mId = id;
 	}
 
 	public Day getDay() {
-		return day;
+		return mDay;
 	}
 
 	public void setDay(Day day) {
-		this.day = day;
+		mDay = day;
 	}
 
 	public Date getStartTime() {
-		return startTime;
+		return mStartTime;
 	}
 
 	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
+		mStartTime = startTime;
 	}
 
 	public Date getEndTime() {
-		return endTime;
+		return mEndTime;
 	}
 
 	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
+		mEndTime = endTime;
 	}
 
 	/**
@@ -66,110 +66,110 @@ public class Event implements Parcelable {
 	 * @return The event duration in minutes
 	 */
 	public int getDuration() {
-		if ((startTime == null) || (endTime == null)) {
+		if ((mStartTime == null) || (mEndTime == null)) {
 			return 0;
 		}
-		return (int) ((this.endTime.getTime() - this.startTime.getTime()) / 1000L);
+		return (int) ((mEndTime.getTime() - mStartTime.getTime()) / 1000L);
 	}
 
 	public String getRoomName() {
-		return (roomName == null) ? "" : roomName;
+		return (mRoomName == null) ? "" : mRoomName;
 	}
 
 	public void setRoomName(String roomName) {
-		this.roomName = roomName;
+		mRoomName = roomName;
 	}
 
 	public String getSlug() {
-		return slug;
+		return mSlug;
 	}
 
 	public void setSlug(String slug) {
-		this.slug = slug;
+		mSlug = slug;
 	}
 
 	public String getUrl() {
-		return FosdemUrls.getEvent(slug, DatabaseManager.getInstance().getYear());
+		return FosdemUrls.getEvent(mSlug, DatabaseManager.getInstance().getYear());
 	}
 
 	public String getTitle() {
-		return title;
+		return mTitle;
 	}
 
 	public void setTitle(String title) {
-		this.title = title;
+		mTitle = title;
 	}
 
 	public String getSubTitle() {
-		return subTitle;
+		return mSubTitle;
 	}
 
 	public void setSubTitle(String subTitle) {
-		this.subTitle = subTitle;
+		mSubTitle = subTitle;
 	}
 
 	public Track getTrack() {
-		return track;
+		return mTrack;
 	}
 
 	public void setTrack(Track track) {
-		this.track = track;
+		mTrack = track;
 	}
 
 	public String getAbstractText() {
-		return abstractText;
+		return mAbstractText;
 	}
 
 	public void setAbstractText(String abstractText) {
-		this.abstractText = abstractText;
+		mAbstractText = abstractText;
 	}
 
 	public String getDescription() {
-		return description;
+		return mDescription;
 	}
 
 	public void setDescription(String description) {
-		this.description = description;
+		mDescription = description;
 	}
 
 	public String getPersonsSummary() {
-		if (personsSummary != null) {
-			return personsSummary;
+		if (mPersonsSummary != null) {
+			return mPersonsSummary;
 		}
-		if (persons != null) {
-			return TextUtils.join(", ", persons);
+		if (mPersons != null) {
+			return TextUtils.join(", ", mPersons);
 		}
 		return "";
 	}
 
 	public void setPersonsSummary(String personsSummary) {
-		this.personsSummary = personsSummary;
+		mPersonsSummary = personsSummary;
 	}
 
 	public List<Person> getPersons() {
-		return persons;
+		return mPersons;
 	}
 
 	public void setPersons(List<Person> persons) {
-		this.persons = persons;
+		mPersons = persons;
 	}
 
 	public List<Link> getLinks() {
-		return links;
+		return mLinks;
 	}
 
 	public void setLinks(List<Link> links) {
-		this.links = links;
+		mLinks = links;
 	}
 
 	@Override
 	public String toString() {
-		return title;
+		return mTitle;
 	}
 
 	@Override
 	public int hashCode() {
-		return (int) (id ^ (id >>> 32));
+		return (int) (mId ^ (mId >>> 32));
 	}
 
 	@Override
@@ -179,7 +179,7 @@ public class Event implements Parcelable {
 		if (obj == null)
 			return false;
 		Event other = (Event) obj;
-		return id == other.id;
+		return mId == other.mId;
 	}
 
 	@Override
@@ -189,66 +189,68 @@ public class Event implements Parcelable {
 
 	@Override
 	public void writeToParcel(Parcel out, int flags) {
-		out.writeLong(id);
-		day.writeToParcel(out, flags);
-		out.writeLong((startTime == null) ? 0L : startTime.getTime());
-		out.writeLong((endTime == null) ? 0L : endTime.getTime());
-		out.writeString(roomName);
-		out.writeString(slug);
-		out.writeString(title);
-		out.writeString(subTitle);
-		track.writeToParcel(out, flags);
-		out.writeString(abstractText);
-		out.writeString(description);
-		out.writeString(personsSummary);
-		if (persons == null) {
+		out.writeLong(mId);
+		mDay.writeToParcel(out, flags);
+		out.writeLong((mStartTime == null) ? 0L : mStartTime.getTime());
+		out.writeLong((mEndTime == null) ? 0L : mEndTime.getTime());
+		out.writeString(mRoomName);
+		out.writeString(mSlug);
+		out.writeString(mTitle);
+		out.writeString(mSubTitle);
+		mTrack.writeToParcel(out, flags);
+		out.writeString(mAbstractText);
+		out.writeString(mDescription);
+		out.writeString(mPersonsSummary);
+		if (mPersons == null) {
 			out.writeInt(0);
 		} else {
 			out.writeInt(1);
-			out.writeTypedList(persons);
+			out.writeTypedList(mPersons);
 		}
-		if (links == null) {
+		if (mLinks == null) {
 			out.writeInt(0);
 		} else {
 			out.writeInt(1);
-			out.writeTypedList(links);
+			out.writeTypedList(mLinks);
 		}
 	}
 
 	public static final Parcelable.Creator<Event> CREATOR = new Parcelable.Creator<Event>() {
+		@Override
 		public Event createFromParcel(Parcel in) {
 			return new Event(in);
 		}
 
+		@Override
 		public Event[] newArray(int size) {
 			return new Event[size];
 		}
 	};
 
 	private Event(Parcel in) {
-		id = in.readLong();
-		day = Day.CREATOR.createFromParcel(in);
+		mId = in.readLong();
+		mDay = Day.CREATOR.createFromParcel(in);
 		long time = in.readLong();
 		if (time != 0L) {
-			startTime = new Date(time);
+			mStartTime = new Date(time);
 		}
 		time = in.readLong();
 		if (time != 0L) {
-			endTime = new Date(time);
+			mEndTime = new Date(time);
 		}
-		roomName = in.readString();
-		slug = in.readString();
-		title = in.readString();
-		subTitle = in.readString();
-		track = Track.CREATOR.createFromParcel(in);
-		abstractText = in.readString();
-		description = in.readString();
-		personsSummary = in.readString();
+		mRoomName = in.readString();
+		mSlug = in.readString();
+		mTitle = in.readString();
+		mSubTitle = in.readString();
+		mTrack = Track.CREATOR.createFromParcel(in);
+		mAbstractText = in.readString();
+		mDescription = in.readString();
+		mPersonsSummary = in.readString();
 		if (in.readInt() == 1) {
-			persons = in.createTypedArrayList(Person.CREATOR);
+			mPersons = in.createTypedArrayList(Person.CREATOR);
 		}
 		if (in.readInt() == 1) {
-			links = in.createTypedArrayList(Link.CREATOR);
+			mLinks = in.createTypedArrayList(Link.CREATOR);
 		}
 	}
 }

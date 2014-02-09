@@ -22,8 +22,8 @@ public class SearchResultActivity extends ActionBarActivity {
 
 	private static final String STATE_CURRENT_QUERY = "current_query";
 
-	private String currentQuery;
-	private SearchView searchView;
+	private String mCurrentQuery;
+	private SearchView mSearchView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +37,14 @@ public class SearchResultActivity extends ActionBarActivity {
 		if (savedInstanceState == null) {
 			handleIntent(getIntent(), false);
 		} else {
-			currentQuery = savedInstanceState.getString(STATE_CURRENT_QUERY);
+			mCurrentQuery = savedInstanceState.getString(STATE_CURRENT_QUERY);
 		}
 	}
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		outState.putString(STATE_CURRENT_QUERY, currentQuery);
+		outState.putString(STATE_CURRENT_QUERY, mCurrentQuery);
 	}
 
 	@Override
@@ -66,14 +66,14 @@ public class SearchResultActivity extends ActionBarActivity {
 				return;
 			}
 
-			currentQuery = query;
-			if (searchView != null) {
+			mCurrentQuery = query;
+			if (mSearchView != null) {
 				// Force loosing the focus to prevent the suggestions from appearing
-				searchView.clearFocus();
-				searchView.setFocusable(false);
-				searchView.setFocusableInTouchMode(false);
+				mSearchView.clearFocus();
+				mSearchView.setFocusable(false);
+				mSearchView.setFocusableInTouchMode(false);
 
-				searchView.setQuery(query, false);
+				mSearchView.setQuery(query, false);
 			}
 
 			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.FROYO) {
@@ -104,14 +104,14 @@ public class SearchResultActivity extends ActionBarActivity {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
 			// Associate searchable configuration with the SearchView
 			SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-			searchView = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
-			searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-			searchView.setIconifiedByDefault(false); // Always show the search view
-			searchView.setQuery(currentQuery, false);
+			mSearchView = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
+			mSearchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+			mSearchView.setIconifiedByDefault(false); // Always show the search view
+			mSearchView.setQuery(mCurrentQuery, false);
 		} else {
 			// Legacy search mode for Eclair
 			MenuItemCompat.setActionView(searchMenuItem, null);
-			getSupportActionBar().setSubtitle(currentQuery);
+			getSupportActionBar().setSubtitle(mCurrentQuery);
 		}
 		return true;
 	}

@@ -97,6 +97,7 @@ public abstract class PreferenceFragment extends Fragment {
 		}
 	}
 
+	@Override
 	public void onStop() {
 		super.onStop();
 		try {
@@ -107,12 +108,14 @@ public abstract class PreferenceFragment extends Fragment {
 		}
 	}
 
+	@Override
 	public void onDestroyView() {
 		mList = null;
 		mHandler.removeCallbacksAndMessages(null);
 		super.onDestroyView();
 	}
 
+	@Override
 	public void onDestroy() {
 		super.onDestroy();
 		try {
@@ -123,6 +126,7 @@ public abstract class PreferenceFragment extends Fragment {
 		}
 	}
 
+	@Override
 	public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 		PreferenceScreen preferenceScreen = getPreferenceScreen();
@@ -133,6 +137,7 @@ public abstract class PreferenceFragment extends Fragment {
 		}
 	}
 
+	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		try {

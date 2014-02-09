@@ -20,6 +20,7 @@ import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.method.MovementMethod;
@@ -64,12 +65,12 @@ public class EventDetailsFragment extends Fragment {
 
 	private static final DateFormat TIME_DATE_FORMAT = DateUtils.getTimeDateFormat();
 
-	private Event event;
-	private int personsCount = 1;
-	private Boolean isBookmarked;
-	private ViewHolder holder;
+	private Event mEvent;
+	private int mPersonsCount = 1;
+	private Boolean mIsBookmarked;
+	private ViewHolder mHolder;
 
-	private MenuItem bookmarkMenuItem;
+	private MenuItem mBookmarkMenuItem;
 
 	public static EventDetailsFragment newInstance(Event event) {
 		EventDetailsFragment f = new EventDetailsFragment();
@@ -82,24 +83,24 @@ public class EventDetailsFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		event = getArguments().getParcelable(ARG_EVENT);
+		mEvent = getArguments().getParcelable(ARG_EVENT);
 		setHasOptionsMenu(true);
 	}
 
 	public Event getEvent() {
-		return event;
+		return mEvent;
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_event_details, container, false);
 
-		holder = new ViewHolder();
-		holder.inflater = inflater;
+		mHolder = new ViewHolder();
+		mHolder.inflater = inflater;
 
-		((TextView) view.findViewById(R.id.title)).setText(event.getTitle());
+		((TextView) view.findViewById(R.id.title)).setText(mEvent.getTitle());
 		TextView textView = (TextView) view.findViewById(R.id.subtitle);
-		String text = event.getSubTitle();
+		String text = mEvent.getSubTitle();
 		if (TextUtils.isEmpty(text)) {
 			textView.setVisibility(View.GONE);
 		} else {
@@ -109,29 +110,29 @@ public class EventDetailsFragment extends Fragment {
 		MovementMethod linkMovementMethod = LinkMovementMethod.getInstance();
 
 		// Set the persons summary text first; replace it with the clickable text when the loader completes
-		holder.personsTextView = (TextView) view.findViewById(R.id.persons);
-		String personsSummary = event.getPersonsSummary();
+		mHolder.personsTextView = (TextView) view.findViewById(R.id.persons);
+		String personsSummary = mEvent.getPersonsSummary();
 		if (TextUtils.isEmpty(personsSummary)) {
-			holder.personsTextView.setVisibility(View.GONE);
+			mHolder.personsTextView.setVisibility(View.GONE);
 		} else {
-			holder.personsTextView.setText(personsSummary);
-			holder.personsTextView.setMovementMethod(linkMovementMethod);
-			holder.personsTextView.setVisibility(View.VISIBLE);
+			mHolder.personsTextView.setText(personsSummary);
+			mHolder.personsTextView.setMovementMethod(linkMovementMethod);
+			mHolder.personsTextView.setVisibility(View.VISIBLE);
 		}
 
-		((TextView) view.findViewById(R.id.track)).setText(event.getTrack().getName());
-		Date startTime = event.getStartTime();
-		Date endTime = event.getEndTime();
-		text = String.format("%1$s, %2$s ― %3$s", event.getDay().toString(), (startTime != null) ? TIME_DATE_FORMAT.format(startTime) : "?",
+		((TextView) view.findViewById(R.id.track)).setText(mEvent.getTrack().getName());
+		Date startTime = mEvent.getStartTime();
+		Date endTime = mEvent.getEndTime();
+		text = String.format("%1$s, %2$s ― %3$s", mEvent.getDay().toString(), (startTime != null) ? TIME_DATE_FORMAT.format(startTime) : "?",
 				(endTime != null) ? TIME_DATE_FORMAT.format(endTime) : "?");
 		((TextView) view.findViewById(R.id.time)).setText(text);
-		final String roomName = event.getRoomName();
+		final String roomName = mEvent.getRoomName();
 		TextView roomTextView = (TextView) view.findViewById(R.id.room);
 		Spannable roomText = new SpannableString(String.format("%1$s (Building %2$s)", roomName, Building.fromRoomName(roomName)));
 		final int roomImageResId = getResources().getIdentifier(StringUtils.roomNameToResourceName(roomName), "drawable", getActivity().getPackageName());
 		// If the room image exists, make the room text clickable to display it
 		if (roomImageResId != 0) {
-			roomText.setSpan(new UnderlineSpan(), 0, roomText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+			roomText.setSpan(new UnderlineSpan(), 0, roomText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 			roomTextView.setOnClickListener(new View.OnClickListener() {
 
 				@Override
@@ -144,7 +145,7 @@ public class EventDetailsFragment extends Fragment {
 		roomTextView.setText(roomText);
 
 		textView = (TextView) view.findViewById(R.id.abstract_text);
-		text = event.getAbstractText();
+		text = mEvent.getAbstractText();
 		if (TextUtils.isEmpty(text)) {
 			textView.setVisibility(View.GONE);
 		} else {
@@ -152,7 +153,7 @@ public class EventDetailsFragment extends Fragment {
 			textView.setMovementMethod(linkMovementMethod);
 		}
 		textView = (TextView) view.findViewById(R.id.description);
-		text = event.getDescription();
+		text = mEvent.getDescription();
 		if (TextUtils.isEmpty(text)) {
 			textView.setVisibility(View.GONE);
 		} else {
@@ -160,14 +161,14 @@ public class EventDetailsFragment extends Fragment {
 			textView.setMovementMethod(linkMovementMethod);
 		}
 
-		holder.linksContainer = (ViewGroup) view.findViewById(R.id.links_container);
+		mHolder.linksContainer = (ViewGroup) view.findViewById(R.id.links_container);
 		return view;
 	}
 
 	@Override
 	public void onDestroyView() {
 		super.onDestroyView();
-		holder = null;
+		mHolder = null;
 	}
 
 	@Override
@@ -183,28 +184,28 @@ public class EventDetailsFragment extends Fragment {
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		inflater.inflate(R.menu.event, menu);
 		menu.findItem(R.id.share).setIntent(getShareChooserIntent());
-		bookmarkMenuItem = menu.findItem(R.id.bookmark);
+		mBookmarkMenuItem = menu.findItem(R.id.bookmark);
 		updateOptionsMenu();
 	}
 
 	private Intent getShareChooserIntent() {
-		return ShareCompat.IntentBuilder.from(getActivity()).setSubject(String.format("%1$s (FOSDEM)", event.getTitle())).setType("text/plain")
-				.setText(String.format("%1$s %2$s #FOSDEM", event.getTitle(), event.getUrl())).setChooserTitle(R.string.share).createChooserIntent();
+		return ShareCompat.IntentBuilder.from(getActivity()).setSubject(String.format("%1$s (FOSDEM)", mEvent.getTitle())).setType("text/plain")
+				.setText(String.format("%1$s %2$s #FOSDEM", mEvent.getTitle(), mEvent.getUrl())).setChooserTitle(R.string.share).createChooserIntent();
 	}
 
 	private void updateOptionsMenu() {
-		if (bookmarkMenuItem != null) {
-			if (isBookmarked == null) {
-				bookmarkMenuItem.setEnabled(false);
+		if (mBookmarkMenuItem != null) {
+			if (mIsBookmarked == null) {
+				mBookmarkMenuItem.setEnabled(false);
 			} else {
-				bookmarkMenuItem.setEnabled(true);
+				mBookmarkMenuItem.setEnabled(true);
 
-				if (isBookmarked) {
-					bookmarkMenuItem.setTitle(R.string.remove_bookmark);
-					bookmarkMenuItem.setIcon(R.drawable.ic_action_important);
+				if (mIsBookmarked) {
+					mBookmarkMenuItem.setTitle(R.string.remove_bookmark);
+					mBookmarkMenuItem.setIcon(R.drawable.ic_action_important);
 				} else {
-					bookmarkMenuItem.setTitle(R.string.add_bookmark);
-					bookmarkMenuItem.setIcon(R.drawable.ic_action_not_important);
+					mBookmarkMenuItem.setTitle(R.string.add_bookmark);
+					mBookmarkMenuItem.setIcon(R.drawable.ic_action_not_important);
 				}
 			}
 		}
@@ -213,15 +214,15 @@ public class EventDetailsFragment extends Fragment {
 	@Override
 	public void onDestroyOptionsMenu() {
 		super.onDestroyOptionsMenu();
-		bookmarkMenuItem = null;
+		mBookmarkMenuItem = null;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.bookmark:
-			if (isBookmarked != null) {
-				new UpdateBookmarkAsyncTask(event).execute(isBookmarked);
+			if (mIsBookmarked != null) {
+				new UpdateBookmarkAsyncTask(mEvent).execute(mIsBookmarked);
 			}
 			return true;
 		case R.id.add_to_agenda:
@@ -254,25 +255,25 @@ public class EventDetailsFragment extends Fragment {
 	private void addToAgenda() {
 		Intent intent = new Intent(Intent.ACTION_EDIT);
 		intent.setType("vnd.android.cursor.item/event");
-		intent.putExtra(CalendarContract.Events.TITLE, event.getTitle());
-		intent.putExtra(CalendarContract.Events.EVENT_LOCATION, "ULB - " + event.getRoomName());
-		String description = event.getAbstractText();
+		intent.putExtra(CalendarContract.Events.TITLE, mEvent.getTitle());
+		intent.putExtra(CalendarContract.Events.EVENT_LOCATION, "ULB - " + mEvent.getRoomName());
+		String description = mEvent.getAbstractText();
 		if (TextUtils.isEmpty(description)) {
-			description = event.getDescription();
+			description = mEvent.getDescription();
 		}
 		// Strip HTML
 		description = StringUtils.trimEnd(Html.fromHtml(description)).toString();
 		// Add speaker info if available
-		if (personsCount > 0) {
-			description = String.format("%1$s: %2$s\n\n%3$s", getResources().getQuantityString(R.plurals.speakers, personsCount), event.getPersonsSummary(),
+		if (mPersonsCount > 0) {
+			description = String.format("%1$s: %2$s\n\n%3$s", getResources().getQuantityString(R.plurals.speakers, mPersonsCount), mEvent.getPersonsSummary(),
 					description);
 		}
 		intent.putExtra(CalendarContract.Events.DESCRIPTION, description);
-		Date time = event.getStartTime();
+		Date time = mEvent.getStartTime();
 		if (time != null) {
 			intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, time.getTime());
 		}
-		time = event.getEndTime();
+		time = mEvent.getEndTime();
 		if (time != null) {
 			intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, time.getTime());
 		}
@@ -283,12 +284,12 @@ public class EventDetailsFragment extends Fragment {
 
 		@Override
 		public Loader<Boolean> onCreateLoader(int id, Bundle args) {
-			return new BookmarkStatusLoader(getActivity(), event);
+			return new BookmarkStatusLoader(getActivity(), mEvent);
 		}
 
 		@Override
 		public void onLoadFinished(Loader<Boolean> loader, Boolean data) {
-			isBookmarked = data;
+			mIsBookmarked = data;
 			updateOptionsMenu();
 		}
 
@@ -320,15 +321,15 @@ public class EventDetailsFragment extends Fragment {
 
 		@Override
 		public Loader<EventDetails> onCreateLoader(int id, Bundle args) {
-			return new EventDetailsLoader(getActivity(), event);
+			return new EventDetailsLoader(getActivity(), mEvent);
 		}
 
 		@Override
 		public void onLoadFinished(Loader<EventDetails> loader, EventDetails data) {
 			// 1. Persons
 			if (data.persons != null) {
-				personsCount = data.persons.size();
-				if (personsCount > 0) {
+				mPersonsCount = data.persons.size();
+				if (mPersonsCount > 0) {
 					// Build a list of clickable persons
 					SpannableStringBuilder sb = new SpannableStringBuilder();
 					int length = 0;
@@ -339,32 +340,32 @@ public class EventDetailsFragment extends Fragment {
 						String name = person.getName();
 						sb.append(name);
 						length = sb.length();
-						sb.setSpan(new PersonClickableSpan(person), length - name.length(), length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+						sb.setSpan(new PersonClickableSpan(person), length - name.length(), length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 					}
-					holder.personsTextView.setText(sb);
-					holder.personsTextView.setVisibility(View.VISIBLE);
+					mHolder.personsTextView.setText(sb);
+					mHolder.personsTextView.setVisibility(View.VISIBLE);
 				}
 			}
 
 			// 2. Links
 			// Keep the first 2 views in links container (titles) only
-			int linkViewCount = holder.linksContainer.getChildCount();
+			int linkViewCount = mHolder.linksContainer.getChildCount();
 			if (linkViewCount > 2) {
-				holder.linksContainer.removeViews(2, linkViewCount - 2);
+				mHolder.linksContainer.removeViews(2, linkViewCount - 2);
 			}
 			if ((data.links != null) && (data.links.size() > 0)) {
-				holder.linksContainer.setVisibility(View.VISIBLE);
+				mHolder.linksContainer.setVisibility(View.VISIBLE);
 				for (Link link : data.links) {
-					View view = holder.inflater.inflate(R.layout.item_link, holder.linksContainer, false);
+					View view = mHolder.inflater.inflate(R.layout.item_link, mHolder.linksContainer, false);
 					TextView tv = (TextView) view.findViewById(R.id.description);
 					tv.setText(link.getDescription());
 					view.setOnClickListener(new LinkClickListener(link));
-					holder.linksContainer.addView(view);
+					mHolder.linksContainer.addView(view);
 					// Add a list divider
-					holder.inflater.inflate(R.layout.list_divider, holder.linksContainer, true);
+					mHolder.inflater.inflate(R.layout.list_divider, mHolder.linksContainer, true);
 				}
 			} else {
-				holder.linksContainer.setVisibility(View.GONE);
+				mHolder.linksContainer.setVisibility(View.GONE);
 			}
 		}
 
@@ -375,31 +376,31 @@ public class EventDetailsFragment extends Fragment {
 
 	private static class PersonClickableSpan extends ClickableSpan {
 
-		private final Person person;
+		private final Person mmPerson;
 
 		public PersonClickableSpan(Person person) {
-			this.person = person;
+			mmPerson = person;
 		}
 
 		@Override
 		public void onClick(View v) {
 			Context context = v.getContext();
-			Intent intent = new Intent(context, PersonInfoActivity.class).putExtra(PersonInfoActivity.EXTRA_PERSON, person);
+			Intent intent = new Intent(context, PersonInfoActivity.class).putExtra(PersonInfoActivity.EXTRA_PERSON, mmPerson);
 			context.startActivity(intent);
 		}
 	}
 
 	private static class LinkClickListener implements View.OnClickListener {
 
-		private final Link link;
+		private final Link mmLink;
 
 		public LinkClickListener(Link link) {
-			this.link = link;
+			mmLink = link;
 		}
 
 		@Override
 		public void onClick(View v) {
-			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link.getUrl()));
+			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mmLink.getUrl()));
 			v.getContext().startActivity(intent);
 		}
 	}

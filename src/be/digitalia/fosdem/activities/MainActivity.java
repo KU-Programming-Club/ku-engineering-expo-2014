@@ -58,38 +58,38 @@ import be.digitalia.fosdem.fragments.TracksFragment;
  */
 public class MainActivity extends ActionBarActivity implements ListView.OnItemClickListener {
 
-	private enum Section {
+	private static enum Section {
 		TRACKS(TracksFragment.class, R.string.menu_tracks, R.drawable.ic_action_event, true), BOOKMARKS(BookmarksListFragment.class, R.string.menu_bookmarks,
 				R.drawable.ic_action_important, false), LIVE(LiveFragment.class, R.string.menu_live, R.drawable.ic_action_play_over_video, false), SPEAKERS(
-				PersonsListFragment.class, R.string.menu_speakers, R.drawable.ic_action_group, false), MAP(MapFragment.class, R.string.menu_map,
-				R.drawable.ic_action_map, false);
+						PersonsListFragment.class, R.string.menu_speakers, R.drawable.ic_action_group, false), MAP(MapFragment.class, R.string.menu_map,
+								R.drawable.ic_action_map, false);
 
-		private final String fragmentClassName;
-		private final int titleResId;
-		private final int iconResId;
-		private final boolean keep;
+		private final String mmFragmentClassName;
+		private final int mmTitleResId;
+		private final int mmIconResId;
+		private final boolean mmKeep;
 
 		private Section(Class<? extends Fragment> fragmentClass, int titleResId, int iconResId, boolean keep) {
-			this.fragmentClassName = fragmentClass.getName();
-			this.titleResId = titleResId;
-			this.iconResId = iconResId;
-			this.keep = keep;
+			mmFragmentClassName = fragmentClass.getName();
+			mmTitleResId = titleResId;
+			mmIconResId = iconResId;
+			mmKeep = keep;
 		}
 
 		public String getFragmentClassName() {
-			return fragmentClassName;
+			return mmFragmentClassName;
 		}
 
 		public int getTitleResId() {
-			return titleResId;
+			return mmTitleResId;
 		}
 
 		public int getIconResId() {
-			return iconResId;
+			return mmIconResId;
 		}
 
 		public boolean shouldKeep() {
-			return keep;
+			return mmKeep;
 		}
 	}
 
@@ -100,15 +100,15 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
 
 	private static final DateFormat LAST_UPDATE_DATE_FORMAT = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM, Locale.getDefault());
 
-	private Section currentSection;
+	private Section mCurrentSection;
 
-	private DrawerLayout drawerLayout;
-	private ActionBarDrawerToggle drawerToggle;
-	private View mainMenu;
-	private TextView lastUpdateTextView;
-	private MainMenuAdapter menuAdapter;
+	private DrawerLayout mDrawerLayout;
+	private ActionBarDrawerToggle mDrawerToggle;
+	private View mMainMenu;
+	private TextView mLastUpdateTextView;
+	private MainMenuAdapter mMenuAdapter;
 
-	private final BroadcastReceiver scheduleDownloadProgressReceiver = new BroadcastReceiver() {
+	private final BroadcastReceiver mScheduleDownloadProgressReceiver = new BroadcastReceiver() {
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
@@ -167,16 +167,16 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
 
 		// Setup drawer layout
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		drawerLayout.setDrawerShadow(getResources().getDrawable(R.drawable.drawer_shadow), Gravity.LEFT);
-		drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.drawable.ic_drawer, R.string.main_menu, R.string.close_menu) {
+		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		mDrawerLayout.setDrawerShadow(getResources().getDrawable(R.drawable.drawer_shadow), Gravity.LEFT);
+		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.main_menu, R.string.close_menu) {
 
 			@Override
 			public void onDrawerOpened(View drawerView) {
 				updateActionBar();
 				supportInvalidateOptionsMenu();
 				// Make keypad navigation easier
-				mainMenu.requestFocus();
+				mMainMenu.requestFocus();
 			}
 
 			@Override
@@ -185,14 +185,14 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
 				supportInvalidateOptionsMenu();
 			}
 		};
-		drawerToggle.setDrawerIndicatorEnabled(true);
-		drawerLayout.setDrawerListener(drawerToggle);
+		mDrawerToggle.setDrawerIndicatorEnabled(true);
+		mDrawerLayout.setDrawerListener(mDrawerToggle);
 		// Disable drawerLayout focus to allow trackball navigation.
 		// We handle the drawer closing on back press ourselves.
-		drawerLayout.setFocusable(false);
+		mDrawerLayout.setFocusable(false);
 
 		// Setup Main menu
-		mainMenu = findViewById(R.id.main_menu);
+		mMainMenu = findViewById(R.id.main_menu);
 		ListView menuListView = (ListView) findViewById(R.id.main_menu_list);
 		LayoutInflater inflater = LayoutInflater.from(this);
 		View menuHeaderView = inflater.inflate(R.layout.header_main_menu, null);
@@ -200,34 +200,34 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
 
 		LocalBroadcastManager.getInstance(this).registerReceiver(scheduleRefreshedReceiver, new IntentFilter(DatabaseManager.ACTION_SCHEDULE_REFRESHED));
 
-		menuAdapter = new MainMenuAdapter(inflater);
-		menuListView.setAdapter(menuAdapter);
+		mMenuAdapter = new MainMenuAdapter(inflater);
+		menuListView.setAdapter(mMenuAdapter);
 		menuListView.setOnItemClickListener(this);
 
 		// Last update date, below the menu
-		lastUpdateTextView = (TextView) findViewById(R.id.last_update);
+		mLastUpdateTextView = (TextView) findViewById(R.id.last_update);
 		updateLastUpdateTime();
 
 		// Restore current section
 		if (savedInstanceState == null) {
-			currentSection = Section.TRACKS;
-			Fragment f = Fragment.instantiate(this, currentSection.getFragmentClassName());
+			mCurrentSection = Section.TRACKS;
+			Fragment f = Fragment.instantiate(this, mCurrentSection.getFragmentClassName());
 			getSupportFragmentManager().beginTransaction().add(R.id.content, f).commit();
 		} else {
-			currentSection = Section.values()[savedInstanceState.getInt(STATE_CURRENT_SECTION)];
+			mCurrentSection = Section.values()[savedInstanceState.getInt(STATE_CURRENT_SECTION)];
 		}
 		// Ensure the current section is visible in the menu
-		menuListView.setSelection(currentSection.ordinal());
+		menuListView.setSelection(mCurrentSection.ordinal());
 		updateActionBar();
 	}
 
 	private void updateActionBar() {
-		getSupportActionBar().setTitle(drawerLayout.isDrawerOpen(mainMenu) ? R.string.app_name : currentSection.getTitleResId());
+		getSupportActionBar().setTitle(mDrawerLayout.isDrawerOpen(mMainMenu) ? R.string.app_name : mCurrentSection.getTitleResId());
 	}
 
 	private void updateLastUpdateTime() {
 		long lastUpdateTime = DatabaseManager.getInstance().getLastUpdateTime();
-		lastUpdateTextView.setText(getString(R.string.last_update,
+		mLastUpdateTextView.setText(getString(R.string.last_update,
 				(lastUpdateTime == -1L) ? getString(R.string.never) : LAST_UPDATE_DATE_FORMAT.format(new Date(lastUpdateTime))));
 	}
 
@@ -235,16 +235,16 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
 
-		if (drawerLayout.isDrawerOpen(mainMenu)) {
+		if (mDrawerLayout.isDrawerOpen(mMainMenu)) {
 			updateActionBar();
 		}
-		drawerToggle.syncState();
+		mDrawerToggle.syncState();
 	}
 
 	@Override
 	public void onBackPressed() {
-		if (drawerLayout.isDrawerOpen(mainMenu)) {
-			drawerLayout.closeDrawer(mainMenu);
+		if (mDrawerLayout.isDrawerOpen(mMainMenu)) {
+			mDrawerLayout.closeDrawer(mMainMenu);
 		} else {
 			super.onBackPressed();
 		}
@@ -253,7 +253,7 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		outState.putInt(STATE_CURRENT_SECTION, currentSection.ordinal());
+		outState.putInt(STATE_CURRENT_SECTION, mCurrentSection.ordinal());
 	}
 
 	@Override
@@ -265,7 +265,7 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
 
 		// Monitor the schedule download
 		LocalBroadcastManager lbm = LocalBroadcastManager.getInstance(this);
-		lbm.registerReceiver(scheduleDownloadProgressReceiver, new IntentFilter(FosdemApi.ACTION_DOWNLOAD_SCHEDULE_PROGRESS));
+		lbm.registerReceiver(mScheduleDownloadProgressReceiver, new IntentFilter(FosdemApi.ACTION_DOWNLOAD_SCHEDULE_PROGRESS));
 		lbm.registerReceiver(scheduleDownloadResultReceiver, new IntentFilter(FosdemApi.ACTION_DOWNLOAD_SCHEDULE_RESULT));
 
 		// Download reminder
@@ -288,7 +288,7 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
 	@Override
 	protected void onStop() {
 		LocalBroadcastManager lbm = LocalBroadcastManager.getInstance(this);
-		lbm.unregisterReceiver(scheduleDownloadProgressReceiver);
+		lbm.unregisterReceiver(mScheduleDownloadProgressReceiver);
 		lbm.unregisterReceiver(scheduleDownloadResultReceiver);
 
 		super.onStop();
@@ -349,7 +349,7 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		// Hide & disable primary (contextual) action items when the main menu is opened
-		if (drawerLayout.isDrawerOpen(mainMenu)) {
+		if (mDrawerLayout.isDrawerOpen(mMainMenu)) {
 			final int size = menu.size();
 			for (int i = 0; i < size; ++i) {
 				MenuItem item = menu.getItem(i);
@@ -365,7 +365,7 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Will close the drawer if the home button is pressed
-		if (drawerToggle.onOptionsItemSelected(item)) {
+		if (mDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		}
 
@@ -423,23 +423,23 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
 
 	private class MainMenuAdapter extends BaseAdapter {
 
-		private Section[] sections = Section.values();
-		private LayoutInflater inflater;
-		private int currentSectionBackgroundColor;
+		private Section[] mmSections = Section.values();
+		private LayoutInflater mmInflater;
+		private int mmCurrentSectionBackgroundColor;
 
 		public MainMenuAdapter(LayoutInflater inflater) {
-			this.inflater = inflater;
-			currentSectionBackgroundColor = getResources().getColor(R.color.translucent_grey);
+			mmInflater = inflater;
+			mmCurrentSectionBackgroundColor = getResources().getColor(R.color.translucent_grey);
 		}
 
 		@Override
 		public int getCount() {
-			return sections.length;
+			return mmSections.length;
 		}
 
 		@Override
 		public Section getItem(int position) {
-			return sections[position];
+			return mmSections[position];
 		}
 
 		@Override
@@ -450,7 +450,7 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			if (convertView == null) {
-				convertView = inflater.inflate(R.layout.item_main_menu, parent, false);
+				convertView = mmInflater.inflate(R.layout.item_main_menu, parent, false);
 			}
 
 			Section section = getItem(position);
@@ -459,7 +459,7 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
 			tv.setText(section.getTitleResId());
 			tv.setCompoundDrawablesWithIntrinsicBounds(section.getIconResId(), 0, 0, 0);
 			// Show highlighted background for current section
-			tv.setBackgroundColor((section == currentSection) ? currentSectionBackgroundColor : Color.TRANSPARENT);
+			tv.setBackgroundColor((section == mCurrentSection) ? mmCurrentSectionBackgroundColor : Color.TRANSPARENT);
 
 			return convertView;
 		}
@@ -468,14 +468,14 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		// Decrease position by 1 since the listView has a header view.
-		Section section = menuAdapter.getItem(position - 1);
-		if (section != currentSection) {
+		Section section = mMenuAdapter.getItem(position - 1);
+		if (section != mCurrentSection) {
 			// Switch to new section
 			FragmentManager fm = getSupportFragmentManager();
 			FragmentTransaction ft = fm.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 			Fragment f = fm.findFragmentById(R.id.content);
 			if (f != null) {
-				if (currentSection.shouldKeep()) {
+				if (mCurrentSection.shouldKeep()) {
 					ft.detach(f);
 				} else {
 					ft.remove(f);
@@ -490,11 +490,11 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
 			}
 			ft.commit();
 
-			currentSection = section;
-			menuAdapter.notifyDataSetChanged();
+			mCurrentSection = section;
+			mMenuAdapter.notifyDataSetChanged();
 		}
 
-		drawerLayout.closeDrawer(mainMenu);
+		mDrawerLayout.closeDrawer(mMainMenu);
 	}
 
 	public static class AboutDialogFragment extends DialogFragment {

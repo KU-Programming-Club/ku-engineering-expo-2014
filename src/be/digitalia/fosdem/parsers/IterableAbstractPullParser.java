@@ -14,14 +14,14 @@ public abstract class IterableAbstractPullParser<T> extends AbstractPullParser<I
 
 	private class ParserIterator implements Iterator<T> {
 
-		private XmlPullParser parser;
-		private T next = null;
+		private XmlPullParser mParser;
+		private T mNext = null;
 
 		public ParserIterator(XmlPullParser parser) {
-			this.parser = parser;
+			this.mParser = parser;
 			try {
 				if (parseHeader(parser)) {
-					next = parseNext(parser);
+					mNext = parseNext(parser);
 				}
 			} catch (Exception e) {
 				throw new RuntimeException(e);
@@ -30,19 +30,19 @@ public abstract class IterableAbstractPullParser<T> extends AbstractPullParser<I
 
 		@Override
 		public boolean hasNext() {
-			return next != null;
+			return mNext != null;
 		}
 
 		@Override
 		public T next() {
-			if (next == null) {
+			if (mNext == null) {
 				throw new NoSuchElementException();
 			}
-			T current = next;
+			T current = mNext;
 			try {
-				next = parseNext(parser);
-				if (next == null) {
-					parseFooter(parser);
+				mNext = parseNext(mParser);
+				if (mNext == null) {
+					parseFooter(mParser);
 				}
 			} catch (Exception e) {
 				throw new RuntimeException(e);

@@ -15,12 +15,12 @@ import com.astuetz.PagerSlidingTabStrip;
 
 public class LiveFragment extends Fragment {
 
-	private LivePagerAdapter livePagerAdapter;
+	private LivePagerAdapter mLivePagerAdapter;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		livePagerAdapter = new LivePagerAdapter(getChildFragmentManager(), getResources());
+		mLivePagerAdapter = new LivePagerAdapter(getChildFragmentManager(), getResources());
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public class LiveFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_live, container, false);
 
 		ViewPager pager = (ViewPager) view.findViewById(R.id.pager);
-		pager.setAdapter(livePagerAdapter);
+		pager.setAdapter(mLivePagerAdapter);
 		PagerSlidingTabStrip indicator = (PagerSlidingTabStrip) view.findViewById(R.id.indicator);
 		indicator.setViewPager(pager);
 

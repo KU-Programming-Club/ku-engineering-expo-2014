@@ -14,8 +14,9 @@ import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
-import android.text.Spannable;
+import android.support.v4.content.WakefulBroadcastReceiver;
 import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import be.digitalia.fosdem.R;
@@ -40,7 +41,7 @@ public class AlarmIntentService extends IntentService {
 	public static final String EXTRA_WITH_WAKE_LOCK = "with_wake_lock";
 	public static final String ACTION_DISABLE_ALARMS = "be.digitalia.fosdem.action.DISABLE_ALARMS";
 
-	private AlarmManager alarmManager;
+	private AlarmManager mAlarmManager;
 
 	public AlarmIntentService() {
 		super("AlarmIntentService");
@@ -53,7 +54,7 @@ public class AlarmIntentService extends IntentService {
 		// This ensures we handle all events, in order.
 		setIntentRedelivery(true);
 
-		alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+		mAlarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 	}
 
 	private PendingIntent getAlarmPendingIntent(long eventId) {
@@ -78,9 +79,9 @@ public class AlarmIntentService extends IntentService {
 					PendingIntent pi = getAlarmPendingIntent(eventId);
 					if (notificationTime < now) {
 						// Cancel pending alarms that where scheduled between now and delay, if any
-						alarmManager.cancel(pi);
+						mAlarmManager.cancel(pi);
 					} else {
-						alarmManager.set(AlarmManager.RTC_WAKEUP, notificationTime, pi);
+						mAlarmManager.set(AlarmManager.RTC_WAKEUP, notificationTime, pi);
 					}
 				}
 			} finally {
@@ -89,7 +90,7 @@ public class AlarmIntentService extends IntentService {
 
 			// Release the wake lock setup by AlarmReceiver, if any
 			if (intent.getBooleanExtra(EXTRA_WITH_WAKE_LOCK, false)) {
-				AlarmReceiver.completeWakefulIntent(intent);
+				WakefulBroadcastReceiver.completeWakefulIntent(intent);
 			}
 
 		} else if (ACTION_DISABLE_ALARMS.equals(action)) {
@@ -99,7 +100,7 @@ public class AlarmIntentService extends IntentService {
 			try {
 				while (cursor.moveToNext()) {
 					long eventId = DatabaseManager.toEventId(cursor);
-					alarmManager.cancel(getAlarmPendingIntent(eventId));
+					mAlarmManager.cancel(getAlarmPendingIntent(eventId));
 				}
 			} finally {
 				cursor.close();
@@ -114,14 +115,14 @@ public class AlarmIntentService extends IntentService {
 			if ((startTime == -1L) || (startTime < System.currentTimeMillis())) {
 				return;
 			}
-			alarmManager.set(AlarmManager.RTC_WAKEUP, startTime - delay, getAlarmPendingIntent(eventId));
+			mAlarmManager.set(AlarmManager.RTC_WAKEUP, startTime - delay, getAlarmPendingIntent(eventId));
 
 		} else if (DatabaseManager.ACTION_REMOVE_BOOKMARKS.equals(action)) {
 
 			// Cancel matching alarms, might they exist or not
 			long[] eventIds = intent.getLongArrayExtra(DatabaseManager.EXTRA_EVENT_IDS);
 			for (long eventId : eventIds) {
-				alarmManager.cancel(getAlarmPendingIntent(eventId));
+				mAlarmManager.cancel(getAlarmPendingIntent(eventId));
 			}
 		} else if (AlarmReceiver.ACTION_NOTIFY_EVENT.equals(action)) {
 
@@ -159,7 +160,7 @@ public class AlarmIntentService extends IntentService {
 					} else {
 						SpannableString spannableBigText = new SpannableString(String.format("%1$s\n%2$s", subTitle, personsSummary));
 						// Set the subtitle in white color
-						spannableBigText.setSpan(new ForegroundColorSpan(Color.WHITE), 0, subTitle.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+						spannableBigText.setSpan(new ForegroundColorSpan(Color.WHITE), 0, subTitle.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 						bigText = spannableBigText;
 					}
 				}
@@ -184,7 +185,7 @@ public class AlarmIntentService extends IntentService {
 				notificationManager.notify((int) eventId, notificationBuilder.build());
 			}
 
-			AlarmReceiver.completeWakefulIntent(intent);
+			WakefulBroadcastReceiver.completeWakefulIntent(intent);
 		}
 	}
 

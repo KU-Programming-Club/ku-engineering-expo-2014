@@ -8,17 +8,17 @@ import be.digitalia.fosdem.model.Track;
 
 public class TrackScheduleLoader extends SimpleCursorLoader {
 
-	private final Day day;
-	private final Track track;
+	private final Day mDay;
+	private final Track mTrack;
 
 	public TrackScheduleLoader(Context context, Day day, Track track) {
 		super(context);
-		this.day = day;
-		this.track = track;
+		mDay = day;
+		mTrack = track;
 	}
 
 	@Override
 	protected Cursor getCursor() {
-		return DatabaseManager.getInstance().getEvents(day, track);
+		return DatabaseManager.getInstance().getEvents(mDay, mTrack);
 	}
 }

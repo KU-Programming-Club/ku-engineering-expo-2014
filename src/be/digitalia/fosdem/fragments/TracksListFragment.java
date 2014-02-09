@@ -25,8 +25,8 @@ public class TracksListFragment extends ListFragment implements LoaderCallbacks<
 	private static final int TRACKS_LOADER_ID = 1;
 	private static final String ARG_DAY = "day";
 
-	private Day day;
-	private TracksAdapter adapter;
+	private Day mDay;
+	private TracksAdapter mAdapter;
 
 	public static TracksListFragment newInstance(Day day) {
 		TracksListFragment f = new TracksListFragment();
@@ -39,9 +39,9 @@ public class TracksListFragment extends ListFragment implements LoaderCallbacks<
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		adapter = new TracksAdapter(getActivity());
-		day = getArguments().getParcelable(ARG_DAY);
-		setListAdapter(adapter);
+		mAdapter = new TracksAdapter(getActivity());
+		mDay = getArguments().getParcelable(ARG_DAY);
+		setListAdapter(mAdapter);
 	}
 
 	@Override
@@ -71,13 +71,13 @@ public class TracksListFragment extends ListFragment implements LoaderCallbacks<
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-		return new TracksLoader(getActivity(), day);
+		return new TracksLoader(getActivity(), mDay);
 	}
 
 	@Override
 	public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 		if (data != null) {
-			adapter.swapCursor(data);
+			mAdapter.swapCursor(data);
 		}
 
 		// The list should now be shown.
@@ -90,24 +90,24 @@ public class TracksListFragment extends ListFragment implements LoaderCallbacks<
 
 	@Override
 	public void onLoaderReset(Loader<Cursor> loader) {
-		adapter.swapCursor(null);
+		mAdapter.swapCursor(null);
 	}
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		Track track = adapter.getItem(position);
-		Intent intent = new Intent(getActivity(), TrackScheduleActivity.class).putExtra(TrackScheduleActivity.EXTRA_DAY, day).putExtra(
+		Track track = mAdapter.getItem(position);
+		Intent intent = new Intent(getActivity(), TrackScheduleActivity.class).putExtra(TrackScheduleActivity.EXTRA_DAY, mDay).putExtra(
 				TrackScheduleActivity.EXTRA_TRACK, track);
 		startActivity(intent);
 	}
 
 	private static class TracksAdapter extends CursorAdapter {
 
-		private final LayoutInflater inflater;
+		private final LayoutInflater mmInflater;
 
 		public TracksAdapter(Context context) {
 			super(context, null, 0);
-			inflater = LayoutInflater.from(context);
+			mmInflater = LayoutInflater.from(context);
 		}
 
 		@Override
@@ -117,7 +117,7 @@ public class TracksListFragment extends ListFragment implements LoaderCallbacks<
 
 		@Override
 		public View newView(Context context, Cursor cursor, ViewGroup parent) {
-			View view = inflater.inflate(android.R.layout.simple_list_item_2, parent, false);
+			View view = mmInflater.inflate(android.R.layout.simple_list_item_2, parent, false);
 
 			ViewHolder holder = new ViewHolder();
 			holder.name = (TextView) view.findViewById(android.R.id.text1);

@@ -5,36 +5,35 @@ import android.os.Parcelable;
 
 public class Link implements Parcelable {
 
-	private String url;
-	private String description;
+	private String mUrl;
+	private String mDescription;
 
-	public Link() {
-	}
+	public Link() {}
 
 	public String getUrl() {
-		return url;
+		return mUrl;
 	}
 
 	public void setUrl(String url) {
-		this.url = url;
+		this.mUrl = url;
 	}
 
 	public String getDescription() {
-		return description;
+		return mDescription;
 	}
 
 	public void setDescription(String description) {
-		this.description = description;
+		this.mDescription = description;
 	}
 
 	@Override
 	public String toString() {
-		return description;
+		return mDescription;
 	}
 
 	@Override
 	public int hashCode() {
-		return url.hashCode();
+		return mUrl.hashCode();
 	}
 
 	@Override
@@ -44,7 +43,7 @@ public class Link implements Parcelable {
 		if (obj == null)
 			return false;
 		Link other = (Link) obj;
-		return url.equals(other.url);
+		return mUrl.equals(other.mUrl);
 	}
 
 	@Override
@@ -54,22 +53,24 @@ public class Link implements Parcelable {
 
 	@Override
 	public void writeToParcel(Parcel out, int flags) {
-		out.writeString(url);
-		out.writeString(description);
+		out.writeString(mUrl);
+		out.writeString(mDescription);
 	}
 
 	public static final Parcelable.Creator<Link> CREATOR = new Parcelable.Creator<Link>() {
+		@Override
 		public Link createFromParcel(Parcel in) {
 			return new Link(in);
 		}
 
+		@Override
 		public Link[] newArray(int size) {
 			return new Link[size];
 		}
 	};
 
 	private Link(Parcel in) {
-		url = in.readString();
-		description = in.readString();
+		mUrl = in.readString();
+		mDescription = in.readString();
 	}
 }
