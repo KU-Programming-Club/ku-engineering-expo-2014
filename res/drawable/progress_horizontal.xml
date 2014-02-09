@@ -1,18 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <item
-        android:id="@android:id/background"
-        android:drawable="@drawable/progress_bg_fosdem"/>
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="5dip" />
+
+            <gradient
+                android:angle="270"
+                android:centerColor="@color/signature_gray"
+                android:centerY="0.75"
+                android:endColor="@color/translucent_grey"
+                android:startColor="@color/signature_gray" />
+        </shape>
+    </item>
     <item android:id="@android:id/secondaryProgress">
-        <scale
-            android:drawable="@drawable/progress_secondary_fosdem"
-            android:scaleWidth="100%" />
+        <clip>
+            <shape>
+                <corners android:radius="5dip" />
+
+                <gradient
+                    android:angle="270"
+                    android:centerColor="@color/ku_crimson"
+                    android:centerY="0.75"
+                    android:endColor="@color/translucent_ku_crimson"
+                    android:startColor="@color/ku_crimson" />
+            </shape>
+        </clip>
     </item>
     <item android:id="@android:id/progress">
-        <scale
-            android:drawable="@drawable/progress_primary_fosdem"
-            android:scaleWidth="100%" />
+        <clip>
+            <shape>
+                <corners android:radius="5dip" />
+
+                <gradient
+                    android:angle="270"
+                    android:endColor="@color/translucent_ku_blue"
+                    android:startColor="@color/ku_blue" />
+            </shape>
+        </clip>
     </item>
 
 </layer-list>

@@ -15,7 +15,7 @@
  */
 package com.viewpagerindicator;
 
-import be.digitalia.fosdem.R;
+import edu.kuacm.expo.R;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;

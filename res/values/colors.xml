@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="fosdem_purple">#a91991</color>
-    <color name="tab_pressed_fosdem">#80a91991</color>
+    <color name="ku_blue">#0022b4</color>
+    <color name="translucent_ku_blue">#a10022b4</color>
+    <color name="ku_crimson">#e8000d</color>
+    <color name="translucent_ku_crimson">#a1e8000d</color>
+    <color name="jayhawk_yellow">#ffc82d</color>
+    <color name="translucent_jayhawk_yellow">#a1ffc82d</color>
+    <color name="signature_gray">#85898a</color>
     <color name="main_menu_background">#f0fafafa</color>
     <color name="translucent_grey">#29000000</color>
 

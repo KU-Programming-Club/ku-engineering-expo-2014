@@ -15,7 +15,7 @@
             android:id="@+id/indicator"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            app:pstsIndicatorColor="@color/fosdem_purple" />
+            app:pstsIndicatorColor="@color/ku_blue" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/pager"

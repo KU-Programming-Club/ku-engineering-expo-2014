@@ -4,37 +4,37 @@
     <style name="AppTheme" parent="@style/Theme.AppCompat.Light" tools:ignore="NewApi">
         <item name="android:actionBarItemBackground">@drawable/selectable_background</item>
         <item name="actionBarItemBackground">@drawable/selectable_background</item>
-        <item name="android:dropDownListViewStyle">@style/DropDownListView.Fosdem</item>
-        <item name="dropDownListViewStyle">@style/DropDownListView.Fosdem</item>
-        <item name="android:actionBarStyle">@style/ActionBar.Solid.Fosdem</item>
-        <item name="actionBarStyle">@style/ActionBar.Solid.Fosdem</item>
-        <item name="android:textViewStyle">@style/TextView.Fosdem</item>
-        <item name="android:listViewStyle">@style/ListView.Fosdem</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Expo</item>
+        <item name="dropDownListViewStyle">@style/DropDownListView.Expo</item>
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Expo</item>
+        <item name="actionBarStyle">@style/ActionBar.Solid.Expo</item>
+        <item name="android:textViewStyle">@style/TextView.Expo</item>
+        <item name="android:listViewStyle">@style/ListView.Expo</item>
         <item name="activatedBackgroundIndicator">@drawable/activated_background</item>
     </style>
 
     <style name="DialogTheme" parent="@android:style/Theme.Dialog" />
 
-    <style name="ActionBar.Solid.Fosdem" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+    <style name="ActionBar.Solid.Expo" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
 
         <!-- Only override the progress bar style for modern devices with Holo theme -->
-        <item name="android:progressBarStyle">@style/ProgressBar.Fosdem</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Expo</item>
     </style>
 
-    <style name="DropDownListView.Fosdem" parent="@style/Widget.AppCompat.Light.ListView.DropDown">
+    <style name="DropDownListView.Expo" parent="@style/Widget.AppCompat.Light.ListView.DropDown">
         <item name="android:listSelector">@drawable/selectable_background</item>
     </style>
 
-    <style name="ProgressBar.Fosdem" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+    <style name="ProgressBar.Expo" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
         <item name="android:indeterminateDrawable">@drawable/progress_indeterminate_horizontal</item>
         <item name="android:progressDrawable">@drawable/progress_horizontal</item>
     </style>
 
-    <style name="TextView.Fosdem" parent="android:Widget.TextView">
+    <style name="TextView.Expo" parent="android:Widget.TextView">
         <item name="android:textColorLink">#3679c4</item>
     </style>
 
-    <style name="ListView.Fosdem" parent="@android:style/Widget.ListView.White">
+    <style name="ListView.Expo" parent="@android:style/Widget.ListView.White">
         <item name="android:listSelector">@drawable/selectable_background</item>
     </style>
 
@@ -45,13 +45,13 @@
         <item name="android:paddingLeft">@dimen/list_item_padding</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/fosdem_purple</item>
+        <item name="android:textColor">@color/ku_blue</item>
     </style>
 
     <style name="HeaderLineStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">2dp</item>
-        <item name="android:background">@color/fosdem_purple</item>
+        <item name="android:background">@color/ku_blue</item>
     </style>
 
     <style name="RoomImageDialogAnimations">

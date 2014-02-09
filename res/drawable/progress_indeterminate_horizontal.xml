@@ -3,28 +3,28 @@
     android:oneshot="false" >
 
     <item
-        android:drawable="@drawable/progressbar_indeterminate_fosdem1"
+        android:drawable="@drawable/progressbar_indeterminate_expo1"
         android:duration="50"/>
     <item
-        android:drawable="@drawable/progressbar_indeterminate_fosdem2"
+        android:drawable="@drawable/progressbar_indeterminate_expo2"
         android:duration="50"/>
     <item
-        android:drawable="@drawable/progressbar_indeterminate_fosdem3"
+        android:drawable="@drawable/progressbar_indeterminate_expo3"
         android:duration="50"/>
     <item
-        android:drawable="@drawable/progressbar_indeterminate_fosdem4"
+        android:drawable="@drawable/progressbar_indeterminate_expo4"
         android:duration="50"/>
     <item
-        android:drawable="@drawable/progressbar_indeterminate_fosdem5"
+        android:drawable="@drawable/progressbar_indeterminate_expo5"
         android:duration="50"/>
     <item
-        android:drawable="@drawable/progressbar_indeterminate_fosdem6"
+        android:drawable="@drawable/progressbar_indeterminate_expo6"
         android:duration="50"/>
     <item
-        android:drawable="@drawable/progressbar_indeterminate_fosdem7"
+        android:drawable="@drawable/progressbar_indeterminate_expo7"
         android:duration="50"/>
     <item
-        android:drawable="@drawable/progressbar_indeterminate_fosdem8"
+        android:drawable="@drawable/progressbar_indeterminate_expo8"
         android:duration="50"/>
 
 </animation-list>

@@ -18,6 +18,7 @@ package com.astuetz;
 
 import java.util.Locale;
 
+import edu.kuacm.expo.R;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -41,7 +42,6 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import be.digitalia.fosdem.R;
 
 public class PagerSlidingTabStrip extends HorizontalScrollView {
 

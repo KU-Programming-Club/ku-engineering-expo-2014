@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="be.digitalia.fosdem"
-    android:versionCode="0700105"
-    android:versionName="1.0.5" >
+    xmlns:tools="http://schemas.android.com/tools"
+    package="edu.kuacm.expo"
+    android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="7"
@@ -21,7 +21,7 @@
         android:required="false" />
 
     <application
-        android:name="be.digitalia.fosdem.FosdemApplication"
+        android:name="edu.kuacm.expo.ExpoApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
@@ -83,8 +83,9 @@
 
         <provider
             android:name=".providers.SearchSuggestionProvider"
-            android:authorities="be.digitalia.fosdem.search"
-            android:exported="true" />
+            android:authorities="edu.kuacm.expo.search"
+            android:exported="true"
+            tools:ignore="ExportedContentProvider" />
     </application>
 
 </manifest>
