@@ -17,13 +17,13 @@
                 <start>10:00</start>
                 <duration>05:00</duration>
                 <room>Eaton 1005</room>
-                <slug></slug>
+                <slug/>
                 <title>IEEE/ACM/HKN</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Come join ACM, IEEE, and HKN to learn about how quick technology can change the world of sports can be in the Speed Skating room! Here you will be able to learn coding basics from the combined genius of IEEE and HKN while also seeing quick world-class athletes can leave the starting blocks with a reaction time calculator. Then, advanced coders can even take each other on in ACM's Hacker's Relay and learn visual coding with Scratch!</description>
                 <presenters>
                     <presenter id="18">Institute of Electrical and Electronics Engineers (IEEE)</presenter>
@@ -39,12 +39,12 @@
                 <start>10:00</start>
                 <duration>05:00</duration>
                 <room>Eaton 1010</room>
-                <slug></slug>
+                <slug/>
                 <title>SWE</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>The wonderful Society of Women Engineers has the knockout punch with a fun, safe boxing activity for all ages.</abstract>
                 <description>Learn about the often surprising engineering backgrounds of the inventors and developers of key inventions in our daily lives by guessing which punching bag represents the engineering discipline they studied while they were in college.</description>
                 <presenters>
@@ -59,12 +59,12 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Eaton 1014</room>
-                <slug></slug>
+                <slug/>
                 <title>Indoor Catapults (middle school)</title>
                 <subtitle/>
                 <track>Middle school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>This competition will be focusing on the physics of trajectory.</abstract>
                 <description>Students will try to shoot a ball and score from a stationary base catapult to a basket 7 feet away. The goal of this competition is to be able to make as many baskets in 45 seconds.</description>
                 <presenters>
@@ -80,12 +80,12 @@
                 <start>10:00</start>
                 <duration>05:00</duration>
                 <room>Eaton 1018</room>
-                <slug></slug>
+                <slug/>
                 <title>SHPE</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Welcome to the most thrilling facet of sports, a game-winning score at the end of the game.</abstract>
                 <description>Get the opportunity to build your own catapult before EXPO, and try your hand at SHPE's catapult competition where you can try to score as many points as possible in a short amount of time where every shot counts! After you try your hand at projectile motion, explore the effects of friction on your golf game with iSea's putting stations.</description>
                 <presenters>
@@ -100,12 +100,12 @@
                 <start>10:00</start>
                 <duration>05:00</duration>
                 <room>Eaton 2</room>
-                <slug></slug>
+                <slug/>
                 <title>ASCE</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Step up to the stage in the Colliseum, and try to show off your engineering prowess with the strongest pasta bridge in ASCE's Pasta Bridge Challenge.</abstract>
                 <description>The room will be dedicated to showing the design of bridges and other civil structures. They will also be demonstrating the geotechnical field of civil engineering along with steel bridge competition members.</description>
                 <presenters>
@@ -118,13 +118,13 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Eaton 2</room>
-                <slug></slug>
+                <slug/>
                 <title>Pasta Bridge (middle school)</title>
                 <subtitle/>
                 <track>Middle school competitions</track>
                 <type>competitions</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Bridge must be checked in at the entry table to be measured and weighed for
                     disqualification. Bridges that are disqualified will be broken but will not be counted towards the awards. The bridge will be judged on a power factor basis.</description>
                 <presenters>
@@ -139,12 +139,12 @@
                 <start>10:00</start>
                 <duration>05:00</duration>
                 <room>Learned 1100</room>
-                <slug></slug>
+                <slug/>
                 <title>BMES</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Come learn about the bio-mechanics of sports with BMES!</abstract>
                 <description>Here you will be able to extract your very own DNA sample, play with a model hand, and make your own model helmet to prevent a balloon from breaking. BMES will also teach about the impact of engineering in prosthetics, sports, and how to keep players in the game with the newest technology!</description>
                 <presenters>
@@ -159,12 +159,12 @@
                 <start>10:00</start>
                 <duration>05:00</duration>
                 <room>Learned 1109</room>
-                <slug></slug>
+                <slug/>
                 <title>Jayhawk Motorsports</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>The winter Olympics have reached Lawrence, Kansas!</abstract>
                 <description>Join Jayhawk Motorsports at their garage to participate in the Gravity Car / Bobsled competition. Not only that, but you will also get to learn about the cars the JMS builds, races, and compete with in the US and internationally as well every year.</description>
                 <presenters>
@@ -177,12 +177,12 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 1109</room>
-                <slug></slug>
+                <slug/>
                 <title>Gravity Car (middle school)</title>
                 <subtitle/>
                 <track>Middle school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>Every day, countless automobiles can be seen driving on the streets. What
                     goes into the design of one of these? Each year, Jayhawk Motorsports starts from scratch to design and build Formula SAE and Electric race cars.</abstract>
                 <description>The goal of this is for K-12 students to explore the design process to create a gravity-powered race car that is the fastest as well as the lightest. The time it takes for the car to make it down the ramp, over the two bumps, and across the finish line will be recorded.</description>
@@ -200,12 +200,12 @@
                 <start>10:00</start>
                 <duration>05:00</duration>
                 <room>Learned 1131</room>
-                <slug></slug>
+                <slug/>
                 <title>SEDS</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Get ready for takeoff in SEDS (Students for the Exploration and Development of Space) water rocket competition and space race remote-controlled cars.</abstract>
                 <description>Build and bring your own water rocket for SEDS competition right behind Learned Hall and race a set of customised remote-controlled cars for bragging rights and the privilege to take one of their chassis home - that is, if you have the quickest time!</description>
                 <presenters>
@@ -218,13 +218,13 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 1131</room>
-                <slug></slug>
+                <slug/>
                 <title>Water Rocket (middle school)</title>
                 <subtitle/>
                 <track>Middle school competitions</track>
                 <type>competitions</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Students will create their own water rockets and will compete to have the longest hang-time.</description>
                 <presenters>
                     <presenter id="26">Students for the Exploration and Development of Space (SEDS)</presenter>
@@ -237,12 +237,12 @@
                 <start>10:00</start>
                 <duration>05:00</duration>
                 <room>Learned 1136</room>
-                <slug></slug>
+                <slug/>
                 <title>AEI/ASHRAE/EERI/Theta Tau</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Throughout the history of the Olympics, magnificent structures have been assembled to show off the hosting nation's engineering capacities and design strengths.</abstract>
                 <description>From the impressive renovations and installations for the last world games in London 2012, to the Bird's Nest and Water Cube for the Olympics in China you will be able to relive these structures in AEI's and ASHRAE's Historic Building room! In addition, you will also get to try your hand at designing your very own Skyscraper and get it tested to see how much stress it can uphold in the Skyscraper competition. In this room, you will also be able to visit EERI's display as well as Theta Tau Professional Engineering Fraternity's interactive biking activity!</description>
                 <presenters>
@@ -258,12 +258,12 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 1136</room>
-                <slug></slug>
+                <slug/>
                 <title>Skyscraper (middle school)</title>
                 <subtitle/>
                 <track>Middle school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>Student groups will design and build a tower in the months prior to the competition.</abstract>
                 <description>On the day of competition the students will register their towers with the AEI group for testing later that day. The towers may be left in the room until the competition.</description>
                 <presenters>
@@ -279,12 +279,12 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 2002</room>
-                <slug></slug>
+                <slug/>
                 <title>Weight Lifting (middle school)</title>
                 <subtitle/>
                 <track>Middle school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>A pulley weight lifting. Teams of up to 3 people.</abstract>
                 <description>Participants are given a standard set of pulleys and a given length of rope/string. The goal is for the teams to build a pulley configuration that reduces the amount of force to lift a weight, using the least amount of pulleys. Teams can try up to 3 configurations of pulleys to lift a standard mass. Scores will be the force required to lift the mass (small scores are better).</description>
                 <presenters>
@@ -300,12 +300,12 @@
                 <start>10:00</start>
                 <duration>05:00</duration>
                 <room>Learned 2111</room>
-                <slug></slug>
+                <slug/>
                 <title>EWB/USGBC</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Here Engineers without Borders and USGBC combine to showcase their efforts in community service and sustainability!</abstract>
                 <description>Climb the steps to the second floor and experience the heights that EWB reach in their annual trips to Azacilo, Bolivia where they help improve the quality of life of the inhabitants with engineering projects. USGBC also has an educational presentation on the LEED certification process, and how to make more envirormentally friendly buildings for the future. This is the room where you will check-in to both USGBC's and EWB's competitions.</description>
                 <presenters>
@@ -319,12 +319,12 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 2111</room>
-                <slug></slug>
+                <slug/>
                 <title>Water Finding (middle school)</title>
                 <subtitle/>
                 <track>Middle school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>A community in Bolivia needs a new source of water for their residents. You are challenged to aid the community in need by solving this problem.</abstract>
                 <description>Given a map of the area surrounding the community, as well as the coordinates to the community, we challenge you to devise a realistic water source.</description>
                 <presenters>
@@ -340,12 +340,12 @@
                 <start>10:00</start>
                 <duration>05:00</duration>
                 <room>Learned 2112</room>
-                <slug></slug>
+                <slug/>
                 <title>KU Robotics</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>FIRST robotics competition is the equivalent of the Olympics for robotics enthusiasts at the high school level in the United States.</abstract>
                 <description>Try your hand at besting the obstacles set forth by KU Robotics using LEGO Mindstorms for a chance to show your mettle (and earn a medal) in technologically advanced room. Plus, for those not participating in the Mindstorms competition, there will also be a robotic arm for you to interact with here!</description>
                 <presenters>
@@ -358,12 +358,12 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 2112</room>
-                <slug></slug>
+                <slug/>
                 <title>Mindstorms (middle school)</title>
                 <subtitle/>
                 <track>Middle school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>Students are challenged to a mindstorms race on a prebuilt course.</abstract>
                 <description>Competitors will design, build and program their own mindstorms robot to complete the race in the fastest possible time.</description>
                 <presenters>
@@ -379,12 +379,12 @@
                 <start>10:00</start>
                 <duration>05:00</duration>
                 <room>Learned 2115</room>
-                <slug></slug>
+                <slug/>
                 <title>SPE</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>The Society of Petroleum engineers will host a drilling race meant to simulate the economic decisions and engineering challenges involved in reaching our natural resources far below ground.</abstract>
                 <description>There will be an abundance of information on the excitement of the oil and gas industry and the job of a petroleum engineer. Participants will be able interact with a variety of materials such as drill bits, core samples, and drilling mud.</description>
                 <presenters>
@@ -397,13 +397,13 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 2115</room>
-                <slug></slug>
+                <slug/>
                 <title>Drilling (middle school)</title>
                 <subtitle/>
                 <track>Middle school competitions</track>
                 <type>competitions</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Students will be asked to design drilling mud in order to learn about the different properties of mud utilized in drilling a well. Students will be racing their mud samples down slides made from PVC pipes on an incline. Students will try to design a drilling mud that has a low viscosity so it can flow quicker down the incline. The practical application of a low viscosity is that it makes the mud easier to pump and circulate through the well.</description>
                 <presenters>
                     <presenter id="28">Society of Petroleum Engineers (SPE)</presenter>
@@ -417,13 +417,13 @@
                 <start>10:00</start>
                 <duration>05:00</duration>
                 <room>Learned 2139</room>
-                <slug></slug>
+                <slug/>
                 <title>Scoring</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Our central scoring and help center will be in Learned 2139. Please head there if you have any major questions or concerns.</description>
                 <presenters>
                     <presenter id="17">Expo Administration</presenter>
@@ -437,12 +437,12 @@
                 <start>10:00</start>
                 <duration>05:00</duration>
                 <room>Learned 2148</room>
-                <slug></slug>
+                <slug/>
                 <title>AES/AIChE</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Take a visit to the Olympic Village with AES and AIChe! In this room you will be able to witness a wide array of dizzying demonstrations!</abstract>
                 <description>The first demonstration is the Carbonator. Here students will able to make their own soda by using a CO2 tank, water and various syrups. Next is the Ferrofluid, here students will be able to interact with the Ferrofluid using various magnets to learn how magnetic fields influence the properties of the fluid. Third is the surface tension experiment where students can use milk, dye and soap to break the surface tension of the milk and create colorful patterns all across the liquid. Fourth is the chocolate melting points where students will discover the heat capacity of certain chocolates using their taste buds! Next is the phase change experiment where students will see first hand how a phase change can affect the volume of a soda can by making it implode! After that we will have the energy bike where students will be able to ride the bike and power light bulbs. After that is the Hydrophobic sand. This experiment demonstrates how our special hydrophobic sand is resistant to water. When poured into a mixture of water and oil, it will grab the oil but resist the water, creating a sand oil mixture at the bottom of the bowl. Next is the viscosity columns where students will be able to pump air through 3 tall column filled with a certain liquids to demonstrate viscosity. Last is the fluidized bed which is a sand bed with air flowing through it. The fine sand at the top will begin to bubble like water. Its cool. The competitions we will have are the volcano distance competition and the ChemE car. In the volcano competition students will bring their pre-built volcanoes and we will provide them with vinegar and baking soda and measure how far their volcano erupts. In the ChemE car competition students will bring their ChemE cars and see how fast and far they can go!</description>
                 <presenters>
@@ -456,14 +456,14 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 2148</room>
-                <slug></slug>
+                <slug/>
                 <title>Chemical Car (middle school)</title>
                 <subtitle/>
                 <track>Middle school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>Design a car that holds a specified amount of weight powered by a chemical reaction to go a specified distance that quickest.</abstract>
-                <description></description>
+                <description/>
                 <presenters>
                     <presenter id="5">American Institute of Chemical Engineers (AIChE)</presenter>
                 </presenters>
@@ -476,13 +476,13 @@
                 <start>10:00</start>
                 <duration>05:00</duration>
                 <room>Learned 3150</room>
-                <slug></slug>
+                <slug/>
                 <title>PESO/SAE Baja</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>PESO and SAE Baja have an array of interesting activities for you to take part in including a compressed air propeller of paper rockets, as well as a mechanical advantage activity run by SAE Baja and a weight lifting competition by PESO. Come and learn about what makes these organizations so great here KU!</description>
                 <presenters>
                     <presenter id="24">Physics and Engineering Student Organization (PESO)</presenter>
@@ -495,13 +495,13 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 3150</room>
-                <slug></slug>
+                <slug/>
                 <title>Archery (middle school)</title>
                 <subtitle/>
                 <track>Middle school competitions</track>
                 <type>competitions</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Competing teams in Middle and High School divisions will construct a bow given a set of material and size constraints. These bows will then be judged on creativity upon arrival at the competition. Groups will then be presented with 3 arrows to fire at a target, and points will be awarded based on accuracy. The three teams with the highest scores in each division will then be presented with medals at the award ceremony.</description>
                 <presenters>
                     <presenter id="2">American Institute of Aeronautics and Astronautics (AIAA)</presenter>
@@ -517,12 +517,12 @@
                 <start>10:00</start>
                 <duration>05:00</duration>
                 <room>Learned 3151</room>
-                <slug></slug>
+                <slug/>
                 <title>ASME/EcoHawks</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>ASME and Ecohawks are excited to bring you both the Rube Goldberg and Battery Powered Car competitions inside of this room!</abstract>
                 <description>The stage area in the back will be primarily used by Ecohawks during competitions and the main area will be used for the Rube Goldberg machines. Show your engineering brawn and come up with a complex machine using only simple machines that can lift a 10lb weight for ASME, and show off your design skills with your Battery Powered Car.</description>
                 <presenters>
@@ -536,12 +536,12 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 3151</room>
-                <slug></slug>
+                <slug/>
                 <title>Rube Goldberg (middle school)</title>
                 <subtitle/>
                 <track>Middle school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>Students are challenged to create a complicated system of simple machines in order to perform one simple task.</abstract>
                 <description>This year's task is to shoot a tennis ball through a ring at a set distance. The ring diameter is one foot.</description>
                 <presenters>
@@ -555,12 +555,12 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 3151</room>
-                <slug></slug>
+                <slug/>
                 <title>Trebuchet (middle school)</title>
                 <subtitle/>
                 <track>Middle school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>The goal of this competition is to experiment with a great mechanical engineering pastime, throwing objects in the air.</abstract>
                 <description>In this competition students will create and shoot their own trebuchet. A trebuchet must use a counterweight, have string to hold the sling which holds the object to launch, and no electronic components can be used. The trebuchet has to be able to fit in a 2x2 ft squared base, there is not height limitation. The object being thrown is a racquet ball.</description>
                 <presenters>
@@ -574,12 +574,12 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 3151</room>
-                <slug></slug>
+                <slug/>
                 <title>Battery-Powered Car (middle school)</title>
                 <subtitle/>
                 <track>Middle school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>The goal of this race is for K-12 students to explore the role batteries and electric motors play in the future of automobiles.</abstract>
                 <description>The competition is a battery-powered race involving a student-constructed car. The participants will start on one end of a flat platform that is approximately 10 feet long. The car can have the maximum dimensions of 7” wide by 15.5” long and 4.5” high (average size of a shoebox). The students will compete one at time. The time it takes for the car to traverse the platform and across the finish line (indicated by tape) will be recorded. Students will get two time-recorded attempts.</description>
                 <presenters>
@@ -595,12 +595,12 @@
                 <start>10:00</start>
                 <duration>05:00</duration>
                 <room>Learned 3153</room>
-                <slug></slug>
+                <slug/>
                 <title>NSBE</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Join NSBE in celebrating Olympic soccer with an engineering twist by controlling robots to score a goal for your favorite team!</abstract>
                 <description>In this room you will be able to control VEX robots to try to score as many goals as you can against stiff opposition thanks to the National Society of Black Engineers.</description>
                 <presenters>
@@ -615,12 +615,12 @@
                 <start>10:00</start>
                 <duration>05:00</duration>
                 <room>Learned 3154</room>
-                <slug></slug>
-                <title></title>
+                <slug/>
+                <title>Concrete Canoe</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Sail to the boundaries of your imagination in this sailing themed competition hosted by KU's one and only Concrete Canoe organization!</abstract>
                 <description>Pre-made concrete boats will be provided by Concrete Canoe for you to attach your wind harnessing propulsion device so you can race to the goal and earn gold in the calm waters of Learned 3154.</description>
                 <presenters>
@@ -633,13 +633,13 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 3154</room>
-                <slug></slug>
+                <slug/>
                 <title>Sailing (middle school)</title>
                 <subtitle/>
                 <track>Middle school competitions</track>
                 <type>competitions</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Using only a straw or by blowing directly on the sail, propel a concrete boat across a 10’ span of rain gutter in the shortest time possible.</description>
                 <presenters>
                     <presenter id="12">Concrete Canoe</presenter>
@@ -653,13 +653,13 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>M2SEC Lounge, G535</room>
-                <slug></slug>
+                <slug/>
                 <title>Egg Drop (middle school)</title>
                 <subtitle/>
                 <track>Middle school competitions</track>
                 <type>competitions</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>The egg drop contest is sponsored by Sigma Gamma Tau and is a test of creativity and understanding of physics.  Students are tasked with creating a structure that will safely house an egg during a 17 foot free fall.  The winning crate will be decided upon based on a combination of creativity, time in the air, and of course, the safety of the egg. Competitors are encouraged to think outside the box, and may the best egg drop win!</description>
                 <presenters>
                     <presenter id="32">Sigma Gamma Tau (ΣΓΤ)</presenter>
@@ -674,13 +674,13 @@
                 <start>10:00</start>
                 <duration>05:00</duration>
                 <room>Spahr Library</room>
-                <slug></slug>
-                <title></title>
+                <slug/>
+                <title>Chem Club</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Brrr! The Winter Olympics brought a quite a chill to Lawrence. Take the chance to enjoy some hot chocolate and interesting scientific demonstrations from the Chemistry Club and warm up before heading back to the rest of the Olympic displays or any outdoor competitions.</description>
                 <presenters>
                     <presenter id="11">Chemistry Club</presenter>
@@ -696,13 +696,13 @@
                 <start>09:00</start>
                 <duration>06:00</duration>
                 <room>Eaton 1005</room>
-                <slug></slug>
+                <slug/>
                 <title>IEEE/ACM/HKN</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Come join ACM, IEEE, and HKN to learn about how quick technology can change the world of sports can be in the Speed Skating room! Here you will be able to learn coding basics from the combined genius of IEEE and HKN while also seeing quick world-class athletes can leave the starting blocks with a reaction time calculator. Then, advanced coders can even take each other on in ACM's Hacker's Relay and learn visual coding with Scratch!</description>
                 <presenters>
                     <presenter id="18">Institute of Electrical and Electronics Engineers (IEEE)</presenter>
@@ -718,12 +718,12 @@
                 <start>09:00</start>
                 <duration>06:00</duration>
                 <room>Eaton 1010</room>
-                <slug></slug>
+                <slug/>
                 <title>SWE</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>The wonderful Society of Women Engineers has the knockout punch with a fun, safe boxing activity for all ages.</abstract>
                 <description>Learn about the often surprising engineering backgrounds of the inventors and developers of key inventions in our daily lives by guessing which punching bag represents the engineering discipline they studied while they were in college.</description>
                 <presenters>
@@ -738,12 +738,12 @@
                 <start>09:30</start>
                 <duration>03:00</duration>
                 <room>Eaton 1014</room>
-                <slug></slug>
+                <slug/>
                 <title>Indoor Catapults (elementary school)</title>
                 <subtitle/>
                 <track>Elementary school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>This competition will be focusing on the physics of trajectory.</abstract>
                 <description>Students will try to shoot a ball and score from a stationary base catapult to a basket 7 feet away. The goal of this competition is to be able to make as many baskets in 45 seconds.</description>
                 <presenters>
@@ -757,12 +757,12 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Eaton 1014</room>
-                <slug></slug>
+                <slug/>
                 <title>Indoor Catapults (high school)</title>
                 <subtitle/>
                 <track>High school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>This competition will be focusing on the physics of trajectory.</abstract>
                 <description>Students will try to shoot a ball and score from a stationary base catapult to a basket 7 feet away. The goal of this competition is to be able to make as many baskets in 45 seconds.</description>
                 <presenters>
@@ -778,12 +778,12 @@
                 <start>09:00</start>
                 <duration>06:00</duration>
                 <room>Eaton 1018</room>
-                <slug></slug>
+                <slug/>
                 <title>SHPE</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Welcome to the most thrilling facet of sports, a game-winning score at the end of the game.</abstract>
                 <description>Get the opportunity to build your own catapult before EXPO, and try your hand at SHPE's catapult competition where you can try to score as many points as possible in a short amount of time where every shot counts! After you try your hand at projectile motion, explore the effects of friction on your golf game with iSea's putting stations.</description>
                 <presenters>
@@ -798,12 +798,12 @@
                 <start>09:00</start>
                 <duration>06:00</duration>
                 <room>Eaton 2</room>
-                <slug></slug>
+                <slug/>
                 <title>ASCE</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Step up to the stage in the Colliseum, and try to show off your engineering prowess with the strongest pasta bridge in ASCE's Pasta Bridge Challenge.</abstract>
                 <description>The room will be dedicated to showing the design of bridges and other civil structures. They will also be demonstrating the geotechnical field of civil engineering along with steel bridge competition members.</description>
                 <presenters>
@@ -816,13 +816,13 @@
                 <start>09:30</start>
                 <duration>03:00</duration>
                 <room>Eaton 2</room>
-                <slug></slug>
+                <slug/>
                 <title>Pasta Bridge (elementary school)</title>
                 <subtitle/>
                 <track>Elementary school competitions</track>
                 <type>competitions</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Bridge must be checked in at the entry table to be measured and weighed for
                     disqualification. Bridges that are disqualified will be broken but will not be counted towards the awards. The bridge will be judged on a power factor basis.</description>
                 <presenters>
@@ -835,13 +835,13 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Eaton 2</room>
-                <slug></slug>
+                <slug/>
                 <title>Pasta Bridge (high school)</title>
                 <subtitle/>
                 <track>High school competitions</track>
                 <type>competitions</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Bridge must be checked in at the entry table to be measured and weighed for
                     disqualification. Bridges that are disqualified will be broken but will not be counted towards the awards. The bridge will be judged on a power factor basis.</description>
                 <presenters>
@@ -856,12 +856,12 @@
                 <start>09:00</start>
                 <duration>06:00</duration>
                 <room>Learned 1100</room>
-                <slug></slug>
+                <slug/>
                 <title>BMES</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Come learn about the bio-mechanics of sports with BMES!</abstract>
                 <description>Here you will be able to extract your very own DNA sample, play with a model hand, and make your own model helmet to prevent a balloon from breaking. BMES will also teach about the impact of engineering in prosthetics, sports, and how to keep players in the game with the newest technology!</description>
                 <presenters>
@@ -876,12 +876,12 @@
                 <start>09:00</start>
                 <duration>06:00</duration>
                 <room>Learned 1109</room>
-                <slug></slug>
+                <slug/>
                 <title>Jayhawk Motorsports</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>The winter Olympics have reached Lawrence, Kansas!</abstract>
                 <description>Join Jayhawk Motorsports at their garage to participate in the Gravity Car / Bobsled competition. Not only that, but you will also get to learn about the cars the JMS builds, races, and compete with in the US and internationally as well every year.</description>
                 <presenters>
@@ -894,12 +894,12 @@
                 <start>09:30</start>
                 <duration>03:00</duration>
                 <room>Learned 1109</room>
-                <slug></slug>
+                <slug/>
                 <title>Gravity Car (elementary school)</title>
                 <subtitle/>
                 <track>Elementary school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>Every day, countless automobiles can be seen driving on the streets. What
                     goes into the design of one of these? Each year, Jayhawk Motorsports starts from scratch to design and build Formula SAE and Electric race cars.</abstract>
                 <description>The goal of this is for K-12 students to explore the design process to create a gravity-powered race car that is the fastest as well as the lightest. The time it takes for the car to make it down the ramp, over the two bumps, and across the finish line will be recorded.</description>
@@ -915,12 +915,12 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 1109</room>
-                <slug></slug>
+                <slug/>
                 <title>Gravity Car (high school)</title>
                 <subtitle/>
                 <track>Middle school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>Every day, countless automobiles can be seen driving on the streets. What
                     goes into the design of one of these? Each year, Jayhawk Motorsports starts from scratch to design and build Formula SAE and Electric race cars.</abstract>
                 <description>The goal of this is for K-12 students to explore the design process to create a gravity-powered race car that is the fastest as well as the lightest. The time it takes for the car to make it down the ramp, over the two bumps, and across the finish line will be recorded.</description>
@@ -938,12 +938,12 @@
                 <start>09:00</start>
                 <duration>06:00</duration>
                 <room>Learned 1131</room>
-                <slug></slug>
+                <slug/>
                 <title>SEDS</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Get ready for takeoff in SEDS (Students for the Exploration and Development of Space) water rocket competition and space race remote-controlled cars.</abstract>
                 <description>Build and bring your own water rocket for SEDS competition right behind Learned Hall and race a set of customised remote-controlled cars for bragging rights and the privilege to take one of their chassis home - that is, if you have the quickest time!</description>
                 <presenters>
@@ -956,13 +956,13 @@
                 <start>09:30</start>
                 <duration>03:00</duration>
                 <room>Learned 1131</room>
-                <slug></slug>
+                <slug/>
                 <title>Water Rocket (elementary school)</title>
                 <subtitle/>
                 <track>Elementary school competitions</track>
                 <type>competitions</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Students will create their own water rockets and will compete to have the longest hang-time.</description>
                 <presenters>
                     <presenter id="26">Students for the Exploration and Development of Space (SEDS)</presenter>
@@ -973,13 +973,13 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 1131</room>
-                <slug></slug>
+                <slug/>
                 <title>Water Rocket (high school)</title>
                 <subtitle/>
                 <track>High school competitions</track>
                 <type>competitions</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Students will create their own water rockets and will compete to have the longest hang-time.</description>
                 <presenters>
                     <presenter id="26">Students for the Exploration and Development of Space (SEDS)</presenter>
@@ -992,12 +992,12 @@
                 <start>09:00</start>
                 <duration>06:00</duration>
                 <room>Learned 1136</room>
-                <slug></slug>
+                <slug/>
                 <title>AEI/ASHRAE/EERI/Theta Tau</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Throughout the history of the Olympics, magnificent structures have been assembled to show off the hosting nation's engineering capacities and design strengths.</abstract>
                 <description>From the impressive renovations and installations for the last world games in London 2012, to the Bird's Nest and Water Cube for the Olympics in China you will be able to relive these structures in AEI's and ASHRAE's Historic Building room! In addition, you will also get to try your hand at designing your very own Skyscraper and get it tested to see how much stress it can uphold in the Skyscraper competition. In this room, you will also be able to visit EERI's display as well as Theta Tau Professional Engineering Fraternity's interactive biking activity!</description>
                 <presenters>
@@ -1013,12 +1013,12 @@
                 <start>09:30</start>
                 <duration>03:00</duration>
                 <room>Learned 1136</room>
-                <slug></slug>
+                <slug/>
                 <title>Skyscraper (elementary school)</title>
                 <subtitle/>
                 <track>Elementary school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>Student groups will design and build a tower in the months prior to the competition.</abstract>
                 <description>On the day of competition the students will register their towers with the AEI group for testing later that day. The towers may be left in the room until the competition.</description>
                 <presenters>
@@ -1032,12 +1032,12 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 1136</room>
-                <slug></slug>
+                <slug/>
                 <title>Skyscraper (high school)</title>
                 <subtitle/>
                 <track>High school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>Student groups will design and build a tower in the months prior to the competition.</abstract>
                 <description>On the day of competition the students will register their towers with the AEI group for testing later that day. The towers may be left in the room until the competition.</description>
                 <presenters>
@@ -1053,12 +1053,12 @@
                 <start>09:30</start>
                 <duration>03:00</duration>
                 <room>Learned 2002</room>
-                <slug></slug>
+                <slug/>
                 <title>Weight Lifting (elementary school)</title>
                 <subtitle/>
                 <track>Elementary school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>A pulley weight lifting. Teams of up to 3 people.</abstract>
                 <description>Participants are given a standard set of pulleys and a given length of rope/string. The goal is for the teams to build a pulley configuration that reduces the amount of force to lift a weight, using the least amount of pulleys. Teams can try up to 3 configurations of pulleys to lift a standard mass. Scores will be the force required to lift the mass (small scores are better).</description>
                 <presenters>
@@ -1072,12 +1072,12 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 2002</room>
-                <slug></slug>
+                <slug/>
                 <title>Weight Lifting (high school)</title>
                 <subtitle/>
                 <track>High school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>A pulley weight lifting. Teams of up to 3 people.</abstract>
                 <description>Participants are given a standard set of pulleys and a given length of rope/string. The goal is for the teams to build a pulley configuration that reduces the amount of force to lift a weight, using the least amount of pulleys. Teams can try up to 3 configurations of pulleys to lift a standard mass. Scores will be the force required to lift the mass (small scores are better).</description>
                 <presenters>
@@ -1093,12 +1093,12 @@
                 <start>09:30</start>
                 <duration>03:00</duration>
                 <room>Learned 2111</room>
-                <slug></slug>
+                <slug/>
                 <title>LEED Design (elementary school)</title>
                 <subtitle/>
                 <track>Elementary school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>Students will compete to renovate a law office based on LEED criteria. LEED stands for Leadership in Energy and Environmental Design and emphasizes creating a building that is sustainable.</abstract>
                 <description>LEED rating is based off of points from different categories of a building. This competition increases awareness about LEED certified materials and shows that rennovating a building to become LEED certified within a budget has its difficulties.</description>
                 <presenters>
@@ -1118,12 +1118,12 @@
                 <start>09:00</start>
                 <duration>06:00</duration>
                 <room>Learned 2111</room>
-                <slug></slug>
+                <slug/>
                 <title>EWB/USGBC</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Here Engineers without Borders and USGBC combine to showcase their efforts in community service and sustainability!</abstract>
                 <description>Climb the steps to the second floor and experience the heights that EWB reach in their annual trips to Azacilo, Bolivia where they help improve the quality of life of the inhabitants with engineering projects. USGBC also has an educational presentation on the LEED certification process, and how to make more envirormentally friendly buildings for the future. This is the room where you will check-in to both USGBC's and EWB's competitions.</description>
                 <presenters>
@@ -1137,12 +1137,12 @@
                 <start>09:30</start>
                 <duration>03:00</duration>
                 <room>Learned 2111</room>
-                <slug></slug>
+                <slug/>
                 <title>Water Finding (elementary school)</title>
                 <subtitle/>
                 <track>Elementary school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>A community in Bolivia needs a new source of water for their residents. You are challenged to aid the community in need by solving this problem.</abstract>
                 <description>Given a map of the area surrounding the community, as well as the coordinates to the community, we challenge you to devise a realistic water source.</description>
                 <presenters>
@@ -1156,12 +1156,12 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 2111</room>
-                <slug></slug>
+                <slug/>
                 <title>Water Finding (high school)</title>
                 <subtitle/>
                 <track>High school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>A community in Bolivia needs a new source of water for their residents. You are challenged to aid the community in need by solving this problem.</abstract>
                 <description>Given a map of the area surrounding the community, as well as the coordinates to the community, we challenge you to devise a realistic water source.</description>
                 <presenters>
@@ -1177,12 +1177,12 @@
                 <start>09:00</start>
                 <duration>06:00</duration>
                 <room>Learned 2112</room>
-                <slug></slug>
+                <slug/>
                 <title>KU Robotics</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>FIRST robotics competition is the equivalent of the Olympics for robotics enthusiasts at the high school level in the United States.</abstract>
                 <description>Try your hand at besting the obstacles set forth by KU Robotics using LEGO Mindstorms for a chance to show your mettle (and earn a medal) in technologically advanced room. Plus, for those not participating in the Mindstorms competition, there will also be a robotic arm for you to interact with here!</description>
                 <presenters>
@@ -1195,12 +1195,12 @@
                 <start>09:30</start>
                 <duration>03:00</duration>
                 <room>Learned 2112</room>
-                <slug></slug>
+                <slug/>
                 <title>Mindstorms (elementary school)</title>
                 <subtitle/>
                 <track>Elementary school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>Students are challenged to a mindstorms race on a prebuilt course.</abstract>
                 <description>Competitors will design, build and program their own mindstorms robot to complete the race in the fastest possible time.</description>
                 <presenters>
@@ -1214,12 +1214,12 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 2112</room>
-                <slug></slug>
+                <slug/>
                 <title>Mindstorms (high school)</title>
                 <subtitle/>
                 <track>High school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>Students are challenged to a mindstorms race on a prebuilt course.</abstract>
                 <description>Competitors will design, build and program their own mindstorms robot to complete the race in the fastest possible time.</description>
                 <presenters>
@@ -1235,12 +1235,12 @@
                 <start>09:00</start>
                 <duration>06:00</duration>
                 <room>Learned 2115</room>
-                <slug></slug>
+                <slug/>
                 <title>SPE</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>The Society of Petroleum engineers will host a drilling race meant to simulate the economic decisions and engineering challenges involved in reaching our natural resources far below ground.</abstract>
                 <description>There will be an abundance of information on the excitement of the oil and gas industry and the job of a petroleum engineer. Participants will be able interact with a variety of materials such as drill bits, core samples, and drilling mud.</description>
                 <presenters>
@@ -1253,13 +1253,13 @@
                 <start>09:30</start>
                 <duration>03:00</duration>
                 <room>Learned 2115</room>
-                <slug></slug>
+                <slug/>
                 <title>Drilling (elementary school)</title>
                 <subtitle/>
                 <track>Elementary school competitions</track>
                 <type>competitions</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Students will be asked to design drilling mud in order to learn about the different properties of mud utilized in drilling a well. Students will be racing their mud samples down slides made from PVC pipes on an incline. Students will try to design a drilling mud that has a low viscosity so it can flow quicker down the incline. The practical application of a low viscosity is that it makes the mud easier to pump and circulate through the well.</description>
                 <presenters>
                     <presenter id="28">Society of Petroleum Engineers (SPE)</presenter>
@@ -1271,13 +1271,13 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 2115</room>
-                <slug></slug>
+                <slug/>
                 <title>Drilling (high school)</title>
                 <subtitle/>
                 <track>High school competitions</track>
                 <type>competitions</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Students will be asked to design drilling mud in order to learn about the different properties of mud utilized in drilling a well. Students will be racing their mud samples down slides made from PVC pipes on an incline. Students will try to design a drilling mud that has a low viscosity so it can flow quicker down the incline. The practical application of a low viscosity is that it makes the mud easier to pump and circulate through the well.</description>
                 <presenters>
                     <presenter id="28">Society of Petroleum Engineers (SPE)</presenter>
@@ -1291,13 +1291,13 @@
                 <start>09:00</start>
                 <duration>06:00</duration>
                 <room>Learned 2139</room>
-                <slug></slug>
+                <slug/>
                 <title>Scoring</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Our central scoring and help center will be in Learned 2139. Please head there if you have any major questions or concerns.</description>
                 <presenters>
                     <presenter id="17">Expo Administration</presenter>
@@ -1311,12 +1311,12 @@
                 <start>09:00</start>
                 <duration>06:00</duration>
                 <room>Learned 2148</room>
-                <slug></slug>
+                <slug/>
                 <title>AES/AIChE</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Take a visit to the Olympic Village with AES and AIChe! In this room you will be able to witness a wide array of dizzying demonstrations!</abstract>
                 <description>The first demonstration is the Carbonator. Here students will able to make their own soda by using a CO2 tank, water and various syrups. Next is the Ferrofluid, here students will be able to interact with the Ferrofluid using various magnets to learn how magnetic fields influence the properties of the fluid. Third is the surface tension experiment where students can use milk, dye and soap to break the surface tension of the milk and create colorful patterns all across the liquid. Fourth is the chocolate melting points where students will discover the heat capacity of certain chocolates using their taste buds! Next is the phase change experiment where students will see first hand how a phase change can affect the volume of a soda can by making it implode! After that we will have the energy bike where students will be able to ride the bike and power light bulbs. After that is the Hydrophobic sand. This experiment demonstrates how our special hydrophobic sand is resistant to water. When poured into a mixture of water and oil, it will grab the oil but resist the water, creating a sand oil mixture at the bottom of the bowl. Next is the viscosity columns where students will be able to pump air through 3 tall column filled with a certain liquids to demonstrate viscosity. Last is the fluidized bed which is a sand bed with air flowing through it. The fine sand at the top will begin to bubble like water. Its cool. The competitions we will have are the volcano distance competition and the ChemE car. In the volcano competition students will bring their pre-built volcanoes and we will provide them with vinegar and baking soda and measure how far their volcano erupts. In the ChemE car competition students will bring their ChemE cars and see how fast and far they can go!</description>
                 <presenters>
@@ -1330,14 +1330,14 @@
                 <start>09:30</start>
                 <duration>03:00</duration>
                 <room>Learned 2148</room>
-                <slug></slug>
+                <slug/>
                 <title>Chemical Car (elementary school)</title>
                 <subtitle/>
                 <track>Elementary school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>Design a car that holds a specified amount of weight powered by a chemical reaction to go a specified distance that quickest.</abstract>
-                <description></description>
+                <description/>
                 <presenters>
                     <presenter id="5">American Institute of Chemical Engineers (AIChE)</presenter>
                 </presenters>
@@ -1348,14 +1348,14 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 2148</room>
-                <slug></slug>
+                <slug/>
                 <title>Chemical Car (high school)</title>
                 <subtitle/>
                 <track>High school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>Design a car that holds a specified amount of weight powered by a chemical reaction to go a specified distance that quickest.</abstract>
-                <description></description>
+                <description/>
                 <presenters>
                     <presenter id="5">American Institute of Chemical Engineers (AIChE)</presenter>
                 </presenters>
@@ -1368,13 +1368,13 @@
                 <start>09:00</start>
                 <duration>06:00</duration>
                 <room>Learned 3150</room>
-                <slug></slug>
+                <slug/>
                 <title>PESO/SAE Baja</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>PESO and SAE Baja have an array of interesting activities for you to take part in including a compressed air propeller of paper rockets, as well as a mechanical advantage activity run by SAE Baja and a weight lifting competition by PESO. Come and learn about what makes these organizations so great here KU!</description>
                 <presenters>
                     <presenter id="24">Physics and Engineering Student Organization (PESO)</presenter>
@@ -1387,13 +1387,13 @@
                 <start>09:30</start>
                 <duration>03:00</duration>
                 <room>Learned 3150</room>
-                <slug></slug>
+                <slug/>
                 <title>Archery (elementary school)</title>
                 <subtitle/>
                 <track>Elementary school competitions</track>
                 <type>competitions</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Competing teams in Middle and High School divisions will construct a bow given a set of material and size constraints. These bows will then be judged on creativity upon arrival at the competition. Groups will then be presented with 3 arrows to fire at a target, and points will be awarded based on accuracy. The three teams with the highest scores in each division will then be presented with medals at the award ceremony.</description>
                 <presenters>
                     <presenter id="2">American Institute of Aeronautics and Astronautics (AIAA)</presenter>
@@ -1407,13 +1407,13 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 3150</room>
-                <slug></slug>
+                <slug/>
                 <title>Archery (high school)</title>
                 <subtitle/>
                 <track>High school competitions</track>
                 <type>competitions</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Competing teams in Middle and High School divisions will construct a bow given a set of material and size constraints. These bows will then be judged on creativity upon arrival at the competition. Groups will then be presented with 3 arrows to fire at a target, and points will be awarded based on accuracy. The three teams with the highest scores in each division will then be presented with medals at the award ceremony.</description>
                 <presenters>
                     <presenter id="2">American Institute of Aeronautics and Astronautics (AIAA)</presenter>
@@ -1429,12 +1429,12 @@
                 <start>09:00</start>
                 <duration>06:00</duration>
                 <room>Learned 3151</room>
-                <slug></slug>
+                <slug/>
                 <title>ASME/EcoHawks</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>ASME and Ecohawks are excited to bring you both the Rube Goldberg and Battery Powered Car competitions inside of this room!</abstract>
                 <description>The stage area in the back will be primarily used by Ecohawks during competitions and the main area will be used for the Rube Goldberg machines. Show your engineering brawn and come up with a complex machine using only simple machines that can lift a 10lb weight for ASME, and show off your design skills with your Battery Powered Car.</description>
                 <presenters>
@@ -1448,12 +1448,12 @@
                 <start>09:30</start>
                 <duration>03:00</duration>
                 <room>Learned 3151</room>
-                <slug></slug>
+                <slug/>
                 <title>Rube Goldberg (elementary school)</title>
                 <subtitle/>
                 <track>Elementary school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>Students are challenged to create a complicated system of simple machines in order to perform one simple task.</abstract>
                 <description>This year's task is to shoot a tennis ball through a ring at a set distance. The ring diameter is one foot.</description>
                 <presenters>
@@ -1467,12 +1467,12 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 3151</room>
-                <slug></slug>
+                <slug/>
                 <title>Rube Goldberg (high school)</title>
                 <subtitle/>
                 <track>High school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>Students are challenged to create a complicated system of simple machines in order to perform one simple task.</abstract>
                 <description>This year's task is to shoot a tennis ball through a ring at a set distance. The ring diameter is one foot.</description>
                 <presenters>
@@ -1486,12 +1486,12 @@
                 <start>09:30</start>
                 <duration>03:00</duration>
                 <room>Learned 3151</room>
-                <slug></slug>
+                <slug/>
                 <title>Trebuchet (elementary school)</title>
                 <subtitle/>
                 <track>Elementary school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>The goal of this competition is to experiment with a great mechanical engineering pastime, throwing objects in the air.</abstract>
                 <description>In this competition students will create and shoot their own trebuchet. A trebuchet must use a counterweight, have string to hold the sling which holds the object to launch, and no electronic components can be used. The trebuchet has to be able to fit in a 2x2 ft squared base, there is not height limitation. The object being thrown is a racquet ball.</description>
                 <presenters>
@@ -1505,12 +1505,12 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 3151</room>
-                <slug></slug>
+                <slug/>
                 <title>Trebuchet (high school)</title>
                 <subtitle/>
                 <track>High school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>The goal of this competition is to experiment with a great mechanical engineering pastime, throwing objects in the air.</abstract>
                 <description>In this competition students will create and shoot their own trebuchet. A trebuchet must use a counterweight, have string to hold the sling which holds the object to launch, and no electronic components can be used. The trebuchet has to be able to fit in a 2x2 ft squared base, there is not height limitation. The object being thrown is a racquet ball.</description>
                 <presenters>
@@ -1524,12 +1524,12 @@
                 <start>09:30</start>
                 <duration>03:00</duration>
                 <room>Learned 3151</room>
-                <slug></slug>
+                <slug/>
                 <title>Battery-Powered Car (elementary school)</title>
                 <subtitle/>
                 <track>Elementary school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>The goal of this race is for K-12 students to explore the role batteries and electric motors play in the future of automobiles.</abstract>
                 <description>The competition is a battery-powered race involving a student-constructed car. The participants will start on one end of a flat platform that is approximately 10 feet long. The car can have the maximum dimensions of 7” wide by 15.5” long and 4.5” high (average size of a shoebox). The students will compete one at time. The time it takes for the car to traverse the platform and across the finish line (indicated by tape) will be recorded. Students will get two time-recorded attempts.</description>
                 <presenters>
@@ -1543,12 +1543,12 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 3151</room>
-                <slug></slug>
+                <slug/>
                 <title>Battery-Powered Car (high school)</title>
                 <subtitle/>
                 <track>High school competitions</track>
                 <type>competitions</type>
-                <language></language>
+                <language/>
                 <abstract>The goal of this race is for K-12 students to explore the role batteries and electric motors play in the future of automobiles.</abstract>
                 <description>The competition is a battery-powered race involving a student-constructed car. The participants will start on one end of a flat platform that is approximately 10 feet long. The car can have the maximum dimensions of 7” wide by 15.5” long and 4.5” high (average size of a shoebox). The students will compete one at time. The time it takes for the car to traverse the platform and across the finish line (indicated by tape) will be recorded. Students will get two time-recorded attempts.</description>
                 <presenters>
@@ -1564,12 +1564,12 @@
                 <start>09:00</start>
                 <duration>06:00</duration>
                 <room>Learned 3153</room>
-                <slug></slug>
+                <slug/>
                 <title>NSBE</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Join NSBE in celebrating Olympic soccer with an engineering twist by controlling robots to score a goal for your favorite team!</abstract>
                 <description>In this room you will be able to control VEX robots to try to score as many goals as you can against stiff opposition thanks to the National Society of Black Engineers.</description>
                 <presenters>
@@ -1584,12 +1584,12 @@
                 <start>09:00</start>
                 <duration>06:00</duration>
                 <room>Learned 3154</room>
-                <slug></slug>
-                <title></title>
+                <slug/>
+                <title>Concrete Canoe</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Sail to the boundaries of your imagination in this sailing themed competition hosted by KU's one and only Concrete Canoe organization!</abstract>
                 <description>Pre-made concrete boats will be provided by Concrete Canoe for you to attach your wind harnessing propulsion device so you can race to the goal and earn gold in the calm waters of Learned 3154.</description>
                 <presenters>
@@ -1602,13 +1602,13 @@
                 <start>09:30</start>
                 <duration>03:00</duration>
                 <room>Learned 3154</room>
-                <slug></slug>
+                <slug/>
                 <title>Sailing (elementary school)</title>
                 <subtitle/>
                 <track>Elementary school competitions</track>
                 <type>competitions</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Using only a straw or by blowing directly on the sail, propel a concrete boat across a 10’ span of rain gutter in the shortest time possible.</description>
                 <presenters>
                     <presenter id="12">Concrete Canoe</presenter>
@@ -1620,13 +1620,13 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>Learned 3154</room>
-                <slug></slug>
+                <slug/>
                 <title>Sailing (high school)</title>
                 <subtitle/>
                 <track>High school competitions</track>
                 <type>competitions</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Using only a straw or by blowing directly on the sail, propel a concrete boat across a 10’ span of rain gutter in the shortest time possible.</description>
                 <presenters>
                     <presenter id="12">Concrete Canoe</presenter>
@@ -1640,13 +1640,13 @@
                 <start>09:30</start>
                 <duration>03:00</duration>
                 <room>M2SEC Lounge, G535</room>
-                <slug></slug>
+                <slug/>
                 <title>Egg Drop (elementary school)</title>
                 <subtitle/>
                 <track>Elementary school competitions</track>
                 <type>competitions</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>The egg drop contest is sponsored by Sigma Gamma Tau and is a test of creativity and understanding of physics.  Students are tasked with creating a structure that will safely house an egg during a 17 foot free fall.  The winning crate will be decided upon based on a combination of creativity, time in the air, and of course, the safety of the egg. Competitors are encouraged to think outside the box, and may the best egg drop win!</description>
                 <presenters>
                     <presenter id="32">Sigma Gamma Tau (ΣΓΤ)</presenter>
@@ -1659,13 +1659,13 @@
                 <start>10:30</start>
                 <duration>02:30</duration>
                 <room>M2SEC Lounge, G535</room>
-                <slug></slug>
+                <slug/>
                 <title>Egg Drop (high school)</title>
                 <subtitle/>
                 <track>High school competitions</track>
                 <type>competitions</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>The egg drop contest is sponsored by Sigma Gamma Tau and is a test of creativity and understanding of physics.  Students are tasked with creating a structure that will safely house an egg during a 17 foot free fall.  The winning crate will be decided upon based on a combination of creativity, time in the air, and of course, the safety of the egg. Competitors are encouraged to think outside the box, and may the best egg drop win!</description>
                 <presenters>
                     <presenter id="32">Sigma Gamma Tau (ΣΓΤ)</presenter>
@@ -1680,13 +1680,13 @@
                 <start>09:00</start>
                 <duration>06:00</duration>
                 <room>Spahr Library</room>
-                <slug></slug>
-                <title></title>
+                <slug/>
+                <title>Chem Club</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Brrr! The Winter Olympics brought a quite a chill to Lawrence. Take the chance to enjoy some hot chocolate and interesting scientific demonstrations from the Chemistry Club and warm up before heading back to the rest of the Olympic displays or any outdoor competitions.</description>
                 <presenters>
                     <presenter id="11">Chemistry Club</presenter>
@@ -1702,13 +1702,13 @@
                 <start>09:00</start>
                 <duration>03:00</duration>
                 <room>Eaton 1005</room>
-                <slug></slug>
+                <slug/>
                 <title>IEEE/ACM/HKN</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Come join ACM, IEEE, and HKN to learn about how quick technology can change the world of sports can be in the Speed Skating room! Here you will be able to learn coding basics from the combined genius of IEEE and HKN while also seeing quick world-class athletes can leave the starting blocks with a reaction time calculator. Then, advanced coders can even take each other on in ACM's Hacker's Relay and learn visual coding with Scratch!</description>
                 <presenters>
                     <presenter id="18">Institute of Electrical and Electronics Engineers (IEEE)</presenter>
@@ -1724,12 +1724,12 @@
                 <start>09:00</start>
                 <duration>03:00</duration>
                 <room>Eaton 1010</room>
-                <slug></slug>
+                <slug/>
                 <title>SWE</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>The wonderful Society of Women Engineers has the knockout punch with a fun, safe boxing activity for all ages.</abstract>
                 <description>Learn about the often surprising engineering backgrounds of the inventors and developers of key inventions in our daily lives by guessing which punching bag represents the engineering discipline they studied while they were in college.</description>
                 <presenters>
@@ -1744,12 +1744,12 @@
                 <start>09:00</start>
                 <duration>03:00</duration>
                 <room>Eaton 1018</room>
-                <slug></slug>
+                <slug/>
                 <title>SHPE</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Welcome to the most thrilling facet of sports, a game-winning score at the end of the game.</abstract>
                 <description>Get the opportunity to build your own catapult before EXPO, and try your hand at SHPE's catapult competition where you can try to score as many points as possible in a short amount of time where every shot counts! After you try your hand at projectile motion, explore the effects of friction on your golf game with iSea's putting stations.</description>
                 <presenters>
@@ -1764,12 +1764,12 @@
                 <start>09:00</start>
                 <duration>03:00</duration>
                 <room>Eaton 2</room>
-                <slug></slug>
+                <slug/>
                 <title>ASCE</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Step up to the stage in the Colliseum, and try to show off your engineering prowess with the strongest pasta bridge in ASCE's Pasta Bridge Challenge.</abstract>
                 <description>The room will be dedicated to showing the design of bridges and other civil structures. They will also be demonstrating the geotechnical field of civil engineering along with steel bridge competition members.</description>
                 <presenters>
@@ -1784,12 +1784,12 @@
                 <start>09:00</start>
                 <duration>03:00</duration>
                 <room>Learned 1100</room>
-                <slug></slug>
+                <slug/>
                 <title>BMES</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Come learn about the bio-mechanics of sports with BMES!</abstract>
                 <description>Here you will be able to extract your very own DNA sample, play with a model hand, and make your own model helmet to prevent a balloon from breaking. BMES will also teach about the impact of engineering in prosthetics, sports, and how to keep players in the game with the newest technology!</description>
                 <presenters>
@@ -1804,12 +1804,12 @@
                 <start>09:00</start>
                 <duration>03:00</duration>
                 <room>Learned 1109</room>
-                <slug></slug>
+                <slug/>
                 <title>Jayhawk Motorsports</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>The winter Olympics have reached Lawrence, Kansas!</abstract>
                 <description>Join Jayhawk Motorsports at their garage to participate in the Gravity Car / Bobsled competition. Not only that, but you will also get to learn about the cars the JMS builds, races, and compete with in the US and internationally as well every year.</description>
                 <presenters>
@@ -1824,12 +1824,12 @@
                 <start>09:00</start>
                 <duration>03:00</duration>
                 <room>Learned 1131</room>
-                <slug></slug>
+                <slug/>
                 <title>SEDS</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Get ready for takeoff in SEDS (Students for the Exploration and Development of Space) water rocket competition and space race remote-controlled cars.</abstract>
                 <description>Build and bring your own water rocket for SEDS competition right behind Learned Hall and race a set of customised remote-controlled cars for bragging rights and the privilege to take one of their chassis home - that is, if you have the quickest time!</description>
                 <presenters>
@@ -1844,12 +1844,12 @@
                 <start>09:00</start>
                 <duration>03:00</duration>
                 <room>Learned 1136</room>
-                <slug></slug>
+                <slug/>
                 <title>AEI/ASHRAE/EERI/Theta Tau</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Throughout the history of the Olympics, magnificent structures have been assembled to show off the hosting nation's engineering capacities and design strengths.</abstract>
                 <description>From the impressive renovations and installations for the last world games in London 2012, to the Bird's Nest and Water Cube for the Olympics in China you will be able to relive these structures in AEI's and ASHRAE's Historic Building room! In addition, you will also get to try your hand at designing your very own Skyscraper and get it tested to see how much stress it can uphold in the Skyscraper competition. In this room, you will also be able to visit EERI's display as well as Theta Tau Professional Engineering Fraternity's interactive biking activity!</description>
                 <presenters>
@@ -1867,12 +1867,12 @@
                 <start>09:00</start>
                 <duration>03:00</duration>
                 <room>Learned 2111</room>
-                <slug></slug>
+                <slug/>
                 <title>EWB/USGBC</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Here Engineers without Borders and USGBC combine to showcase their efforts in community service and sustainability!</abstract>
                 <description>Climb the steps to the second floor and experience the heights that EWB reach in their annual trips to Azacilo, Bolivia where they help improve the quality of life of the inhabitants with engineering projects. USGBC also has an educational presentation on the LEED certification process, and how to make more envirormentally friendly buildings for the future. This is the room where you will check-in to both USGBC's and EWB's competitions.</description>
                 <presenters>
@@ -1888,12 +1888,12 @@
                 <start>09:00</start>
                 <duration>03:00</duration>
                 <room>Learned 2112</room>
-                <slug></slug>
+                <slug/>
                 <title>KU Robotics</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>FIRST robotics competition is the equivalent of the Olympics for robotics enthusiasts at the high school level in the United States.</abstract>
                 <description>Try your hand at besting the obstacles set forth by KU Robotics using LEGO Mindstorms for a chance to show your mettle (and earn a medal) in technologically advanced room. Plus, for those not participating in the Mindstorms competition, there will also be a robotic arm for you to interact with here!</description>
                 <presenters>
@@ -1908,12 +1908,12 @@
                 <start>09:00</start>
                 <duration>03:00</duration>
                 <room>Learned 2115</room>
-                <slug></slug>
+                <slug/>
                 <title>SPE</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>The Society of Petroleum engineers will host a drilling race meant to simulate the economic decisions and engineering challenges involved in reaching our natural resources far below ground.</abstract>
                 <description>There will be an abundance of information on the excitement of the oil and gas industry and the job of a petroleum engineer. Participants will be able interact with a variety of materials such as drill bits, core samples, and drilling mud.</description>
                 <presenters>
@@ -1928,13 +1928,13 @@
                 <start>09:00</start>
                 <duration>03:00</duration>
                 <room>Learned 2139</room>
-                <slug></slug>
+                <slug/>
                 <title>Scoring</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Our central scoring and help center will be in Learned 2139. Please head there if you have any major questions or concerns.</description>
                 <presenters>
                     <presenter id="17">Expo Administration</presenter>
@@ -1948,12 +1948,12 @@
                 <start>09:00</start>
                 <duration>03:00</duration>
                 <room>Learned 2148</room>
-                <slug></slug>
+                <slug/>
                 <title>AES/AIChE</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Take a visit to the Olympic Village with AES and AIChe! In this room you will be able to witness a wide array of dizzying demonstrations!</abstract>
                 <description>The first demonstration is the Carbonator. Here students will able to make their own soda by using a CO2 tank, water and various syrups. Next is the Ferrofluid, here students will be able to interact with the Ferrofluid using various magnets to learn how magnetic fields influence the properties of the fluid. Third is the surface tension experiment where students can use milk, dye and soap to break the surface tension of the milk and create colorful patterns all across the liquid. Fourth is the chocolate melting points where students will discover the heat capacity of certain chocolates using their taste buds! Next is the phase change experiment where students will see first hand how a phase change can affect the volume of a soda can by making it implode! After that we will have the energy bike where students will be able to ride the bike and power light bulbs. After that is the Hydrophobic sand. This experiment demonstrates how our special hydrophobic sand is resistant to water. When poured into a mixture of water and oil, it will grab the oil but resist the water, creating a sand oil mixture at the bottom of the bowl. Next is the viscosity columns where students will be able to pump air through 3 tall column filled with a certain liquids to demonstrate viscosity. Last is the fluidized bed which is a sand bed with air flowing through it. The fine sand at the top will begin to bubble like water. Its cool. The competitions we will have are the volcano distance competition and the ChemE car. In the volcano competition students will bring their pre-built volcanoes and we will provide them with vinegar and baking soda and measure how far their volcano erupts. In the ChemE car competition students will bring their ChemE cars and see how fast and far they can go!</description>
                 <presenters>
@@ -1969,13 +1969,13 @@
                 <start>09:00</start>
                 <duration>03:00</duration>
                 <room>Learned 3150</room>
-                <slug></slug>
+                <slug/>
                 <title>PESO/SAE Baja</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>PESO and SAE Baja have an array of interesting activities for you to take part in including a compressed air propeller of paper rockets, as well as a mechanical advantage activity run by SAE Baja and a weight lifting competition by PESO. Come and learn about what makes these organizations so great here KU!</description>
                 <presenters>
                     <presenter id="24">Physics and Engineering Student Organization (PESO)</presenter>
@@ -1990,12 +1990,12 @@
                 <start>09:00</start>
                 <duration>03:00</duration>
                 <room>Learned 3151</room>
-                <slug></slug>
+                <slug/>
                 <title>ASME/EcoHawks</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>ASME and Ecohawks are excited to bring you both the Rube Goldberg and Battery Powered Car competitions inside of this room!</abstract>
                 <description>The stage area in the back will be primarily used by Ecohawks during competitions and the main area will be used for the Rube Goldberg machines. Show your engineering brawn and come up with a complex machine using only simple machines that can lift a 10lb weight for ASME, and show off your design skills with your Battery Powered Car.</description>
                 <presenters>
@@ -2011,12 +2011,12 @@
                 <start>09:00</start>
                 <duration>03:00</duration>
                 <room>Learned 3153</room>
-                <slug></slug>
+                <slug/>
                 <title>NSBE</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Join NSBE in celebrating Olympic soccer with an engineering twist by controlling robots to score a goal for your favorite team!</abstract>
                 <description>In this room you will be able to control VEX robots to try to score as many goals as you can against stiff opposition thanks to the National Society of Black Engineers.</description>
                 <presenters>
@@ -2031,12 +2031,12 @@
                 <start>09:00</start>
                 <duration>03:00</duration>
                 <room>Learned 3154</room>
-                <slug></slug>
-                <title></title>
+                <slug/>
+                <title>Concrete Canoe</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
+                <language/>
                 <abstract>Sail to the boundaries of your imagination in this sailing themed competition hosted by KU's one and only Concrete Canoe organization!</abstract>
                 <description>Pre-made concrete boats will be provided by Concrete Canoe for you to attach your wind harnessing propulsion device so you can race to the goal and earn gold in the calm waters of Learned 3154.</description>
                 <presenters>
@@ -2051,13 +2051,13 @@
                 <start>09:00</start>
                 <duration>03:00</duration>
                 <room>Spahr Library</room>
-                <slug></slug>
-                <title></title>
+                <slug/>
+                <title>Chem Club</title>
                 <subtitle/>
                 <track>Displays</track>
                 <type>displays</type>
-                <language></language>
-                <abstract></abstract>
+                <language/>
+                <abstract/>
                 <description>Brrr! The Winter Olympics brought a quite a chill to Lawrence. Take the chance to enjoy some hot chocolate and interesting scientific demonstrations from the Chemistry Club and warm up before heading back to the rest of the Olympic displays or any outdoor competitions.</description>
                 <presenters>
                     <presenter id="11">Chemistry Club</presenter>
