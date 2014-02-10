@@ -918,7 +918,7 @@
                 <slug/>
                 <title>Gravity Car (high school)</title>
                 <subtitle/>
-                <track>Middle school competitions</track>
+                <track>High school competitions</track>
                 <type>competitions</type>
                 <language/>
                 <abstract>Every day, countless automobiles can be seen driving on the streets. What
