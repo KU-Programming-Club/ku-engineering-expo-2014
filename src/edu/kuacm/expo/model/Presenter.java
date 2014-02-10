@@ -1,10 +1,8 @@
 package edu.kuacm.expo.model;
 
-import edu.kuacm.expo.api.ExpoUrls;
-import edu.kuacm.expo.db.DatabaseManager;
-import edu.kuacm.expo.utils.StringUtils;
 import android.os.Parcel;
 import android.os.Parcelable;
+import edu.kuacm.expo.api.ExpoUrls;
 
 public class Presenter implements Parcelable {
 
@@ -30,7 +28,7 @@ public class Presenter implements Parcelable {
 	}
 
 	public String getUrl() {
-		return ExpoUrls.getPresenterUrl(StringUtils.toSlug(mName), DatabaseManager.getInstance().getYear());
+		return ExpoUrls.getPresenterUrl(mName);
 	}
 
 	@Override

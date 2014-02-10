@@ -3,11 +3,10 @@ package edu.kuacm.expo.model;
 import java.util.Date;
 import java.util.List;
 
-import edu.kuacm.expo.api.ExpoUrls;
-import edu.kuacm.expo.db.DatabaseManager;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
+import edu.kuacm.expo.api.ExpoUrls;
 
 public class Event implements Parcelable {
 
@@ -89,7 +88,7 @@ public class Event implements Parcelable {
 	}
 
 	public String getUrl() {
-		return ExpoUrls.getEventUrl(mSlug, DatabaseManager.getInstance().getYear());
+		return ExpoUrls.getEventUrl(mTitle, mTrack);
 	}
 
 	public String getTitle() {

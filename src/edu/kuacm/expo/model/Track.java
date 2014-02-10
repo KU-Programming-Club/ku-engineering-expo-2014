@@ -8,8 +8,9 @@ public class Track implements Parcelable {
 
 	public static enum Type {
 		// This weird naming convention is due to parsing constraints
-		other(R.string.other), keynote(R.string.keynote), maintrack(R.string.main_track), devroom(R.string.developer_room), lightningtalk(
-				R.string.lightning_talk), certification(R.string.certification_exam);
+//		other(R.string.other), keynote(R.string.keynote), maintrack(R.string.main_track), devroom(R.string.developer_room), lightningtalk(
+//				R.string.lightning_talk), certification(R.string.certification_exam);
+		other(R.string.other), competitions(R.string.competitions), displays(R.string.displays);
 
 		private int mmNameResId;
 

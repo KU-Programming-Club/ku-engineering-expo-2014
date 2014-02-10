@@ -4,17 +4,6 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 
-import edu.kuacm.expo.R;
-import edu.kuacm.expo.activities.PresenterInfoActivity;
-import edu.kuacm.expo.db.DatabaseManager;
-import edu.kuacm.expo.loaders.BookmarkStatusLoader;
-import edu.kuacm.expo.loaders.LocalCacheLoader;
-import edu.kuacm.expo.model.Building;
-import edu.kuacm.expo.model.Event;
-import edu.kuacm.expo.model.Link;
-import edu.kuacm.expo.model.Presenter;
-import edu.kuacm.expo.utils.DateUtils;
-import edu.kuacm.expo.utils.StringUtils;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -44,6 +33,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import edu.kuacm.expo.R;
+import edu.kuacm.expo.activities.PresenterInfoActivity;
+import edu.kuacm.expo.db.DatabaseManager;
+import edu.kuacm.expo.loaders.BookmarkStatusLoader;
+import edu.kuacm.expo.loaders.LocalCacheLoader;
+import edu.kuacm.expo.model.Event;
+import edu.kuacm.expo.model.Link;
+import edu.kuacm.expo.model.Presenter;
+import edu.kuacm.expo.utils.DateUtils;
+import edu.kuacm.expo.utils.StringUtils;
 
 public class EventDetailsFragment extends Fragment {
 
@@ -128,7 +127,7 @@ public class EventDetailsFragment extends Fragment {
 		((TextView) view.findViewById(R.id.time)).setText(text);
 		final String roomName = mEvent.getRoomName();
 		TextView roomTextView = (TextView) view.findViewById(R.id.room);
-		Spannable roomText = new SpannableString(String.format("%1$s (Building %2$s)", roomName, Building.fromRoomName(roomName)));
+		Spannable roomText = new SpannableString(String.format("%1$s", roomName));
 		final int roomImageResId = getResources().getIdentifier(StringUtils.roomNameToResourceName(roomName), "drawable", getActivity().getPackageName());
 		// If the room image exists, make the room text clickable to display it
 		if (roomImageResId != 0) {

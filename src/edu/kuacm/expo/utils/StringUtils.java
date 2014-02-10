@@ -2,15 +2,17 @@ package edu.kuacm.expo.utils;
 
 import java.util.Locale;
 
+import edu.kuacm.expo.model.Building;
+
 /**
  * Various methods to transform strings
  * 
  * @author Christophe Beyls
  */
 public final class StringUtils {
-	
+
 	private StringUtils() {}
-	
+
 	/**
 	 * Mirror of the unicode table from 00c0 to 017f without diacritics.
 	 */
@@ -18,7 +20,7 @@ public final class StringUtils {
 			+ "AaAaAaCcCcCcCcDd" + "DdEeEeEeEeEeGgGg" + "GgGgHhHhIiIiIiIi" + "IiJjJjKkkLlLlLlL" + "lLlNnNnNnnNnOoOo" + "OoOoRrRrRrSsSsSs" + "SsTtTtTtUuUuUuUu"
 			+ "UuUuWwYyYZzZzZzF";
 
-	private static final String ROOM_DRAWABLE_PREFIX = "room_";
+	//	private static final String ROOM_DRAWABLE_PREFIX = "room_";
 
 	/**
 	 * Returns string without diacritics - 7 bit approximation.
@@ -111,22 +113,35 @@ public final class StringUtils {
 	 * @return
 	 */
 	public static String roomNameToResourceName(String roomName) {
-		StringBuilder builder = new StringBuilder(ROOM_DRAWABLE_PREFIX.length() + roomName.length());
-		builder.append(ROOM_DRAWABLE_PREFIX);
-		int size = roomName.length();
-		boolean lastDigit = false;
-		for (int i = 0; i < size; ++i) {
-			char c = roomName.charAt(i);
-			if (Character.isLetter(c)) {
-				if (lastDigit) {
-					break;
-				}
-				builder.append(Character.toLowerCase(c));
-			} else if (Character.isDigit(c)) {
-				builder.append(c);
-				lastDigit = true;
-			}
+		//		StringBuilder builder = new StringBuilder(ROOM_DRAWABLE_PREFIX.length() + roomName.length());
+		//		builder.append(ROOM_DRAWABLE_PREFIX);
+		//		int size = roomName.length();
+		//		boolean lastDigit = false;
+		//		for (int i = 0; i < size; ++i) {
+		//			char c = roomName.charAt(i);
+		//			if (Character.isLetter(c)) {
+		//				if (lastDigit) {
+		//					break;
+		//				}
+		//				builder.append(Character.toLowerCase(c));
+		//			} else if (Character.isDigit(c)) {
+		//				builder.append(c);
+		//				lastDigit = true;
+		//			}
+		//		}
+		//		return builder.toString();
+		Building building = Building.fromRoomName(roomName);
+		switch (building) {
+		case EATON:
+			return "camput_map_eaton";
+		case LEARNED:
+			return "camput_map_learned";
+		case M2SEC:
+			return "camput_map_m2sec";
+		case SPAHR_LIBRARY:
+			return "camput_map_sphar";
+		default:
+			return "camput_map_closeup";
 		}
-		return builder.toString();
 	}
 }
