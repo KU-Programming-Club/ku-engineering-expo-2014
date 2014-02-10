@@ -162,6 +162,14 @@ public class EventsParser extends IterableAbstractPullParser<Event> {
 					}
 					event.setTrack(mCurrentTrack);
 
+					// Hacky hardcoded wackiness
+					if (event.getTrack().getType() == Track.Type.competitions) {
+						Link link = new Link();
+						link.setUrl(event.getUrl());
+						link.setDescription("Competition website");
+						links.add(0, link);
+					}
+					
 					return event;
 				} else {
 					skipToEndTag();

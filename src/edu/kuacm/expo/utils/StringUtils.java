@@ -133,15 +133,15 @@ public final class StringUtils {
 		Building building = Building.fromRoomName(roomName);
 		switch (building) {
 		case EATON:
-			return "camput_map_eaton";
+			return "campus_map_eaton";
 		case LEARNED:
-			return "camput_map_learned";
+			return "campus_map_learned";
 		case M2SEC:
-			return "camput_map_m2sec";
+			return "campus_map_m2sec";
 		case SPAHR_LIBRARY:
-			return "camput_map_sphar";
+			return "campus_map_sphar";
 		default:
-			return "camput_map_closeup";
+			return "campus_map_closeup";
 		}
 	}
 }

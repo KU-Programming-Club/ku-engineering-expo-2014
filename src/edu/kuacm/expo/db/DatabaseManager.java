@@ -414,7 +414,7 @@ public class DatabaseManager {
 								+ " LEFT JOIN "
 								+ DatabaseHelper.PRESENTERS_TABLE_NAME
 								+ " p ON ep.presenter_id = p.rowid"
-								+ " WHERE e.id = ?" + " GROUP BY e.id", selectionArgs);
+								+ " WHERE e.id = ?" + " GROUP BY e.id ORDER BY et.title", selectionArgs);
 		try {
 			if (cursor.moveToFirst()) {
 				return toEvent(cursor);
@@ -461,7 +461,7 @@ public class DatabaseManager {
 								+ DatabaseHelper.BOOKMARKS_TABLE_NAME
 								+ " b ON e.id = b.event_id"
 								+ " WHERE e.day_index = ? AND t.name = ? AND t.type = ?"
-								+ " GROUP BY e.id" + " ORDER BY e.start_time ASC", selectionArgs);
+								+ " GROUP BY e.id" + " ORDER BY e.start_time,et.title ASC", selectionArgs);
 		cursor.setNotificationUri(mContext.getContentResolver(), URI_EVENTS);
 		return cursor;
 	}
@@ -534,7 +534,7 @@ public class DatabaseManager {
 								+ " WHERE "
 								+ whereCondition.toString()
 								+ " GROUP BY e.id"
-								+ " ORDER BY e.start_time " + ascendingString, selectionArgs.toArray(new String[selectionArgs.size()]));
+								+ " ORDER BY e.start_time,et.title " + ascendingString, selectionArgs.toArray(new String[selectionArgs.size()]));
 		cursor.setNotificationUri(mContext.getContentResolver(), URI_EVENTS);
 		return cursor;
 	}
@@ -574,7 +574,7 @@ public class DatabaseManager {
 								+ " b ON e.id = b.event_id"
 								+ " JOIN "
 								+ DatabaseHelper.EVENTS_PRESENTERS_TABLE_NAME
-								+ " ep2 ON e.id = ep2.event_id" + " WHERE ep2.presenter_id = ?" + " GROUP BY e.id" + " ORDER BY e.start_time ASC", selectionArgs);
+								+ " ep2 ON e.id = ep2.event_id" + " WHERE ep2.presenter_id = ?" + " GROUP BY e.id" + " ORDER BY e.start_time,et.title ASC", selectionArgs);
 		cursor.setNotificationUri(mContext.getContentResolver(), URI_EVENTS);
 		return cursor;
 	}

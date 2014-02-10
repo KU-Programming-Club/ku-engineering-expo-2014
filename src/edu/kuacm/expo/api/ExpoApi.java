@@ -4,13 +4,13 @@ import java.io.InputStream;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
 import edu.kuacm.expo.db.DatabaseManager;
 import edu.kuacm.expo.model.Event;
 import edu.kuacm.expo.parsers.EventsParser;
 import edu.kuacm.expo.utils.HttpUtils;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.content.LocalBroadcastManager;
 
 /**
  * Main API entry point.
