@@ -1114,7 +1114,7 @@
                     <link href="https://drive.google.com/file/d/0B7Dsz-vdJm2AYlhLaVV2eTZHa3c/edit?usp=sharing">A106 - West Elevation</link>
                 </links>
             </event>
-            <event id="107">
+            <event id="207">
                 <start>09:00</start>
                 <duration>06:00</duration>
                 <room>Learned 2111</room>
@@ -1133,7 +1133,7 @@
                 <links>
                 </links>
             </event>
-            <event id="108">
+            <event id="208">
                 <start>09:30</start>
                 <duration>03:00</duration>
                 <room>Learned 2111</room>
@@ -1840,7 +1840,7 @@
             </event>
         </room>
         <room name="Learned 1136">
-            <event id="76">
+            <event id="276">
                 <start>09:00</start>
                 <duration>03:00</duration>
                 <room>Learned 1136</room>
