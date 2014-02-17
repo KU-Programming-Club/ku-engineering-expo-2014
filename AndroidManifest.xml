@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="edu.kuacm.expo"
+    package="edu.kuacm.expo2014"
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="7"
+        android:minSdkVersion="1"
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -22,7 +22,7 @@
         android:required="false" />
 
     <application
-        android:name="edu.kuacm.expo.ExpoApplication"
+        android:name="edu.kuacm.expo2014.ExpoApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
@@ -84,7 +84,7 @@
 
         <provider
             android:name=".providers.SearchSuggestionProvider"
-            android:authorities="edu.kuacm.expo.search"
+            android:authorities="edu.kuacm.expo2014.search"
             android:exported="true"
             tools:ignore="ExportedContentProvider" />
     </application>

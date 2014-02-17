@@ -1,6 +1,6 @@
-# KU Engineering Expo Base
+# KU Engineering Expo 2014
 
-This is a template for the [KU Engineering Expo](http://groups.ku.edu/~kuesc/expo/) Android app.
+This is the Android app for the [KU Engineering Expo 2014](http://groups.ku.edu/~kuesc/expo/).
 
 ## License
 

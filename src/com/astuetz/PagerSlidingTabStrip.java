@@ -18,7 +18,7 @@ package com.astuetz;
 
 import java.util.Locale;
 
-import edu.kuacm.expo.R;
+import edu.kuacm.expo2014.R;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;

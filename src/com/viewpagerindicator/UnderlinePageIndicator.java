@@ -15,7 +15,7 @@
  */
 package com.viewpagerindicator;
 
-import edu.kuacm.expo.R;
+import edu.kuacm.expo2014.R;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
