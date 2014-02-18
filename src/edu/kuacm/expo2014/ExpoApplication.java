@@ -11,15 +11,15 @@ import android.preference.PreferenceManager;
 import edu.kuacm.expo2014.alarms.ExpoAlarmManager;
 import edu.kuacm.expo2014.db.DatabaseManager;
 
-public class ExpoApplication<A extends Activity> extends Application {
-	
+public class ExpoApplication extends Application {
+
 	/**
 	 * An {@link Activity} can spawn any number of {@link android.os.AsyncTask AsyncTasks}
 	 * simultaneously, so use a {@link Map} to connect an {@code Activity}'s name and
 	 * its {@link AsyncActivityTask AsyncActivityTasks}.
 	 */
-	private Map<String, List<AsyncActivityTask<A,?,?,?>>> mActivityTaskMap =
-			new HashMap<String, List<AsyncActivityTask<A,?,?,?>>>();
+	private final Map<String, List<? extends AsyncActivityTask<? extends Activity,?,?,?>>> mActivityTaskMap =
+			new HashMap<String, List<? extends AsyncActivityTask<? extends Activity,?,?,?>>>();
 
 	@Override
 	public void onCreate() {
@@ -38,9 +38,9 @@ public class ExpoApplication<A extends Activity> extends Application {
 	 * @param activity The {@link Activity} that spawned the {@code AsyncActivityTask}.
 	 * @param task The {@code AsyncActivityTask} to remove.
 	 */
-	public void removeTask(A activity, AsyncActivityTask<A,?,?,?> task) {
+	public <A extends Activity> void removeTask(A activity, AsyncActivityTask<A,?,?,?> task) {
 		String key = activity.getClass().getName();
-		List<AsyncActivityTask<A,?,?,?>> tasks = mActivityTaskMap.get(key);
+		List<? extends AsyncActivityTask<? extends Activity,?,?,?>> tasks = mActivityTaskMap.get(key);
 		tasks.remove(task);
 		if (tasks.isEmpty()) {
 			mActivityTaskMap.remove(key);
@@ -53,9 +53,10 @@ public class ExpoApplication<A extends Activity> extends Application {
 	 * @param activity The {@code Activity} that spawned the {@code AsyncActivityTask}.
 	 * @param task The {@code AsyncActivityTask} to connect.
 	 */
-	public void addTask(A activity, AsyncActivityTask<A,?,?,?> task) {
+	public <A extends Activity> void addTask(A activity, AsyncActivityTask<A,?,?,?> task) {
 		String key = activity.getClass().getName();
-		List<AsyncActivityTask<A,?,?,?>> tasks = mActivityTaskMap.get(key);
+		@SuppressWarnings("unchecked")
+		List<AsyncActivityTask<A,?,?,?>> tasks = (List<AsyncActivityTask<A, ?, ?, ?>>) mActivityTaskMap.get(key);
 		if (tasks == null) {
 			tasks = new ArrayList<AsyncActivityTask<A,?,?,?>>();
 			mActivityTaskMap.put(key, tasks);
@@ -71,11 +72,11 @@ public class ExpoApplication<A extends Activity> extends Application {
 	 * in its tasks to {@code null} so that the tasks can work around rotation or standby.
 	 * @param activity The {@code Activity} whose references should be set to null.
 	 */
-	public void detachActivity(A activity) {
-		List<AsyncActivityTask<A,?,?,?>> tasks = mActivityTaskMap.get(activity.getClass().getName());
+	public void detachActivity(Activity activity) {
+		List<? extends AsyncActivityTask<? extends Activity,?,?,?>> tasks = mActivityTaskMap.get(activity.getClass().getName());
 		if (tasks != null) {
-			for (AsyncActivityTask<A,?,?,?> task : tasks) {
-				task.setActivity(null);
+			for (AsyncActivityTask<? extends Activity,?,?,?> task : tasks) {
+				task.detachActivity();
 			}
 		}
 	}
@@ -85,13 +86,14 @@ public class ExpoApplication<A extends Activity> extends Application {
 	 * AsyncActivityTasks} after the {@code Activity} is resumed.
 	 * @param activity The {@code Activity} whose references should be reestablished.
 	 */
-	public void attachActivity(A activity) {
-		List<AsyncActivityTask<A,?,?,?>> tasks = mActivityTaskMap.get(activity.getClass().getName());
+	public <A extends Activity> void attachActivity(A activity) {
+		List<? extends AsyncActivityTask<? extends Activity,?,?,?>> tasks = mActivityTaskMap.get(activity.getClass().getName());
 		if (tasks != null) {
-			for (AsyncActivityTask<A,?,?,?> task : tasks) {
-				task.setActivity(activity);
+			for (AsyncActivityTask<? extends Activity,?,?,?> task : tasks) {
+				@SuppressWarnings("unchecked")
+				AsyncActivityTask<A,?,?,?> castTask = (AsyncActivityTask<A, ?, ?, ?>) task;
+				castTask.attachActivity(activity);
 			}
 		}
 	}
-	
 }

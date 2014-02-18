@@ -1,5 +1,7 @@
 package edu.kuacm.expo2014;
 
+import java.lang.ref.WeakReference;
+
 import android.app.Activity;
 import android.os.AsyncTask;
 
@@ -20,7 +22,7 @@ public abstract class AsyncActivityTask<A extends Activity, Params, Progress, Re
 	 * A reference to the app's {@link android.app.Application Application}, which manages the connection
 	 * between this task and its associated {@link Activity}.
 	 */
-	private ExpoApplication<A> mApp;
+	private final ExpoApplication mApp;
 
 	/**
 	 * References this task's associated {@link Activity}. <b>DO NOT</b> access this reference
@@ -28,13 +30,11 @@ public abstract class AsyncActivityTask<A extends Activity, Params, Progress, Re
 	 * rotation or standby. Instead, use {@link #getActivity()} every time that you want to use the
 	 * {@code Activity} to ensure that the correct reference is returned.
 	 */
-	private A mActivity, mInterruptedActivity;
+	private WeakReference<A> mActivityRef;
 
-	@SuppressWarnings("unchecked")
 	public AsyncActivityTask(A activity) {
-		mActivity = activity;
-		mInterruptedActivity = activity;
-		mApp = (ExpoApplication<A>) mActivity.getApplication();
+		mActivityRef = new WeakReference<A>(activity);
+		mApp = (ExpoApplication) activity.getApplication();
 	}
 
 	/**
@@ -44,11 +44,7 @@ public abstract class AsyncActivityTask<A extends Activity, Params, Progress, Re
 	 * @return The associated {@code Activity}.
 	 */
 	public A getActivity() {
-		if (mActivity != null) {
-			return mActivity;
-		} else {
-			return mInterruptedActivity;
-		}
+		return mActivityRef.get();
 	}
 
 	/**
@@ -56,13 +52,13 @@ public abstract class AsyncActivityTask<A extends Activity, Params, Progress, Re
 	 * rotation or standby.
 	 * @param activity The {@code Activity} to reconnect to.
 	 */
-	public void setActivity(A activity) {
-		mActivity = activity;
-		if (mActivity == null) {
-			onActivityDetached();
-		} else {
-			onActivityAttached();
-		}
+	public void attachActivity(A activity) {
+		mActivityRef = new WeakReference<A>(activity);
+		onActivityAttached();
+	}
+
+	public void detachActivity() {
+		onActivityDetached();
 	}
 
 	/**
@@ -94,9 +90,5 @@ public abstract class AsyncActivityTask<A extends Activity, Params, Progress, Re
 	protected void onCancelled() {
 		mApp.removeTask(getActivity(), this);
 	}
-	
-	@Override
-	protected void onCancelled(Result result) {
-		mApp.removeTask(getActivity(), this);
-	}
+
 }

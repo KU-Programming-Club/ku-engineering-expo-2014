@@ -107,8 +107,7 @@ public class ScoresFragment extends Fragment {
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		@SuppressWarnings("unchecked")
-		ExpoApplication<FragmentActivity> baseApp = (ExpoApplication<FragmentActivity>) getActivity().getApplication();
+		ExpoApplication baseApp = (ExpoApplication) getActivity().getApplication();
 		baseApp.detachActivity(getActivity());
 
 		outState.putString("teamName", mTeamName);
@@ -119,8 +118,7 @@ public class ScoresFragment extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-		@SuppressWarnings("unchecked")
-		ExpoApplication<FragmentActivity> baseApp = (ExpoApplication<FragmentActivity>) getActivity().getApplication();
+		ExpoApplication baseApp = (ExpoApplication) getActivity().getApplication();
 		baseApp.attachActivity(getActivity());
 	}
 
