@@ -275,8 +275,8 @@ public class ScoresFragment extends Fragment {
 		}
 
 		@Override
-		protected void onCancelled(JSONObject result) {
-			super.onCancelled(result);
+		protected void onCancelled() {
+			super.onCancelled();
 
 			if (mProgress != null) {
 				mProgress.dismiss();
